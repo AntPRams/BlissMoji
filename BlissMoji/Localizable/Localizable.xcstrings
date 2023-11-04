@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "emojisButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojis"
+          }
+        }
+      }
+    },
     "networkError300GenericMessage" : {
       "extractionState" : "manual",
       "localizations" : {
