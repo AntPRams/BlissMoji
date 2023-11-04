@@ -6,8 +6,7 @@ struct MainView: View {
     
     var body: some View {
         VStack {
-            Image(uiImage: UIImage())
-                .clipShape(.circle)
+            EmojiView(name: "apple")
             Button {
                 fetchData()
             } label: {
@@ -25,7 +24,9 @@ struct MainView: View {
                 let adapter = EmojiAdapter(modelContext: modelContext)
                 let emojis = try await adapter.fetchEmojisData()
                 await MainActor.run {
-                    print(emojis)
+                    emojis.forEach {
+                        print($0.name)
+                    }
                 }
             } catch {
                 await MainActor.run {
