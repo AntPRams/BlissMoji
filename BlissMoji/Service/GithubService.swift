@@ -2,7 +2,7 @@ import Foundation
 
 protocol Service {
     associatedtype DataType
-    func fetchConnections(url: URL?) async throws -> [DataType]
+    func fetchData(from endPoint: EndPoint) async throws -> DataType
 }
 
 final class GithubService<Model: Decodable>: Service {
@@ -11,7 +11,6 @@ final class GithubService<Model: Decodable>: Service {
     // MARK: - Properties
     
     private var apiClient: APIClientInterface
-    private var url: URL?
     
     // MARK: - Init
     
@@ -23,17 +22,14 @@ final class GithubService<Model: Decodable>: Service {
     
     // MARK: - Public interface
     
-    func fetchConnections(url: URL?) async throws -> [Model] {
-        guard let url else {
+    func fetchData(from endPoint: EndPoint) async throws -> Model {
+        guard let url = endPoint.url else {
             throw NetworkError.unknown
         }
         
-        let data: [Model]? = try await apiClient.fetch(from: url)
+        let data: Model? = try await apiClient.fetch(from: url)
         
-        guard
-            let resultData = data,
-            !resultData.isEmpty
-        else {
+        guard let resultData = data else {
             throw NetworkError.noData
         }
         
