@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105530C2AF5BC960083ADFF /* NetworkError.swift */; };
+		910553142AF5BE570083ADFF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 910553132AF5BE570083ADFF /* Localizable.xcstrings */; };
+		910553172AF5C97C0083ADFF /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553162AF5C97C0083ADFF /* Localized.swift */; };
+		910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */; };
 		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
 		91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* ContentView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 
 /* Begin PBXFileReference section */
 		9105530C2AF5BC960083ADFF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		910553132AF5BE570083ADFF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		910553162AF5C97C0083ADFF /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +110,16 @@
 			path = Error;
 			sourceTree = "<group>";
 		};
+		910553152AF5C9220083ADFF /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				910553132AF5BE570083ADFF /* Localizable.xcstrings */,
+				910553162AF5C97C0083ADFF /* Localized.swift */,
+				910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		91E46DC62AF5B93800A835E4 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +149,7 @@
 				91E46DD42AF5B93800A835E4 /* ContentView.swift */,
 				91E46DD62AF5B93C00A835E4 /* Assets.xcassets */,
 				91E46DD82AF5B93C00A835E4 /* Preview Content */,
+				910553152AF5C9220083ADFF /* Localizable */,
 			);
 			path = BlissMoji;
 			sourceTree = "<group>";
@@ -268,6 +285,7 @@
 			files = (
 				91E46DDA2AF5B93C00A835E4 /* Preview Assets.xcassets in Resources */,
 				91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */,
+				910553142AF5BE570083ADFF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +311,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */,
+				910553172AF5C97C0083ADFF /* Localized.swift in Sources */,
+				910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */,
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */,
 			);
