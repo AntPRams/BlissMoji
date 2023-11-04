@@ -8,7 +8,7 @@ class EmojiAdapter {
     private let modelContext: ModelContext
     
     init(
-        service: GithubService<[String : String]> = GithubService<[String : String]>(),
+        service: GithubService<[String: String]> = GithubService<[String: String]>(),
         modelContext: ModelContext
     ) {
         self.service = service
@@ -32,10 +32,41 @@ class EmojiAdapter {
         return emojisList
     }
     
-    private func fetchEmojisDataFromContext() throws -> [EmojiModel]? {
-        let descriptor = FetchDescriptor<EmojiModel>(sortBy: [SortDescriptor(\.name)])
-        let emojis = try? modelContext.fetch(descriptor)
+    func fetchImage(with name: String) async throws -> UIImage? {
+        let predicate = #Predicate<EmojiModel> { emoji in
+            emoji.name == name
+        }
+        let emojis = try fetchEmojisDataFromContext(with: predicate)
+        
+        guard let emojis, let emoji = emojis.first else {
+            // TODO: Should return error stating that image couldnt be found
+            return nil
+        }
+        
+        guard let image = emoji.image else {
+            if let imageData = try await fetchImage(from: emoji.imageUrl) {
+                emoji.imageData = imageData
+                return UIImage(data: imageData)
+            }
+            // TODO: Should return error stating that image couldnt be parsed (!?)
+            return nil
+        }
+        return image
+    }
+}
+
+private extension EmojiAdapter {
+    
+    func fetchEmojisDataFromContext(with predicate: Predicate<EmojiModel>? = nil) throws -> [EmojiModel]? {
+        let descriptor = FetchDescriptor<EmojiModel>(predicate: predicate, sortBy: [SortDescriptor(\.name)])
+        let emojis = try modelContext.fetch(descriptor)
         
         return emojis
+    }
+    
+    func fetchImage(from url: URL) async throws -> Data? {
+        let request = URLRequest(url: url)
+        let (data, _) = try await URLSession.shared.data(for: request)
+        return data
     }
 }
