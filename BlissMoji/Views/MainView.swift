@@ -5,17 +5,27 @@ struct MainView: View {
     @Environment(\.modelContext) var modelContext
     
     var body: some View {
-        VStack {
-            EmojiView(name: "apple")
-            Button {
-                fetchData()
-            } label: {
-                Text(Localizable.emojisButton)
-                    .frame(maxWidth: .infinity)
+        NavigationStack {
+            VStack {
+                EmojiView(name: "apple")
+                Button {
+                    fetchData()
+                } label: {
+                    Text(Localizable.emojisButton)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                NavigationLink(destination: {
+                    EmojisListView()
+                }, label: {
+                    Text("Emojis list")
+                        .frame(maxWidth: .infinity)
+                })
+                .buttonStyle(.borderedProminent)
             }
-            .buttonStyle(.borderedProminent)
+            .padding(.horizontal, 16)
+            .navigationTitle("BlissMoji")
         }
-        .padding(.horizontal, 16)
     }
     
     func fetchData() {
