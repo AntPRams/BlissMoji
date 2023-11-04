@@ -15,20 +15,19 @@ extension NetworkError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .redirected:
-            return ""
+            return Localizable.networkErrorBadRequest
         case .badRequest:
-            return ""
+            return Localizable.networkErrorBadRequest
         case .unauthorized, .forbidden:
-            return ""
+            return Localizable.networkErrorUnauthorized
         case .notFound:
-            return ""
+            return Localizable.networkErrorNotFound
         case .serverError:
-            return ""
+            return Localizable.networkError500GenericMessage
         case .noData:
-            return ""
+            return Localizable.networkErrorNoData
         case .unknown:
-            return ""
+            return Localizable.networkErrorUnknown
         }
     }
 }
-
