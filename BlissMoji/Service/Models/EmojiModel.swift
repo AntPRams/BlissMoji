@@ -7,11 +7,7 @@ class EmojiModel {
     var imageUrl: URL
     @Attribute(.externalStorage) var imageData: Data?
     
-    var hasCachedImage: Bool {
-        imageData == nil
-    }
-    
-    var emojiImage: UIImage? {
+    var image: UIImage? {
         guard let imageData else {
             return nil
         }
