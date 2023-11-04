@@ -1,8 +1,29 @@
-//
-//  EmojiView.swift
-//  BlissMoji
-//
-//  Created by António Ramos on 04/11/2023.
-//
+import SwiftUI
 
-import Foundation
+struct EmojiView: View {
+    
+    @State private var image: UIImage = UIImage()
+    @Environment(\.modelContext) var modelContext
+    var name: String
+    var adapter: EmojiAdapter {
+        EmojiAdapter(modelContext: modelContext)
+    }
+    
+    var body: some View {
+        VStack {
+            Image(uiImage: image)
+            Text(name)
+        }
+        .task {
+            do {
+                guard let imageData = try await adapter.fetchImage(with: name) else {
+                    return
+                }
+                image = imageData
+                
+            } catch {
+                print("error")
+            }
+        }
+    }
+}
