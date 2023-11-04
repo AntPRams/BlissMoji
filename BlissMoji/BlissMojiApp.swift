@@ -1,11 +1,5 @@
-//
-//  BlissMojiApp.swift
-//  BlissMoji
-//
-//  Created by António Ramos on 03/11/2023.
-//
-
 import SwiftUI
+import SwiftData
 
 @main
 struct BlissMojiApp: App {
@@ -13,5 +7,6 @@ struct BlissMojiApp: App {
         WindowGroup {
             MainView()
         }
+        .modelContainer(for: EmojiModel.self)
     }
 }
