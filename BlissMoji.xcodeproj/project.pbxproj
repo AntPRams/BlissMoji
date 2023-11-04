@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105530C2AF5BC960083ADFF /* NetworkError.swift */; };
+		910553142AF5BE570083ADFF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 910553132AF5BE570083ADFF /* Localizable.xcstrings */; };
+		910553172AF5C97C0083ADFF /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553162AF5C97C0083ADFF /* Localized.swift */; };
+		910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */; };
+		9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531A2AF5D1840083ADFF /* APIClient.swift */; };
+		9105531D2AF5D2520083ADFF /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531C2AF5D2520083ADFF /* EndPoints.swift */; };
+		9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531E2AF5DB040083ADFF /* GithubService.swift */; };
+		910553222AF5DCA20083ADFF /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553212AF5DCA20083ADFF /* Array.swift */; };
 		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
 		91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* ContentView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
@@ -34,6 +42,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9105530C2AF5BC960083ADFF /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		910553132AF5BE570083ADFF /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		910553162AF5C97C0083ADFF /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		9105531A2AF5D1840083ADFF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		9105531C2AF5D2520083ADFF /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		9105531E2AF5DB040083ADFF /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
+		910553212AF5DCA20083ADFF /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,6 +87,67 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		910553062AF5BAF90083ADFF /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				910553072AF5BB280083ADFF /* Models */,
+				9105531A2AF5D1840083ADFF /* APIClient.swift */,
+				9105531C2AF5D2520083ADFF /* EndPoints.swift */,
+				9105531E2AF5DB040083ADFF /* GithubService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		910553072AF5BB280083ADFF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9105530A2AF5BC7E0083ADFF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				910553202AF5DC9A0083ADFF /* Extensions */,
+				9105530B2AF5BC850083ADFF /* Error */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		9105530B2AF5BC850083ADFF /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				9105530C2AF5BC960083ADFF /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		910553152AF5C9220083ADFF /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				910553132AF5BE570083ADFF /* Localizable.xcstrings */,
+				910553162AF5C97C0083ADFF /* Localized.swift */,
+				910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		910553202AF5DC9A0083ADFF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				910553212AF5DCA20083ADFF /* Array.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		910553232AF5DD970083ADFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				91E46DD42AF5B93800A835E4 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		91E46DC62AF5B93800A835E4 = {
 			isa = PBXGroup;
 			children = (
@@ -95,9 +172,12 @@
 			isa = PBXGroup;
 			children = (
 				91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */,
-				91E46DD42AF5B93800A835E4 /* ContentView.swift */,
+				9105530A2AF5BC7E0083ADFF /* Common */,
+				910553062AF5BAF90083ADFF /* Service */,
+				910553232AF5DD970083ADFF /* Views */,
 				91E46DD62AF5B93C00A835E4 /* Assets.xcassets */,
 				91E46DD82AF5B93C00A835E4 /* Preview Content */,
+				910553152AF5C9220083ADFF /* Localizable */,
 			);
 			path = BlissMoji;
 			sourceTree = "<group>";
@@ -233,6 +313,7 @@
 			files = (
 				91E46DDA2AF5B93C00A835E4 /* Preview Assets.xcassets in Resources */,
 				91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */,
+				910553142AF5BE570083ADFF /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +338,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				910553222AF5DCA20083ADFF /* Array.swift in Sources */,
 				91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */,
+				910553172AF5C97C0083ADFF /* Localized.swift in Sources */,
+				9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */,
+				910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */,
+				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */,
+				9105531D2AF5D2520083ADFF /* EndPoints.swift in Sources */,
+				9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

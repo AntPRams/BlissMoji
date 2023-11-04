@@ -1,0 +1,83 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "networkError300GenericMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Multiple options available.\nRefine your request."
+          }
+        }
+      }
+    },
+    "networkError500GenericMessage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops!\nSomething went wrong on our end."
+          }
+        }
+      }
+    },
+    "networkErrorBadRequest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The server could not understand the request."
+          }
+        }
+      }
+    },
+    "networkErrorNoData" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No data available."
+          }
+        }
+      }
+    },
+    "networkErrorNotFound" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The resource you're looking for can't be found."
+          }
+        }
+      }
+    },
+    "networkErrorUnauthorized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access denied."
+          }
+        }
+      }
+    },
+    "networkErrorUnknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oops!\nSomething went wrong."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
