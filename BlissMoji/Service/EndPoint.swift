@@ -1,10 +1,12 @@
 import Foundation
 
+/// The `EndPoint` enum defines different types of endpoints that can be used to make network requests.
 enum EndPoint {
     case emojis
     case avatar(user: String)
     case repos(user: String, page: Int, size: Int = 10)
     
+    /// Returns the `URL` corresponding to the specific endpoint.
     var url: URL? {
         switch self {
         case .emojis:
@@ -20,6 +22,13 @@ enum EndPoint {
 }
 
 extension EndPoint {
+    /// Constructs a `URL` based on the given path and optional query items.
+    ///
+    /// - Parameters:
+    ///   - path: The path component of the `URL`.
+    ///   - queryItems: Optional query items to include in the `URL`.
+    ///
+    /// - Returns: The constructed `URL`.
     static private func url(_ path: String, queryItems: [URLQueryItem]? = nil) -> URL? {
         var components = URLComponents()
         components.scheme = "https"

@@ -1,20 +1,19 @@
 import Foundation
 
-protocol EmojiAdapterInterface {
-    init(service: any Service)
-    
-    func fetchEmojisData() async throws -> [EmojiModel]
-    func fetchRandomEmoji() async throws -> EmojiModel
-    func fetchImage(for emoji: EmojiModel) async throws -> Data?
-}
-
 final class EmojiAdapter: EmojiAdapterInterface {
     
+    // MARK: - Properties
+    
+    /// The service used for fetching emoji data and images. Default is a `GithubService` with a `[String: String]` data type.
     private let service: any Service
+    
+    // MARK: - Init
     
     init(service: any Service = GithubService<[String: String]>()) {
         self.service = service
     }
+    
+    // MARK: - Public work
     
     func fetchEmojisData() async throws -> [EmojiModel] {
         guard let data = try await service.fetchData(from: .emojis) as? [String: String] else {
@@ -26,8 +25,6 @@ final class EmojiAdapter: EmojiAdapterInterface {
                 return nil
             }
             let model = EmojiModel(name: key, imageUrl: url)
-            DispatchQueue.main.async {
-            }
             return model
         }
         return list
@@ -41,7 +38,7 @@ final class EmojiAdapter: EmojiAdapterInterface {
         return emoji
     }
     
-    func fetchImage(for emoji: EmojiModel) async throws -> Data? {
+    func fetchImage(for emoji: EmojiModel) async throws -> Data {
         try await service.fetchImage(from: emoji.imageUrl)
     }
 }

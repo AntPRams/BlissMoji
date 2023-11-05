@@ -27,7 +27,8 @@ class EmojiViewModel: EmojiViewModelInterface {
         state = .loading
         Task {
             do {
-                guard let imageData = try await self.emojiAdapter.fetchImage(for: emojiModel), let image = UIImage(data: imageData) else { return }
+                let imageData = try await self.emojiAdapter.fetchImage(for: emojiModel)
+                guard let image = UIImage(data: imageData) else { return }
                 await MainActor.run {
                     self.state = .concluded
                     self.image = image

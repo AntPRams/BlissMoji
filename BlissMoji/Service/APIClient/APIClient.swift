@@ -1,10 +1,5 @@
 import Foundation
 
-protocol APIClientInterface {
-    func fetch(from url: URL) async throws -> Data
-    func fetch<T: Decodable>(from url: URL) async throws -> T?
-}
-
 final class APIClient: APIClientInterface {
     
     func fetch(from url: URL) async throws -> Data {
@@ -13,7 +8,7 @@ final class APIClient: APIClientInterface {
         let mapResponse = try mapResponse(response: (data,response))
         return mapResponse
     }
-
+    
     func fetch<T: Decodable>(from url: URL) async throws -> T? {
         let data = try await fetch(from: url)
         let fetchedData = try JSONDecoder().decode(T.self, from: data)
@@ -22,6 +17,14 @@ final class APIClient: APIClientInterface {
 }
 
 extension APIClient {
+    
+    /// Maps an HTTP response to the corresponding HTTP status code and handles specific errors.
+    ///
+    /// - Parameter response: The response data and HTTP response object.
+    ///
+    /// - Returns: The response data as binary data.
+    ///
+    /// - Throws: An error corresponding to the HTTP status code or a generic `NetworkError.unknown` if the status code is not recognized.
     private func mapResponse(response: (data: Data, response: URLResponse)) throws -> Data {
         guard let httpResponse = response.response as? HTTPURLResponse else {
             return response.data
