@@ -22,6 +22,8 @@
 		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
 		91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */; };
 		91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */; };
+		91670D822AF8357D00FFC655 /* emojiList.json in Resources */ = {isa = PBXBuildFile; fileRef = 91670D812AF8357D00FFC655 /* emojiList.json */; };
+		91670D862AF83ECD00FFC655 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D852AF83ECD00FFC655 /* Service.swift */; };
 		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
 		91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* MainView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
@@ -64,6 +66,9 @@
 		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
+		91670D812AF8357D00FFC655 /* emojiList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emojiList.json; sourceTree = "<group>"; };
+		91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BlissMojiTests.xctestplan; sourceTree = "<group>"; };
+		91670D852AF83ECD00FFC655 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -109,6 +114,7 @@
 				9105531A2AF5D1840083ADFF /* APIClient.swift */,
 				9105531C2AF5D2520083ADFF /* EndPoint.swift */,
 				9105531E2AF5DB040083ADFF /* GithubService.swift */,
+				91670D852AF83ECD00FFC655 /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -201,6 +207,22 @@
 			path = ImageView;
 			sourceTree = "<group>";
 		};
+		91670D802AF8354A00FFC655 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				91670D812AF8357D00FFC655 /* emojiList.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		91670D842AF8367B00FFC655 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				91670D802AF8354A00FFC655 /* Json */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		91E46DC62AF5B93800A835E4 = {
 			isa = PBXGroup;
 			children = (
@@ -246,7 +268,9 @@
 		91E46DE22AF5B93C00A835E4 /* BlissMojiTests */ = {
 			isa = PBXGroup;
 			children = (
+				91670D842AF8367B00FFC655 /* Mocks */,
 				91E46DE32AF5B93C00A835E4 /* BlissMojiTests.swift */,
+				91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */,
 			);
 			path = BlissMojiTests;
 			sourceTree = "<group>";
@@ -374,6 +398,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91670D822AF8357D00FFC655 /* emojiList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,6 +427,7 @@
 				91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */,
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */,
+				91670D862AF83ECD00FFC655 /* Service.swift in Sources */,
 				91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */,
 				9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */,
 				9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */,

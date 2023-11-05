@@ -1,15 +1,22 @@
 import Foundation
 
 protocol APIClientInterface {
+    func fetch(from url: URL) async throws -> Data
     func fetch<T: Decodable>(from url: URL) async throws -> T?
 }
 
 final class APIClient: APIClientInterface {
     
-    func fetch<T: Decodable>(from url: URL) async throws -> T? {
+    func fetch(from url: URL) async throws -> Data {
         let request = URLRequest(url: url)
         let (data, response) = try await URLSession.shared.data(for: request)
-        let fetchedData = try JSONDecoder().decode(T.self, from: try mapResponse(response: (data,response)))
+        let mapResponse = try mapResponse(response: (data,response))
+        return mapResponse
+    }
+
+    func fetch<T: Decodable>(from url: URL) async throws -> T? {
+        let data = try await fetch(from: url)
+        let fetchedData = try JSONDecoder().decode(T.self, from: data)
         return fetchedData
     }
 }

@@ -1,11 +1,7 @@
 import Foundation
 
-protocol Service {
-    associatedtype DataType
-    func fetchData(from endPoint: EndPoint) async throws -> DataType
-}
-
 final class GithubService<Model: Decodable>: Service {
+
     typealias DataType = Model
     
     // MARK: - Properties
@@ -34,5 +30,9 @@ final class GithubService<Model: Decodable>: Service {
         }
         
         return resultData
+    }
+    
+    func fetchImage(from url: URL) async throws -> Data {
+        try await apiClient.fetch(from: url)
     }
 }
