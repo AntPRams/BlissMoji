@@ -2,7 +2,7 @@ import Foundation
 
 protocol EmojisListViewModelInterface: ObservableObject {
     
-    var emojiAdapter: EmojiAdapter { get }
+    var adapter: EmojiAdapter { get }
     var emojis: [EmojiModel] { get set }
     
     func fetchEmojis()
@@ -10,19 +10,22 @@ protocol EmojisListViewModelInterface: ObservableObject {
 
 class EmojisListViewModel: EmojisListViewModelInterface {
     
-    let emojiAdapter: EmojiAdapter
+    let adapter: EmojiAdapter
     
     @Published var emojis = [EmojiModel]()
     
-    init(emojiAdapter: EmojiAdapter = EmojiAdapter()) {
-        self.emojiAdapter = emojiAdapter
+    init(adapter: EmojiAdapter = EmojiAdapter(), shouldLoadEmojisOnInitialization: Bool = true) {
+        self.adapter = adapter
+        guard shouldLoadEmojisOnInitialization else {
+            return
+        }
         fetchEmojis()
     }
     
     func fetchEmojis() {
         Task {
             do {
-                let emojis = try await emojiAdapter.fetchEmojisData()
+                let emojis = try await adapter.fetchEmojisData()
                 await MainActor.run {
                     self.emojis = emojis
                 }

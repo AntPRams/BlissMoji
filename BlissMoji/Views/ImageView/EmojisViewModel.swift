@@ -3,8 +3,8 @@ import UIKit
 protocol EmojiViewModelInterface: ObservableObject {
     
     var emojiModel: EmojiModel { get set }
-    var emojiAdapter: EmojiAdapter { get }
-    var state: State { get set }
+    var adapter: EmojiAdapter { get }
+    var state: ViewState { get set }
     var image: UIImage? { get set }
     
     func fetchEmojiImage()
@@ -13,13 +13,14 @@ protocol EmojiViewModelInterface: ObservableObject {
 class EmojiViewModel: EmojiViewModelInterface {
     
     var emojiModel: EmojiModel
-    let emojiAdapter: EmojiAdapter
-    @Published var state: State = .idle
+    let adapter: EmojiAdapter
+    @Published var state: ViewState = .initial
     @Published var image: UIImage?
     
-    init(emojiModel: EmojiModel, emojiAdapter: EmojiAdapter = EmojiAdapter()) {
+    init(emojiModel: EmojiModel, adapter: EmojiAdapter = EmojiAdapter(), shouldFetchImageOnInitialization: Bool = true) {
         self.emojiModel = emojiModel
-        self.emojiAdapter = emojiAdapter
+        self.adapter = adapter
+        guard shouldFetchImageOnInitialization else { return }
         fetchEmojiImage()
     }
     
@@ -27,10 +28,10 @@ class EmojiViewModel: EmojiViewModelInterface {
         state = .loading
         Task {
             do {
-                let imageData = try await self.emojiAdapter.fetchImage(for: emojiModel)
+                let imageData = try await self.adapter.fetchImage(for: emojiModel)
                 guard let image = UIImage(data: imageData) else { return }
                 await MainActor.run {
-                    self.state = .concluded
+                    self.state = .idle
                     self.image = image
                     Task {
                         emojiModel.imageData = imageData

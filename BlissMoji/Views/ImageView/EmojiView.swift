@@ -26,7 +26,3 @@ struct EmojiView<ViewModel: EmojiViewModelInterface>: View {
         .onTapGesture(perform: deleteAction)
     }
 }
-
-enum State {
-    case loading, idle, concluded
-}

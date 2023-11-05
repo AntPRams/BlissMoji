@@ -13,7 +13,7 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
                         Rectangle()
                             .frame(width: 80, height: 80)
                     }
-                } else if viewModel.state == .concluded {
+                } else if viewModel.state == .idle {
                     if let randomEmoji = viewModel.randomEmoji {
                         EmojiView(viewModel: EmojiViewModel(emojiModel: randomEmoji)) {}
                     }
