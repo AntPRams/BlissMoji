@@ -5,8 +5,7 @@ import SwiftData
 struct BlissMojiApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: MainViewModel())
         }
-        .modelContainer(for: EmojiModel.self)
     }
 }
