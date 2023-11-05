@@ -27,7 +27,6 @@
 		91670D882AF844B200FFC655 /* EmojiAdapterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */; };
 		91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */; };
 		91670D8E2AF84AD200FFC655 /* GithubServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */; };
-		91670D902AF84D2800FFC655 /* imageBase64.json in Resources */ = {isa = PBXBuildFile; fileRef = 91670D8F2AF84D2800FFC655 /* imageBase64.json */; };
 		91670D922AF8502A00FFC655 /* invalidEmojiList.json in Resources */ = {isa = PBXBuildFile; fileRef = 91670D912AF8502A00FFC655 /* invalidEmojiList.json */; };
 		91670D942AF852AF00FFC655 /* URLMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D932AF852AF00FFC655 /* URLMocks.swift */; };
 		91670D962AF8560D00FFC655 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D952AF8560D00FFC655 /* MainViewModelTests.swift */; };
@@ -82,7 +81,6 @@
 		91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterInterface.swift; sourceTree = "<group>"; };
 		91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInterface.swift; sourceTree = "<group>"; };
 		91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubServiceMock.swift; sourceTree = "<group>"; };
-		91670D8F2AF84D2800FFC655 /* imageBase64.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = imageBase64.json; sourceTree = "<group>"; };
 		91670D912AF8502A00FFC655 /* invalidEmojiList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalidEmojiList.json; sourceTree = "<group>"; };
 		91670D932AF852AF00FFC655 /* URLMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMocks.swift; sourceTree = "<group>"; };
 		91670D952AF8560D00FFC655 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 			isa = PBXGroup;
 			children = (
 				91670D812AF8357D00FFC655 /* emojiList.json */,
-				91670D8F2AF84D2800FFC655 /* imageBase64.json */,
 				91670D912AF8502A00FFC655 /* invalidEmojiList.json */,
 			);
 			path = Json;
@@ -446,7 +443,6 @@
 			files = (
 				91670D822AF8357D00FFC655 /* emojiList.json in Resources */,
 				91670D922AF8502A00FFC655 /* invalidEmojiList.json in Resources */,
-				91670D902AF84D2800FFC655 /* imageBase64.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
