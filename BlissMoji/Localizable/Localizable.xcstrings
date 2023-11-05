@@ -1,6 +1,23 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "BlissMoji" : {
+
+    },
+    "Emojis list" : {
+
+    },
+    "emojisButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojis"
+          }
+        }
+      }
+    },
     "networkError300GenericMessage" : {
       "extractionState" : "manual",
       "localizations" : {

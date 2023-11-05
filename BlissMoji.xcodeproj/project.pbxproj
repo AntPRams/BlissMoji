@@ -12,14 +12,32 @@
 		910553172AF5C97C0083ADFF /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553162AF5C97C0083ADFF /* Localized.swift */; };
 		910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */; };
 		9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531A2AF5D1840083ADFF /* APIClient.swift */; };
-		9105531D2AF5D2520083ADFF /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531C2AF5D2520083ADFF /* EndPoints.swift */; };
+		9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531C2AF5D2520083ADFF /* EndPoint.swift */; };
 		9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105531E2AF5DB040083ADFF /* GithubService.swift */; };
 		910553222AF5DCA20083ADFF /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553212AF5DCA20083ADFF /* Array.swift */; };
+		910553252AF5E6670083ADFF /* EmojiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553242AF5E6670083ADFF /* EmojiModel.swift */; };
+		910553282AF5EA4C0083ADFF /* EmojiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */; };
+		9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553292AF5F2E00083ADFF /* EmojiView.swift */; };
+		9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105532B2AF60E020083ADFF /* EmojisListView.swift */; };
+		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
+		91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */; };
+		91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */; };
+		91670D822AF8357D00FFC655 /* emojiList.json in Resources */ = {isa = PBXBuildFile; fileRef = 91670D812AF8357D00FFC655 /* emojiList.json */; };
+		91670D862AF83ECD00FFC655 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D852AF83ECD00FFC655 /* Service.swift */; };
+		91670D882AF844B200FFC655 /* EmojiAdapterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */; };
+		91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */; };
+		91670D8E2AF84AD200FFC655 /* GithubServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */; };
+		91670D922AF8502A00FFC655 /* invalidEmojiList.json in Resources */ = {isa = PBXBuildFile; fileRef = 91670D912AF8502A00FFC655 /* invalidEmojiList.json */; };
+		91670D942AF852AF00FFC655 /* URLMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D932AF852AF00FFC655 /* URLMocks.swift */; };
+		91670D962AF8560D00FFC655 /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D952AF8560D00FFC655 /* MainViewModelTests.swift */; };
+		91670D982AF85A0800FFC655 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D972AF85A0800FFC655 /* ViewState.swift */; };
+		91670D9A2AF85B0E00FFC655 /* EmojisListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */; };
+		91670D9C2AF85E2200FFC655 /* EmojiViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */; };
 		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
-		91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* ContentView.swift */; };
+		91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* MainView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
 		91E46DDA2AF5B93C00A835E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD92AF5B93C00A835E4 /* Preview Assets.xcassets */; };
-		91E46DE42AF5B93C00A835E4 /* BlissMojiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DE32AF5B93C00A835E4 /* BlissMojiTests.swift */; };
+		91E46DE42AF5B93C00A835E4 /* EmojiAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */; };
 		91E46DEE2AF5B93C00A835E4 /* BlissMojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */; };
 		91E46DF02AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
@@ -47,16 +65,35 @@
 		910553162AF5C97C0083ADFF /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		9105531A2AF5D1840083ADFF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		9105531C2AF5D2520083ADFF /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		9105531C2AF5D2520083ADFF /* EndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		9105531E2AF5DB040083ADFF /* GithubService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubService.swift; sourceTree = "<group>"; };
 		910553212AF5DCA20083ADFF /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		910553242AF5E6670083ADFF /* EmojiModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiModel.swift; sourceTree = "<group>"; };
+		910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapter.swift; sourceTree = "<group>"; };
+		910553292AF5F2E00083ADFF /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
+		9105532B2AF60E020083ADFF /* EmojisListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListView.swift; sourceTree = "<group>"; };
+		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
+		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
+		91670D812AF8357D00FFC655 /* emojiList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emojiList.json; sourceTree = "<group>"; };
+		91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BlissMojiTests.xctestplan; sourceTree = "<group>"; };
+		91670D852AF83ECD00FFC655 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterInterface.swift; sourceTree = "<group>"; };
+		91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInterface.swift; sourceTree = "<group>"; };
+		91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubServiceMock.swift; sourceTree = "<group>"; };
+		91670D912AF8502A00FFC655 /* invalidEmojiList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalidEmojiList.json; sourceTree = "<group>"; };
+		91670D932AF852AF00FFC655 /* URLMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLMocks.swift; sourceTree = "<group>"; };
+		91670D952AF8560D00FFC655 /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
+		91670D972AF85A0800FFC655 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModelTests.swift; sourceTree = "<group>"; };
+		91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModelTests.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
-		91E46DD42AF5B93800A835E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		91E46DD42AF5B93800A835E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		91E46DD62AF5B93C00A835E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E46DD92AF5B93C00A835E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		91E46DDF2AF5B93C00A835E4 /* BlissMojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissMojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E46DE32AF5B93C00A835E4 /* BlissMojiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiTests.swift; sourceTree = "<group>"; };
+		91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterTests.swift; sourceTree = "<group>"; };
 		91E46DE92AF5B93C00A835E4 /* BlissMojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissMojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITests.swift; sourceTree = "<group>"; };
 		91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -90,10 +127,11 @@
 		910553062AF5BAF90083ADFF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				910553262AF5EA3B0083ADFF /* Adapters */,
 				910553072AF5BB280083ADFF /* Models */,
-				9105531A2AF5D1840083ADFF /* APIClient.swift */,
-				9105531C2AF5D2520083ADFF /* EndPoints.swift */,
-				9105531E2AF5DB040083ADFF /* GithubService.swift */,
+				91670D892AF845D200FFC655 /* APIClient */,
+				91670D8C2AF8497A00FFC655 /* Services */,
+				9105531C2AF5D2520083ADFF /* EndPoint.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -101,6 +139,7 @@
 		910553072AF5BB280083ADFF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				910553242AF5E6670083ADFF /* EmojiModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,6 +149,7 @@
 			children = (
 				910553202AF5DC9A0083ADFF /* Extensions */,
 				9105530B2AF5BC850083ADFF /* Error */,
+				91670D972AF85A0800FFC655 /* ViewState.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -143,9 +183,84 @@
 		910553232AF5DD970083ADFF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				91E46DD42AF5B93800A835E4 /* ContentView.swift */,
+				91670D772AF7F77900FFC655 /* MainView */,
+				91670D7A2AF7F78B00FFC655 /* ListView */,
+				91670D7B2AF7F7B600FFC655 /* ImageView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		910553262AF5EA3B0083ADFF /* Adapters */ = {
+			isa = PBXGroup;
+			children = (
+				910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */,
+				91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */,
+			);
+			path = Adapters;
+			sourceTree = "<group>";
+		};
+		91670D772AF7F77900FFC655 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				91E46DD42AF5B93800A835E4 /* MainView.swift */,
+				91670D782AF7F78400FFC655 /* MainViewModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		91670D7A2AF7F78B00FFC655 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				9105532B2AF60E020083ADFF /* EmojisListView.swift */,
+				91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		91670D7B2AF7F7B600FFC655 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				910553292AF5F2E00083ADFF /* EmojiView.swift */,
+				91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
+		91670D802AF8354A00FFC655 /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				91670D812AF8357D00FFC655 /* emojiList.json */,
+				91670D912AF8502A00FFC655 /* invalidEmojiList.json */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		91670D842AF8367B00FFC655 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				91670D802AF8354A00FFC655 /* Json */,
+				91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */,
+				91670D932AF852AF00FFC655 /* URLMocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		91670D892AF845D200FFC655 /* APIClient */ = {
+			isa = PBXGroup;
+			children = (
+				9105531A2AF5D1840083ADFF /* APIClient.swift */,
+				91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */,
+			);
+			path = APIClient;
+			sourceTree = "<group>";
+		};
+		91670D8C2AF8497A00FFC655 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9105531E2AF5DB040083ADFF /* GithubService.swift */,
+				91670D852AF83ECD00FFC655 /* Service.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		91E46DC62AF5B93800A835E4 = {
@@ -193,7 +308,12 @@
 		91E46DE22AF5B93C00A835E4 /* BlissMojiTests */ = {
 			isa = PBXGroup;
 			children = (
-				91E46DE32AF5B93C00A835E4 /* BlissMojiTests.swift */,
+				91670D842AF8367B00FFC655 /* Mocks */,
+				91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */,
+				91670D952AF8560D00FFC655 /* MainViewModelTests.swift */,
+				91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */,
+				91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */,
+				91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */,
 			);
 			path = BlissMojiTests;
 			sourceTree = "<group>";
@@ -321,6 +441,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91670D822AF8357D00FFC655 /* emojiList.json in Resources */,
+				91670D922AF8502A00FFC655 /* invalidEmojiList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +460,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */,
 				910553222AF5DCA20083ADFF /* Array.swift in Sources */,
-				91E46DD52AF5B93800A835E4 /* ContentView.swift in Sources */,
+				91670D982AF85A0800FFC655 /* ViewState.swift in Sources */,
+				91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */,
+				910553282AF5EA4C0083ADFF /* EmojiAdapter.swift in Sources */,
+				91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */,
 				910553172AF5C97C0083ADFF /* Localized.swift in Sources */,
 				9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */,
+				91670D882AF844B200FFC655 /* EmojiAdapterInterface.swift in Sources */,
+				9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */,
 				910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */,
+				91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */,
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */,
-				9105531D2AF5D2520083ADFF /* EndPoints.swift in Sources */,
+				91670D862AF83ECD00FFC655 /* Service.swift in Sources */,
+				91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */,
+				9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */,
+				9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */,
+				910553252AF5E6670083ADFF /* EmojiModel.swift in Sources */,
 				9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,7 +487,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E46DE42AF5B93C00A835E4 /* BlissMojiTests.swift in Sources */,
+				91E46DE42AF5B93C00A835E4 /* EmojiAdapterTests.swift in Sources */,
+				91670D9C2AF85E2200FFC655 /* EmojiViewModelTests.swift in Sources */,
+				91670D942AF852AF00FFC655 /* URLMocks.swift in Sources */,
+				91670D8E2AF84AD200FFC655 /* GithubServiceMock.swift in Sources */,
+				91670D962AF8560D00FFC655 /* MainViewModelTests.swift in Sources */,
+				91670D9A2AF85B0E00FFC655 /* EmojisListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

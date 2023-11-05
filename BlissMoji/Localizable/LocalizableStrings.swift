@@ -8,4 +8,7 @@ enum Localizable {
     @Localized static var networkError300GenericMessage = "networkError300GenericMessage"
     @Localized static var networkErrorUnknown = "networkErrorUnknown"
     @Localized static var networkErrorNoData = "networkErrorNoData"
+    
+    // MARK: - Buttons
+    @Localized static var emojisButton = "emojisButton"
 }
