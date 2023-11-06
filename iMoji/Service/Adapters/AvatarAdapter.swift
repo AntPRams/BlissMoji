@@ -14,6 +14,10 @@ final class AvatarAdapter: AvatarAdapterInterface {
     
     // MARK: - Public interface
     
+    func fetchUsersPreviouslySearched() async throws -> [AvatarModel] {
+        return []
+    }
+    
     func fetch(user name: String) async throws -> AvatarModel {
         guard let user = try await service.fetchData(from: .avatar(user: name)) as? AvatarNetworkModel else {
             // TODO: - Add a error to validade a requets with no results

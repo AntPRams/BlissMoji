@@ -1,0 +1,56 @@
+import Foundation
+
+protocol ImagesGridViewModelInterface: ObservableObject {
+    
+    var error: Error? { get set }
+    var avatarsAdapter: AvatarAdapter { get }
+    var emojisAdapter: EmojiAdapter { get }
+    var data: [AnyHashable] { get set }
+    var gridDataType: GridDataType { get set }
+    
+    func fetchData()
+}
+
+enum GridDataType {
+    case emojis, avatars
+}
+
+class ImagesGridViewModel: ImagesGridViewModelInterface {
+    
+    let emojisAdapter: EmojiAdapter
+    let avatarsAdapter: AvatarAdapter
+    var gridDataType: GridDataType
+    
+    @Published var error: Error?
+    @Published var data = [AnyHashable]()
+    
+    init(
+        emojisAdapter: EmojiAdapter = EmojiAdapter(),
+        avatarsAdapter: AvatarAdapter = AvatarAdapter(),
+        gridDataType: GridDataType
+    ) {
+        self.emojisAdapter = emojisAdapter
+        self.gridDataType = gridDataType
+        self.avatarsAdapter = avatarsAdapter
+    }
+    
+    func fetchData() {
+        Task {
+            do {
+                let data: [AnyHashable] = switch gridDataType {
+                case .emojis:
+                    try await emojisAdapter.fetchEmojisData()
+                case .avatars:
+                    try await avatarsAdapter.fetchUsersPreviouslySearched()
+                }
+                await MainActor.run {
+                    self.data = data
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = error
+                }
+            }
+        }
+    }
+}

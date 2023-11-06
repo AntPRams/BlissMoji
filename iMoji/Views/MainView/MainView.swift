@@ -9,7 +9,7 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
             VStack {
                 ImagePresenterView(viewModel: viewModel)
                 EmojisSectionView(viewModel: viewModel)
-                SearchFieldView(viewModel: viewModel)
+                AvatarsSectionView(viewModel: viewModel)
                 Spacer()
             }
             .padding(.horizontal, 16)

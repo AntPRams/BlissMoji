@@ -15,7 +15,7 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             .buttonStyle(.borderedProminent)
             .disabled(viewModel.state == .loading)
             NavigationLink(destination: {
-                ImagesGridView(viewModel: ImagesGridViewModel())
+                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emojis))
             }, label: {
                 Text(Localizable.emojisList)
                     .frame(maxWidth: .infinity)
