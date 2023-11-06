@@ -17,7 +17,7 @@ final class EmojiAdapter: EmojiAdapterInterface {
     // MARK: - Public interface
     
     func fetchEmojisData() async throws -> [EmojiModel] {
-        let data = await dataSource.getEmojisList()
+        let data = await dataSource.fetchEmojisListFromPersistence()
         
         guard data.isNotEmpty else {
             

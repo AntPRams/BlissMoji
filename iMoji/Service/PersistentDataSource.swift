@@ -18,7 +18,7 @@ final class PersistentDataSource {
         self.modelContext = ModelContext(modelContainer)
     }
     
-    func getEmojisList() -> [EmojiModel] {
+    func fetchEmojisListFromPersistence() -> [EmojiModel] {
         do {
             guard let emojis = try fetchEmojisDataFromContext() else { return [] }
             return emojis
@@ -27,7 +27,7 @@ final class PersistentDataSource {
         }
     }
     
-    func getAvatarsList() -> [AvatarModel] {
+    func fetchAvatarsListFromPresistence(with predicate: Predicate<AvatarModel>? = nil) -> [AvatarModel] {
         do {
             guard let emojis = try fetchAvatarsFromContext() else { return [] }
             return emojis
@@ -36,8 +36,15 @@ final class PersistentDataSource {
         }
     }
     
+    func fetchAvatarFromPersistence(with name: String) -> AvatarModel? {
+        let predicate = #Predicate<AvatarModel> {
+            $0.name == name
+        }
+        return fetchAvatarsListFromPresistence(with: predicate).first
+    }
+    
     func getRandomEmoji() -> EmojiModel? {
-        getEmojisList().randomElement()
+        fetchEmojisListFromPersistence().randomElement()
     }
     
     func insert(_ list: [EmojiModel]) {
@@ -67,8 +74,11 @@ final class PersistentDataSource {
 
 private extension PersistentDataSource {
     
-    func fetchAvatarsFromContext() throws -> [AvatarModel]? {
-        let descriptor = FetchDescriptor<AvatarModel>(predicate: nil, sortBy: [SortDescriptor(\.name)])
+    func fetchAvatarsFromContext(with predicate: Predicate<AvatarModel>? = nil) throws -> [AvatarModel]? {
+        let descriptor = FetchDescriptor<AvatarModel>(
+            predicate: predicate,
+            sortBy: [SortDescriptor(\.name)]
+        )
         let avatars = try modelContext.fetch(descriptor)
         
         return avatars
@@ -81,4 +91,3 @@ private extension PersistentDataSource {
         return emojis
     }
 }
-
