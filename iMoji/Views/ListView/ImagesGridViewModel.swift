@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EmojisListViewModelInterface: ObservableObject {
+protocol ImagesGridViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
     var adapter: EmojiAdapter { get }
@@ -9,7 +9,7 @@ protocol EmojisListViewModelInterface: ObservableObject {
     func fetchEmojis()
 }
 
-class EmojisListViewModel: EmojisListViewModelInterface {
+class ImagesGridViewModel: ImagesGridViewModelInterface {
     
     let adapter: EmojiAdapter
     

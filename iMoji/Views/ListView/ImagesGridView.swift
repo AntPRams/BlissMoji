@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 import Combine
 
-struct EmojisListView<ViewModel: EmojisListViewModelInterface>: View {
+struct ImagesGridView<ViewModel: ImagesGridViewModelInterface>: View {
     
     var data = [EmojiModel]()
     @StateObject var viewModel: ViewModel
@@ -36,5 +36,5 @@ struct EmojisListView<ViewModel: EmojisListViewModelInterface>: View {
 }
 
 #Preview {
-    EmojisListView(viewModel: EmojisListViewModel())
+    ImagesGridView(viewModel: ImagesGridViewModel())
 }

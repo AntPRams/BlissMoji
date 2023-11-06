@@ -6,13 +6,13 @@ import Combine
 final class EmojisListViewModelTests: XCTestCase {
     
     var adapter: EmojiAdapter!
-    var sut: EmojisListViewModel!
+    var sut: ImagesGridViewModel!
     var disposableBag: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        sut = EmojisListViewModel(
+        sut = ImagesGridViewModel(
             adapter: adapter,
             shouldLoadEmojisOnInitialization: false
         )
@@ -45,7 +45,7 @@ final class EmojisListViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Should not fullfil expectation")
         expectation.isInverted = true
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .invalidEmojiList))
-        sut = EmojisListViewModel(
+        sut = ImagesGridViewModel(
             adapter: adapter,
             shouldLoadEmojisOnInitialization: false
         )
