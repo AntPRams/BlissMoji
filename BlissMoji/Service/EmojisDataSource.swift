@@ -40,6 +40,10 @@ final class EmojisDataSource {
         model.setImageData(imageData)
         try? modelContext.save()
     }
+    
+    func deleteAllData() {
+        try? modelContext.delete(model: EmojiModel.self)
+    }
 }
 
 private extension EmojisDataSource {

@@ -19,6 +19,8 @@ final class BlissMojiTests: XCTestCase {
     }
     
     func test_fetchEmojisDataRemovingModelsWithoutAProperURL() async {
+        await self.sut.deleteAllDataFromPersistence()
+        
         do {
             let data = try await sut.fetchEmojisData()
             _ = data.contains { model in

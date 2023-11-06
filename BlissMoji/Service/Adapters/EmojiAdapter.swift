@@ -45,4 +45,8 @@ final class EmojiAdapter: EmojiAdapterInterface {
     func fetchImage(for emoji: EmojiModel) async throws -> Data {
         try await service.fetchImage(from: emoji.imageUrl)
     }
+    
+    func deleteAllDataFromPersistence() async {
+        await dataSource.deleteAllData()
+    }
 }
