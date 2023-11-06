@@ -20,6 +20,9 @@
 		9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553292AF5F2E00083ADFF /* EmojiView.swift */; };
 		9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105532B2AF60E020083ADFF /* EmojisListView.swift */; };
 		9139839A2AF8BC7900BC996E /* AvatarNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */; };
+		9139839C2AF8BD8F00BC996E /* AvatarAdapterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */; };
+		9139839E2AF8BDE200BC996E /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839D2AF8BDE200BC996E /* AvatarModel.swift */; };
+		913983A02AF8BE2B00BC996E /* PersistentModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */; };
 		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
 		91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */; };
 		91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */; };
@@ -78,6 +81,9 @@
 		910553292AF5F2E00083ADFF /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		9105532B2AF60E020083ADFF /* EmojisListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListView.swift; sourceTree = "<group>"; };
 		913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNetworkModel.swift; sourceTree = "<group>"; };
+		9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarAdapterInterface.swift; sourceTree = "<group>"; };
+		9139839D2AF8BDE200BC996E /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
+		9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentModelInterface.swift; sourceTree = "<group>"; };
 		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 			children = (
 				910553242AF5E6670083ADFF /* EmojiModel.swift */,
 				913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */,
+				9139839D2AF8BDE200BC996E /* AvatarModel.swift */,
+				9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 			children = (
 				910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */,
 				91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */,
+				9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -495,10 +504,13 @@
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* iMoji.swift in Sources */,
 				91670D862AF83ECD00FFC655 /* Service.swift in Sources */,
+				913983A02AF8BE2B00BC996E /* PersistentModelInterface.swift in Sources */,
+				9139839E2AF8BDE200BC996E /* AvatarModel.swift in Sources */,
 				91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */,
 				9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */,
 				9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */,
 				910553252AF5E6670083ADFF /* EmojiModel.swift in Sources */,
+				9139839C2AF8BD8F00BC996E /* AvatarAdapterInterface.swift in Sources */,
 				9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

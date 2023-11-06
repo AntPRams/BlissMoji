@@ -2,14 +2,10 @@ import Foundation
 import SwiftData
 
 @Model
-class EmojiModel: PersistentModelInterface {
+class AvatarModel: PersistentModelInterface {
     @Attribute(.unique) var name: String
     var imageUrl: URL
     @Attribute(.externalStorage) var imageData: Data?
-    
-    var hasCachedImage: Bool {
-        imageData != nil
-    }
     
     init(name: String, imageUrl: URL) {
         self.name = name
