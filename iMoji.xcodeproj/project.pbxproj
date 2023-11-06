@@ -19,6 +19,7 @@
 		910553282AF5EA4C0083ADFF /* EmojiAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */; };
 		9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910553292AF5F2E00083ADFF /* EmojiView.swift */; };
 		9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9105532B2AF60E020083ADFF /* EmojisListView.swift */; };
+		9139839A2AF8BC7900BC996E /* AvatarNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */; };
 		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
 		91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */; };
 		91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */; };
@@ -42,8 +43,8 @@
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
 		91E46DDA2AF5B93C00A835E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD92AF5B93C00A835E4 /* Preview Assets.xcassets */; };
 		91E46DE42AF5B93C00A835E4 /* EmojiAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */; };
-		91E46DEE2AF5B93C00A835E4 /* BlissMojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */; };
-		91E46DF02AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */; };
+		91E46DEE2AF5B93C00A835E4 /* iMojiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DED2AF5B93C00A835E4 /* iMojiUITests.swift */; };
+		91E46DF02AF5B93C00A835E4 /* iMojiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DEF2AF5B93C00A835E4 /* iMojiUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapter.swift; sourceTree = "<group>"; };
 		910553292AF5F2E00083ADFF /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
 		9105532B2AF60E020083ADFF /* EmojisListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListView.swift; sourceTree = "<group>"; };
+		913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarNetworkModel.swift; sourceTree = "<group>"; };
 		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
@@ -103,8 +105,8 @@
 		91E46DDF2AF5B93C00A835E4 /* iMojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterTests.swift; sourceTree = "<group>"; };
 		91E46DE92AF5B93C00A835E4 /* iMojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITests.swift; sourceTree = "<group>"; };
-		91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		91E46DED2AF5B93C00A835E4 /* iMojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMojiUITests.swift; sourceTree = "<group>"; };
+		91E46DEF2AF5B93C00A835E4 /* iMojiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMojiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				910553242AF5E6670083ADFF /* EmojiModel.swift */,
+				913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -333,8 +336,8 @@
 		91E46DEC2AF5B93C00A835E4 /* iMojiUITests */ = {
 			isa = PBXGroup;
 			children = (
-				91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */,
-				91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */,
+				91E46DED2AF5B93C00A835E4 /* iMojiUITests.swift */,
+				91E46DEF2AF5B93C00A835E4 /* iMojiUITestsLaunchTests.swift */,
 			);
 			path = iMojiUITests;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */,
+				9139839A2AF8BC7900BC996E /* AvatarNetworkModel.swift in Sources */,
 				910553222AF5DCA20083ADFF /* Array.swift in Sources */,
 				91670D982AF85A0800FFC655 /* ViewState.swift in Sources */,
 				91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */,
@@ -516,8 +520,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E46DEE2AF5B93C00A835E4 /* BlissMojiUITests.swift in Sources */,
-				91E46DF02AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift in Sources */,
+				91E46DEE2AF5B93C00A835E4 /* iMojiUITests.swift in Sources */,
+				91E46DF02AF5B93C00A835E4 /* iMojiUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
