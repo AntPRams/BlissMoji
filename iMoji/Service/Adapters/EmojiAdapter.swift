@@ -5,11 +5,11 @@ final class EmojiAdapter: EmojiAdapterInterface {
     // MARK: - Properties
     
     private let service: any Service
-    private let dataSource: EmojisDataSource
+    private let dataSource: PersistentDataSource
     
     // MARK: - Init
     
-    init(service: any Service = GithubService<[String: String]>(), dataSource: EmojisDataSource = EmojisDataSource.shared) {
+    init(service: any Service = GithubService<[String: String]>(), dataSource: PersistentDataSource = PersistentDataSource.shared) {
         self.service = service
         self.dataSource = dataSource
     }

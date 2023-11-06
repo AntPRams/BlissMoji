@@ -39,7 +39,7 @@
 		91670D982AF85A0800FFC655 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D972AF85A0800FFC655 /* ViewState.swift */; };
 		91670D9A2AF85B0E00FFC655 /* EmojisListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */; };
 		91670D9C2AF85E2200FFC655 /* EmojiViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */; };
-		91670DA32AF8915400FFC655 /* EmojisDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA22AF8915400FFC655 /* EmojisDataSource.swift */; };
+		91670DA32AF8915400FFC655 /* PersistentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA22AF8915400FFC655 /* PersistentDataSource.swift */; };
 		91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */; };
 		91670DA92AF8A52700FFC655 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */; };
 		91670DAB2AF8A57A00FFC655 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DAA2AF8A57A00FFC655 /* View.swift */; };
@@ -103,7 +103,7 @@
 		91670D972AF85A0800FFC655 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModelTests.swift; sourceTree = "<group>"; };
 		91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModelTests.swift; sourceTree = "<group>"; };
-		91670DA22AF8915400FFC655 /* EmojisDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisDataSource.swift; sourceTree = "<group>"; };
+		91670DA22AF8915400FFC655 /* PersistentDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataSource.swift; sourceTree = "<group>"; };
 		91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionView.swift; sourceTree = "<group>"; };
 		91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
 		91670DAA2AF8A57A00FFC655 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				91670D892AF845D200FFC655 /* APIClient */,
 				91670D8C2AF8497A00FFC655 /* Services */,
 				9105531C2AF5D2520083ADFF /* EndPoint.swift */,
-				91670DA22AF8915400FFC655 /* EmojisDataSource.swift */,
+				91670DA22AF8915400FFC655 /* PersistentDataSource.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -160,10 +160,10 @@
 		910553072AF5BB280083ADFF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				910553242AF5E6670083ADFF /* EmojiModel.swift */,
-				913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */,
-				9139839D2AF8BDE200BC996E /* AvatarModel.swift */,
 				9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */,
+				910553242AF5E6670083ADFF /* EmojiModel.swift */,
+				9139839D2AF8BDE200BC996E /* AvatarModel.swift */,
+				913983992AF8BC7900BC996E /* AvatarNetworkModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -506,7 +506,7 @@
 				9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */,
 				910553192AF5CF0C0083ADFF /* LocalizableStrings.swift in Sources */,
 				91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */,
-				91670DA32AF8915400FFC655 /* EmojisDataSource.swift in Sources */,
+				91670DA32AF8915400FFC655 /* PersistentDataSource.swift in Sources */,
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
 				91E46DD32AF5B93800A835E4 /* iMoji.swift in Sources */,
 				91670D862AF83ECD00FFC655 /* Service.swift in Sources */,
