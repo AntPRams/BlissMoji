@@ -1,10 +1,3 @@
-//
-//  EmojisSectionView.swift
-//  BlissMoji
-//
-//  Created by António Ramos on 06/11/2023.
-//
-
 import SwiftUI
 
 struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
@@ -43,6 +36,9 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             })
             .buttonStyle(.borderedProminent)
             Divider()
+        }
+        .onAppear {
+            viewModel.fetchEmojis()
         }
     }
 }

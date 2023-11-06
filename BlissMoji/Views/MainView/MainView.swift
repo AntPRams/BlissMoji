@@ -13,6 +13,7 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
             .navigationTitle(Localizable.navTitle)
             Spacer()
         }
+        .errorAlert(error: $viewModel.error)
     }
 }
 

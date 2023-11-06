@@ -2,6 +2,7 @@ import UIKit
 
 protocol EmojiViewModelInterface: ObservableObject {
     
+    var error: Error? { get set }
     var emojiModel: EmojiModel { get set }
     var adapter: EmojiAdapter { get }
     var state: ViewState { get set }
@@ -12,8 +13,9 @@ protocol EmojiViewModelInterface: ObservableObject {
 
 class EmojiViewModel: EmojiViewModelInterface {
     
-    var emojiModel: EmojiModel
     let adapter: EmojiAdapter
+    @Published var emojiModel: EmojiModel
+    @Published var error: Error?
     @Published var state: ViewState = .initial
     @Published var image: UIImage?
     
@@ -37,12 +39,13 @@ class EmojiViewModel: EmojiViewModelInterface {
                     await MainActor.run {
                         self.state = .idle
                         self.image = image
-                        Task {
-                            emojiModel.imageData = imageData
-                        }
+                        emojiModel.imageData = imageData
+                        self.error = NetworkError.badRequest
                     }
                 } catch {
-                    // TODO: - deal with error
+                    await MainActor.run {
+                        self.state = .idle
+                    }
                 }
             }
             return
