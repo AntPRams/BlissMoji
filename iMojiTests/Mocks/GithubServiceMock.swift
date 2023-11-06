@@ -1,4 +1,4 @@
-@testable import BlissMoji
+@testable import iMoji
 import XCTest
 import Foundation
 
@@ -15,7 +15,7 @@ final class GithubServiceMock<Model: Decodable>: Service {
         self.mockUrl = mockUrl
     }
     
-    func fetchData(from endPoint: BlissMoji.EndPoint) async throws -> Model {
+    func fetchData(from endPoint: iMoji.EndPoint) async throws -> Model {
         guard let url = URLMocks.getMockDataUrl(for: mockUrl) else {
             throw NetworkError.unknown
         }

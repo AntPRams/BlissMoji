@@ -1,4 +1,4 @@
-@testable import BlissMoji
+@testable import iMoji
 import XCTest
 import Foundation
 import Combine

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "91E46DCE2AF5B93800A835E4"
-               BuildableName = "BlissMoji.app"
-               BlueprintName = "BlissMoji"
-               ReferencedContainer = "container:BlissMoji.xcodeproj">
+               BuildableName = "iMoji.app"
+               BlueprintName = "iMoji"
+               ReferencedContainer = "container:iMoji.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91E46DCE2AF5B93800A835E4"
-            BuildableName = "BlissMoji.app"
-            BlueprintName = "BlissMoji"
-            ReferencedContainer = "container:BlissMoji.xcodeproj">
+            BuildableName = "iMoji.app"
+            BlueprintName = "iMoji"
+            ReferencedContainer = "container:iMoji.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "91E46DCE2AF5B93800A835E4"
-            BuildableName = "BlissMoji.app"
-            BlueprintName = "BlissMoji"
-            ReferencedContainer = "container:BlissMoji.xcodeproj">
+            BuildableName = "iMoji.app"
+            BlueprintName = "iMoji"
+            ReferencedContainer = "container:iMoji.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

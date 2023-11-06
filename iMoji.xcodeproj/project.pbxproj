@@ -37,7 +37,7 @@
 		91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */; };
 		91670DA92AF8A52700FFC655 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */; };
 		91670DAB2AF8A57A00FFC655 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DAA2AF8A57A00FFC655 /* View.swift */; };
-		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
+		91E46DD32AF5B93800A835E4 /* iMoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* iMoji.swift */; };
 		91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* MainView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
 		91E46DDA2AF5B93C00A835E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD92AF5B93C00A835E4 /* Preview Assets.xcassets */; };
@@ -80,7 +80,7 @@
 		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
 		91670D812AF8357D00FFC655 /* emojiList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emojiList.json; sourceTree = "<group>"; };
-		91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = BlissMojiTests.xctestplan; sourceTree = "<group>"; };
+		91670D832AF8366F00FFC655 /* iMojiTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = iMojiTests.xctestplan; sourceTree = "<group>"; };
 		91670D852AF83ECD00FFC655 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterInterface.swift; sourceTree = "<group>"; };
 		91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientInterface.swift; sourceTree = "<group>"; };
@@ -95,14 +95,14 @@
 		91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionView.swift; sourceTree = "<group>"; };
 		91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
 		91670DAA2AF8A57A00FFC655 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
+		91E46DCF2AF5B93800A835E4 /* iMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E46DD22AF5B93800A835E4 /* iMoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMoji.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		91E46DD62AF5B93C00A835E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E46DD92AF5B93C00A835E4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		91E46DDF2AF5B93C00A835E4 /* BlissMojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissMojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E46DDF2AF5B93C00A835E4 /* iMojiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMojiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DE32AF5B93C00A835E4 /* EmojiAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterTests.swift; sourceTree = "<group>"; };
-		91E46DE92AF5B93C00A835E4 /* BlissMojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlissMojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		91E46DE92AF5B93C00A835E4 /* iMojiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMojiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITests.swift; sourceTree = "<group>"; };
 		91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,9 +278,9 @@
 		91E46DC62AF5B93800A835E4 = {
 			isa = PBXGroup;
 			children = (
-				91E46DD12AF5B93800A835E4 /* BlissMoji */,
-				91E46DE22AF5B93C00A835E4 /* BlissMojiTests */,
-				91E46DEC2AF5B93C00A835E4 /* BlissMojiUITests */,
+				91E46DD12AF5B93800A835E4 /* iMoji */,
+				91E46DE22AF5B93C00A835E4 /* iMojiTests */,
+				91E46DEC2AF5B93C00A835E4 /* iMojiUITests */,
 				91E46DD02AF5B93800A835E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -288,17 +288,17 @@
 		91E46DD02AF5B93800A835E4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				91E46DCF2AF5B93800A835E4 /* BlissMoji.app */,
-				91E46DDF2AF5B93C00A835E4 /* BlissMojiTests.xctest */,
-				91E46DE92AF5B93C00A835E4 /* BlissMojiUITests.xctest */,
+				91E46DCF2AF5B93800A835E4 /* iMoji.app */,
+				91E46DDF2AF5B93C00A835E4 /* iMojiTests.xctest */,
+				91E46DE92AF5B93C00A835E4 /* iMojiUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		91E46DD12AF5B93800A835E4 /* BlissMoji */ = {
+		91E46DD12AF5B93800A835E4 /* iMoji */ = {
 			isa = PBXGroup;
 			children = (
-				91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */,
+				91E46DD22AF5B93800A835E4 /* iMoji.swift */,
 				9105530A2AF5BC7E0083ADFF /* Common */,
 				910553062AF5BAF90083ADFF /* Service */,
 				910553232AF5DD970083ADFF /* Views */,
@@ -306,7 +306,7 @@
 				91E46DD82AF5B93C00A835E4 /* Preview Content */,
 				910553152AF5C9220083ADFF /* Localizable */,
 			);
-			path = BlissMoji;
+			path = iMoji;
 			sourceTree = "<group>";
 		};
 		91E46DD82AF5B93C00A835E4 /* Preview Content */ = {
@@ -317,7 +317,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		91E46DE22AF5B93C00A835E4 /* BlissMojiTests */ = {
+		91E46DE22AF5B93C00A835E4 /* iMojiTests */ = {
 			isa = PBXGroup;
 			children = (
 				91670D842AF8367B00FFC655 /* Mocks */,
@@ -325,26 +325,26 @@
 				91670D952AF8560D00FFC655 /* MainViewModelTests.swift */,
 				91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */,
 				91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */,
-				91670D832AF8366F00FFC655 /* BlissMojiTests.xctestplan */,
+				91670D832AF8366F00FFC655 /* iMojiTests.xctestplan */,
 			);
-			path = BlissMojiTests;
+			path = iMojiTests;
 			sourceTree = "<group>";
 		};
-		91E46DEC2AF5B93C00A835E4 /* BlissMojiUITests */ = {
+		91E46DEC2AF5B93C00A835E4 /* iMojiUITests */ = {
 			isa = PBXGroup;
 			children = (
 				91E46DED2AF5B93C00A835E4 /* BlissMojiUITests.swift */,
 				91E46DEF2AF5B93C00A835E4 /* BlissMojiUITestsLaunchTests.swift */,
 			);
-			path = BlissMojiUITests;
+			path = iMojiUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		91E46DCE2AF5B93800A835E4 /* BlissMoji */ = {
+		91E46DCE2AF5B93800A835E4 /* iMoji */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E46DF32AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMoji" */;
+			buildConfigurationList = 91E46DF32AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMoji" */;
 			buildPhases = (
 				91E46DCB2AF5B93800A835E4 /* Sources */,
 				91E46DCC2AF5B93800A835E4 /* Frameworks */,
@@ -354,14 +354,14 @@
 			);
 			dependencies = (
 			);
-			name = BlissMoji;
+			name = iMoji;
 			productName = BlissMoji;
-			productReference = 91E46DCF2AF5B93800A835E4 /* BlissMoji.app */;
+			productReference = 91E46DCF2AF5B93800A835E4 /* iMoji.app */;
 			productType = "com.apple.product-type.application";
 		};
-		91E46DDE2AF5B93C00A835E4 /* BlissMojiTests */ = {
+		91E46DDE2AF5B93C00A835E4 /* iMojiTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E46DF62AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMojiTests" */;
+			buildConfigurationList = 91E46DF62AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMojiTests" */;
 			buildPhases = (
 				91E46DDB2AF5B93C00A835E4 /* Sources */,
 				91E46DDC2AF5B93C00A835E4 /* Frameworks */,
@@ -372,14 +372,14 @@
 			dependencies = (
 				91E46DE12AF5B93C00A835E4 /* PBXTargetDependency */,
 			);
-			name = BlissMojiTests;
+			name = iMojiTests;
 			productName = BlissMojiTests;
-			productReference = 91E46DDF2AF5B93C00A835E4 /* BlissMojiTests.xctest */;
+			productReference = 91E46DDF2AF5B93C00A835E4 /* iMojiTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		91E46DE82AF5B93C00A835E4 /* BlissMojiUITests */ = {
+		91E46DE82AF5B93C00A835E4 /* iMojiUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 91E46DF92AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMojiUITests" */;
+			buildConfigurationList = 91E46DF92AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMojiUITests" */;
 			buildPhases = (
 				91E46DE52AF5B93C00A835E4 /* Sources */,
 				91E46DE62AF5B93C00A835E4 /* Frameworks */,
@@ -390,9 +390,9 @@
 			dependencies = (
 				91E46DEB2AF5B93C00A835E4 /* PBXTargetDependency */,
 			);
-			name = BlissMojiUITests;
+			name = iMojiUITests;
 			productName = BlissMojiUITests;
-			productReference = 91E46DE92AF5B93C00A835E4 /* BlissMojiUITests.xctest */;
+			productReference = 91E46DE92AF5B93C00A835E4 /* iMojiUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -418,7 +418,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 91E46DCA2AF5B93800A835E4 /* Build configuration list for PBXProject "BlissMoji" */;
+			buildConfigurationList = 91E46DCA2AF5B93800A835E4 /* Build configuration list for PBXProject "iMoji" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -431,9 +431,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				91E46DCE2AF5B93800A835E4 /* BlissMoji */,
-				91E46DDE2AF5B93C00A835E4 /* BlissMojiTests */,
-				91E46DE82AF5B93C00A835E4 /* BlissMojiUITests */,
+				91E46DCE2AF5B93800A835E4 /* iMoji */,
+				91E46DDE2AF5B93C00A835E4 /* iMojiTests */,
+				91E46DE82AF5B93C00A835E4 /* iMojiUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -489,7 +489,7 @@
 				91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */,
 				91670DA32AF8915400FFC655 /* EmojisDataSource.swift in Sources */,
 				9105530D2AF5BC960083ADFF /* NetworkError.swift in Sources */,
-				91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */,
+				91E46DD32AF5B93800A835E4 /* iMoji.swift in Sources */,
 				91670D862AF83ECD00FFC655 /* Service.swift in Sources */,
 				91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */,
 				9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */,
@@ -526,12 +526,12 @@
 /* Begin PBXTargetDependency section */
 		91E46DE12AF5B93C00A835E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 91E46DCE2AF5B93800A835E4 /* BlissMoji */;
+			target = 91E46DCE2AF5B93800A835E4 /* iMoji */;
 			targetProxy = 91E46DE02AF5B93C00A835E4 /* PBXContainerItemProxy */;
 		};
 		91E46DEB2AF5B93C00A835E4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 91E46DCE2AF5B93800A835E4 /* BlissMoji */;
+			target = 91E46DCE2AF5B93800A835E4 /* iMoji */;
 			targetProxy = 91E46DEA2AF5B93C00A835E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -663,7 +663,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BlissMoji/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iMoji/Preview Content\"";
 				DEVELOPMENT_TEAM = DF7FAJJH84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -677,7 +677,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMoji;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -692,7 +692,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BlissMoji/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"iMoji/Preview Content\"";
 				DEVELOPMENT_TEAM = DF7FAJJH84;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -706,7 +706,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMoji;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -725,12 +725,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMojiTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMojiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlissMoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlissMoji";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iMoji";
 			};
 			name = Debug;
 		};
@@ -745,12 +745,12 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMojiTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMojiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlissMoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/BlissMoji";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMoji.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iMoji";
 			};
 			name = Release;
 		};
@@ -763,12 +763,12 @@
 				DEVELOPMENT_TEAM = DF7FAJJH84;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMojiUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMojiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlissMoji;
+				TEST_TARGET_NAME = iMoji;
 			};
 			name = Debug;
 		};
@@ -781,19 +781,19 @@
 				DEVELOPMENT_TEAM = DF7FAJJH84;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ar.BlissMojiUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ar.iMojiUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BlissMoji;
+				TEST_TARGET_NAME = iMoji;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		91E46DCA2AF5B93800A835E4 /* Build configuration list for PBXProject "BlissMoji" */ = {
+		91E46DCA2AF5B93800A835E4 /* Build configuration list for PBXProject "iMoji" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E46DF12AF5B93C00A835E4 /* Debug */,
@@ -802,7 +802,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91E46DF32AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMoji" */ = {
+		91E46DF32AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMoji" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E46DF42AF5B93C00A835E4 /* Debug */,
@@ -811,7 +811,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91E46DF62AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMojiTests" */ = {
+		91E46DF62AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMojiTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E46DF72AF5B93C00A835E4 /* Debug */,
@@ -820,7 +820,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		91E46DF92AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "BlissMojiUITests" */ = {
+		91E46DF92AF5B93C00A835E4 /* Build configuration list for PBXNativeTarget "iMojiUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				91E46DFA2AF5B93C00A835E4 /* Debug */,
