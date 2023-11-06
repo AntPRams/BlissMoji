@@ -25,21 +25,28 @@ class EmojiViewModel: EmojiViewModelInterface {
     }
     
     func fetchEmojiImage() {
-        state = .loading
-        Task {
-            do {
-                let imageData = try await self.adapter.fetchImage(for: emojiModel)
-                guard let image = UIImage(data: imageData) else { return }
-                await MainActor.run {
-                    self.state = .idle
-                    self.image = image
-                    Task {
-                        emojiModel.imageData = imageData
+        guard 
+            let imageData = emojiModel.imageData,
+            let image = UIImage(data: imageData)
+        else {
+            state = .loading
+            Task {
+                do {
+                    let imageData = try await self.adapter.fetchImage(for: emojiModel)
+                    guard let image = UIImage(data: imageData) else { return }
+                    await MainActor.run {
+                        self.state = .idle
+                        self.image = image
+                        Task {
+                            emojiModel.imageData = imageData
+                        }
                     }
+                } catch {
+                    // TODO: - deal with error
                 }
-            } catch {
-                // TODO: - deal with error
             }
+            return
         }
+        self.image = image
     }
 }
