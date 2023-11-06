@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import SwiftData
 
 /// A protocol for defining a common interface for persistent models.
@@ -8,15 +8,18 @@ import SwiftData
 /// To conform to this protocol, a class must implement the properties and methods defined here.
 ///
 /// - SeeAlso: `AvatarModel` and  `EmojiModel` for a sample implementation of this protocol.
-protocol PersistentModelInterface: AnyObject {
+protocol PersistentModelRepresentable: AnyObject {
     /// The name of the persistent model.
     var name: String { get set }
     
-    /// The URL associated with the persistent model.
+    /// The `URL` associated with the persistent model.
     var imageUrl: URL { get set }
     
     /// Optional image data for the persistent model.
     var imageData: Data? { get set }
+    
+    /// Optional `UIImage` computed from `imageData`
+    var image: UIImage? { get }
     
     /// Set the image data for the persistent model.
     ///

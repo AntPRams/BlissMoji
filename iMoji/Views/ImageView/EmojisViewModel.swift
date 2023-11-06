@@ -3,7 +3,7 @@ import UIKit
 protocol ImageViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
-    var model: PersistentModelInterface { get set }
+    var model: PersistentModelRepresentable { get set }
     var avatarAdapter: AvatarAdapter { get }
     var state: ViewState { get set }
     var image: UIImage? { get set }
@@ -15,13 +15,13 @@ class ImageViewModel: ImageViewModelInterface {
     
     let emojiAdapter: EmojiAdapter
     let avatarAdapter: AvatarAdapter
-    @Published var model: PersistentModelInterface
+    @Published var model: PersistentModelRepresentable
     @Published var error: Error?
     @Published var state: ViewState = .initial
     @Published var image: UIImage?
     
     init(
-        model: PersistentModelInterface,
+        model: PersistentModelRepresentable,
         emojiAdapter: EmojiAdapter = EmojiAdapter(),
         avatarAdapter: AvatarAdapter = AvatarAdapter(),
         shouldFetchImageOnInitialization: Bool = true
@@ -34,23 +34,18 @@ class ImageViewModel: ImageViewModelInterface {
     }
     
     func fetchImage() {
-        guard 
-            let imageData = model.imageData,
-            let image = UIImage(data: imageData)
-        else {
+        guard let image = model.image else {
             state = .loading
             Task {
                 do {
                     let imageData = try await self.fetchImage(for: model)
-                    guard
-                        let data = imageData,
-                        let image = UIImage(data: data)
-                    else { return }
+                    guard let data = imageData else { return }
+
+                    model.imageData = imageData
                     
                     await MainActor.run {
                         self.state = .idle
-                        self.image = image
-                        model.imageData = imageData
+                        self.image = model.image
                         self.error = NetworkError.badRequest
                     }
                 } catch {
@@ -64,7 +59,7 @@ class ImageViewModel: ImageViewModelInterface {
         self.image = image
     }
     
-    func fetchImage(for persistentModel: PersistentModelInterface) async throws -> Data? {
+    func fetchImage(for persistentModel: PersistentModelRepresentable) async throws -> Data? {
         if let emojiModel = persistentModel as? EmojiModel {
             return try await self.emojiAdapter.fetchImage(for: emojiModel)
         } else if let avatarModel = persistentModel as? AvatarModel {

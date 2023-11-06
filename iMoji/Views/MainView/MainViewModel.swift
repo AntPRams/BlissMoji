@@ -8,7 +8,7 @@ protocol MainViewModelInterface: ObservableObject {
     var avatarAdapter: AvatarAdapter { get }
     var nameQuery: String { get set }
     var state: ViewState { get set }
-    var modelToPresent: PersistentModelInterface? { get set }
+    var modelToPresent: PersistentModelRepresentable? { get set }
     
     func fetchEmojis()
     func fetchRandomEmoji()
@@ -20,7 +20,7 @@ class MainViewModel: MainViewModelInterface {
     let emojiAdapter: EmojiAdapter
     let avatarAdapter: AvatarAdapter
     @Published var error: Error?
-    @Published var modelToPresent: PersistentModelInterface?
+    @Published var modelToPresent: PersistentModelRepresentable?
     @Published var nameQuery: String = String()
     @Published var state: ViewState = .initial
     
