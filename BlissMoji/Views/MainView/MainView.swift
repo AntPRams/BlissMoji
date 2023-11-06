@@ -10,7 +10,7 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
                 EmojisSectionView(viewModel: viewModel)
             }
             .padding(.horizontal, 16)
-            .navigationTitle("BlissMoji")
+            .navigationTitle(Localizable.navTitle)
             Spacer()
         }
     }

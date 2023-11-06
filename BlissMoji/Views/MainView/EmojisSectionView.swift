@@ -38,7 +38,7 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             NavigationLink(destination: {
                 EmojisListView(viewModel: EmojisListViewModel())
             }, label: {
-                Text("Emojis list")
+                Text(Localizable.emojisList)
                     .frame(maxWidth: .infinity)
             })
             .buttonStyle(.borderedProminent)
