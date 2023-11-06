@@ -1,45 +1,56 @@
 import UIKit
 
-protocol EmojiViewModelInterface: ObservableObject {
+protocol ImageViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
-    var emojiModel: EmojiModel { get set }
-    var adapter: EmojiAdapter { get }
+    var model: PersistentModelInterface { get set }
+    var avatarAdapter: AvatarAdapter { get }
     var state: ViewState { get set }
     var image: UIImage? { get set }
     
-    func fetchEmojiImage()
+    func fetchImage()
 }
 
-class EmojiViewModel: EmojiViewModelInterface {
+class ImageViewModel: ImageViewModelInterface {
     
-    let adapter: EmojiAdapter
-    @Published var emojiModel: EmojiModel
+    let emojiAdapter: EmojiAdapter
+    let avatarAdapter: AvatarAdapter
+    @Published var model: PersistentModelInterface
     @Published var error: Error?
     @Published var state: ViewState = .initial
     @Published var image: UIImage?
     
-    init(emojiModel: EmojiModel, adapter: EmojiAdapter = EmojiAdapter(), shouldFetchImageOnInitialization: Bool = true) {
-        self.emojiModel = emojiModel
-        self.adapter = adapter
+    init(
+        model: PersistentModelInterface,
+        emojiAdapter: EmojiAdapter = EmojiAdapter(),
+        avatarAdapter: AvatarAdapter = AvatarAdapter(),
+        shouldFetchImageOnInitialization: Bool = true
+    ) {
+        self.model = model
+        self.emojiAdapter = emojiAdapter
+        self.avatarAdapter = avatarAdapter
         guard shouldFetchImageOnInitialization else { return }
-        fetchEmojiImage()
+        fetchImage()
     }
     
-    func fetchEmojiImage() {
+    func fetchImage() {
         guard 
-            let imageData = emojiModel.imageData,
+            let imageData = model.imageData,
             let image = UIImage(data: imageData)
         else {
             state = .loading
             Task {
                 do {
-                    let imageData = try await self.adapter.fetchImage(for: emojiModel)
-                    guard let image = UIImage(data: imageData) else { return }
+                    let imageData = try await self.fetchImage(for: model)
+                    guard
+                        let data = imageData,
+                        let image = UIImage(data: data)
+                    else { return }
+                    
                     await MainActor.run {
                         self.state = .idle
                         self.image = image
-                        emojiModel.imageData = imageData
+                        model.imageData = imageData
                         self.error = NetworkError.badRequest
                     }
                 } catch {
@@ -51,5 +62,14 @@ class EmojiViewModel: EmojiViewModelInterface {
             return
         }
         self.image = image
+    }
+    
+    func fetchImage(for persistentModel: PersistentModelInterface) async throws -> Data? {
+        if let emojiModel = persistentModel as? EmojiModel {
+            return try await self.emojiAdapter.fetchImage(for: emojiModel)
+        } else if let avatarModel = persistentModel as? AvatarModel {
+            return try await self.avatarAdapter.fetchImage(for: avatarModel)
+        }
+        return nil
     }
 }

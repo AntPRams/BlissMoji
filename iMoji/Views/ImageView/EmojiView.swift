@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EmojiView<ViewModel: EmojiViewModelInterface>: View {
+struct ImageView<ViewModel: ImageViewModel>: View {
     
     @StateObject var viewModel: ViewModel
     var deleteAction: () -> Void
@@ -21,7 +21,7 @@ struct EmojiView<ViewModel: EmojiViewModelInterface>: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 80, height: 80)
             }
-            Text(viewModel.emojiModel.name)
+            Text(viewModel.model.name)
         }
         .onTapGesture(perform: deleteAction)
     }

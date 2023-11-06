@@ -6,21 +6,7 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                ContainerRelativeShape()
-                    .inset(by: 4)
-                    .fill(.clear)
-                if viewModel.state == .loading {
-                    ProgressView()
-                } else if viewModel.state == .idle {
-                    if let randomEmoji = viewModel.randomEmoji {
-                        EmojiView(viewModel: EmojiViewModel(emojiModel: randomEmoji)) {}
-                    }
-                }
-            }
-            .clipShape(Capsule())
-            .frame(maxWidth: .infinity)
-            .frame(height: 120)
+            ImagePresenterView(viewModel: viewModel)
             Button {
                 viewModel.fetchRandomEmoji()
             } label: {

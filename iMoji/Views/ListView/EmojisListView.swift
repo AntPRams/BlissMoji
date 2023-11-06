@@ -17,7 +17,7 @@ struct EmojisListView<ViewModel: EmojisListViewModelInterface>: View {
             if viewModel.emojis.isNotEmpty {
                 LazyVGrid(columns: columns, content: {
                     ForEach(Array(viewModel.emojis.enumerated()), id: \.1) { (i, emoji) in
-                        EmojiView(viewModel: EmojiViewModel(emojiModel: emoji)) {
+                        ImageView(viewModel: ImageViewModel(model: emoji)) {
                             viewModel.emojis.remove(at: i)
                         }
                     }
