@@ -121,6 +121,17 @@
           }
         }
       }
+    },
+    "searchFieldViewPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by username"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

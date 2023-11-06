@@ -6,12 +6,13 @@ protocol MainViewModelInterface: ObservableObject {
     var error: Error? { get set }
     var emojiAdapter: EmojiAdapter { get }
     var avatarAdapter: AvatarAdapter { get }
+    var nameQuery: String { get set }
     var state: ViewState { get set }
     var modelToPresent: PersistentModelInterface? { get set }
     
     func fetchEmojis()
     func fetchRandomEmoji()
-    func searchUser(with name: String)
+    func searchUser()
 }
 
 class MainViewModel: MainViewModelInterface {
@@ -20,6 +21,7 @@ class MainViewModel: MainViewModelInterface {
     let avatarAdapter: AvatarAdapter
     @Published var error: Error?
     @Published var modelToPresent: PersistentModelInterface?
+    @Published var nameQuery: String = String()
     @Published var state: ViewState = .initial
     
     init(
@@ -43,6 +45,7 @@ class MainViewModel: MainViewModelInterface {
             } catch {
                 await MainActor.run {
                     self.error = error
+                    self.state = .idle
                 }
             }
         }
@@ -61,13 +64,15 @@ class MainViewModel: MainViewModelInterface {
         }
     }
     
-    func searchUser(with name: String) {
+    func searchUser() {
+        // TODO: - ensure that the field has data
         state = .loading
         Task {
             do {
-                let user = try await avatarAdapter.fetch(user: name)
+                let user = try await avatarAdapter.fetch(user: nameQuery)
                 await MainActor.run {
                     withAnimation {
+                        self.nameQuery = String()
                         self.state = .idle
                         self.modelToPresent = user
                     }
@@ -75,6 +80,7 @@ class MainViewModel: MainViewModelInterface {
             } catch {
                 await MainActor.run {
                     self.error = error
+                    self.state = .idle
                 }
             }
         }

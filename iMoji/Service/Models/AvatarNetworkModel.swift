@@ -2,7 +2,7 @@ import Foundation
 
 struct AvatarNetworkModel: Decodable {
     
-    let id: String?
+    let id: Int?
     let name: String?
     let avatarUrl: String?
     

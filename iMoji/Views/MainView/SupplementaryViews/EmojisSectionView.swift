@@ -6,7 +6,6 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
     
     var body: some View {
         VStack {
-            ImagePresenterView(viewModel: viewModel)
             Button {
                 viewModel.fetchRandomEmoji()
             } label: {
@@ -14,6 +13,7 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
                     .frame(maxWidth: .infinity)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(viewModel.state == .loading)
             NavigationLink(destination: {
                 EmojisListView(viewModel: EmojisListViewModel())
             }, label: {
@@ -21,7 +21,9 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
                     .frame(maxWidth: .infinity)
             })
             .buttonStyle(.borderedProminent)
+            .disabled(viewModel.state == .loading)
             Divider()
+                .padding(.vertical, 16)
         }
         .onAppear {
             viewModel.fetchEmojis()

@@ -17,4 +17,7 @@ enum Localizable {
     // MARK: - Navigation
     @Localized static var navTitle = "navTitle"
     
+    // MARK: - Placeholders
+    @Localized static var searchFieldViewPlaceholder = "searchFieldViewPlaceholder"
+    
 }

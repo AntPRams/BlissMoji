@@ -7,13 +7,15 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
     var body: some View {
         NavigationStack {
             VStack {
+                ImagePresenterView(viewModel: viewModel)
                 EmojisSectionView(viewModel: viewModel)
+                SearchFieldView(viewModel: viewModel)
+                Spacer()
             }
             .padding(.horizontal, 16)
             .navigationTitle(Localizable.navTitle)
-            Spacer()
+            .errorAlert(error: $viewModel.error)
         }
-        .errorAlert(error: $viewModel.error)
     }
 }
 
