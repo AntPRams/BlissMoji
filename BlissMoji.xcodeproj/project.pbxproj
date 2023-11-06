@@ -34,6 +34,7 @@
 		91670D9A2AF85B0E00FFC655 /* EmojisListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */; };
 		91670D9C2AF85E2200FFC655 /* EmojiViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */; };
 		91670DA32AF8915400FFC655 /* EmojisDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA22AF8915400FFC655 /* EmojisDataSource.swift */; };
+		91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */; };
 		91E46DD32AF5B93800A835E4 /* BlissMojiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */; };
 		91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* MainView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
@@ -89,6 +90,7 @@
 		91670D992AF85B0E00FFC655 /* EmojisListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModelTests.swift; sourceTree = "<group>"; };
 		91670D9B2AF85E2200FFC655 /* EmojiViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiViewModelTests.swift; sourceTree = "<group>"; };
 		91670DA22AF8915400FFC655 /* EmojisDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisDataSource.swift; sourceTree = "<group>"; };
+		91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionView.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* BlissMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlissMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* BlissMojiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlissMojiApp.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				91E46DD42AF5B93800A835E4 /* MainView.swift */,
+				91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */,
 				91670D782AF7F78400FFC655 /* MainViewModel.swift */,
 			);
 			path = MainView;
@@ -470,6 +473,7 @@
 				910553282AF5EA4C0083ADFF /* EmojiAdapter.swift in Sources */,
 				91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */,
 				910553172AF5C97C0083ADFF /* Localized.swift in Sources */,
+				91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */,
 				9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */,
 				91670D882AF844B200FFC655 /* EmojiAdapterInterface.swift in Sources */,
 				9105532A2AF5F2E00083ADFF /* EmojiView.swift in Sources */,

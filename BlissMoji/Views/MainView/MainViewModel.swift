@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 protocol MainViewModelInterface: ObservableObject {
     
@@ -27,7 +28,9 @@ class MainViewModel: MainViewModelInterface {
             do {
                 _ = try await adapter.fetchEmojisData()
                 await MainActor.run {
-                    self.state = .idle
+                    withAnimation {
+                        self.state = .idle
+                    }
                 }
             } catch {
                 //TODO: - deal with this
@@ -39,14 +42,20 @@ class MainViewModel: MainViewModelInterface {
         state = .loading
         Task {
             do {
-                let randomEmoji = try await adapter.fetchRandomEmoji()
+                let randomEmoji = await adapter.fetchRandomEmoji()
                 await MainActor.run {
-                    self.state = .idle
-                    self.randomEmoji = randomEmoji
+                    withAnimation {
+                        self.state = .idle
+                        self.randomEmoji = randomEmoji
+                    }
                 }
-            } catch {
-                // TODO: - Deal with error
             }
+        }
+    }
+    
+    func setViewState(to state: ViewState) {
+        withAnimation {
+            self.state = state
         }
     }
 }

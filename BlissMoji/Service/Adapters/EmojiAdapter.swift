@@ -38,12 +38,8 @@ final class EmojiAdapter: EmojiAdapterInterface {
         return data
     }
     
-    func fetchRandomEmoji() async throws -> EmojiModel {
-        guard let emoji = try await fetchEmojisData().randomElement() else {
-            // TODO: Should return a proper error
-            throw NetworkError.badRequest
-        }
-        return emoji
+    func fetchRandomEmoji() async -> EmojiModel? {
+        await dataSource.getRandomEmoji()
     }
     
     func fetchImage(for emoji: EmojiModel) async throws -> Data {
