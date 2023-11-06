@@ -10,12 +10,9 @@ final class PersistentDataSource {
     static let shared = PersistentDataSource()
     
     private init() {
-        let emojiDataSourceConfig = ModelConfiguration(for: EmojiModel.self)
-        let avatarDataSourceConfig = ModelConfiguration(for: AvatarModel.self)
-        let container = try! ModelContainer(
-            for: EmojiModel.self, AvatarModel.self,
-            configurations: emojiDataSourceConfig, avatarDataSourceConfig
-        )
+        let schema = Schema([EmojiModel.self, AvatarModel.self])
+        let configuration = ModelConfiguration(isStoredInMemoryOnly: false)
+        let container = try! ModelContainer(for: schema, configurations: configuration)
         
         self.modelContainer = container
         self.modelContext = ModelContext(modelContainer)
