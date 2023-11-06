@@ -4,41 +4,49 @@ final class EmojiAdapter: EmojiAdapterInterface {
     
     // MARK: - Properties
     
-    /// The service used for fetching emoji data and images. Default is a `GithubService` with a `[String: String]` data type.
     private let service: any Service
+    private let dataSource: EmojisDataSource
     
     // MARK: - Init
     
-    init(service: any Service = GithubService<[String: String]>()) {
+    init(service: any Service = GithubService<[String: String]>(), dataSource: EmojisDataSource = EmojisDataSource.shared) {
         self.service = service
+        self.dataSource = dataSource
     }
     
     // MARK: - Public work
     
     func fetchEmojisData() async throws -> [EmojiModel] {
-        guard let data = try await service.fetchData(from: .emojis) as? [String: String] else {
-            return []
-        }
+        let data = await dataSource.getEmojisList()
         
-        let list = data.compactMap { (key: String, value: String) -> EmojiModel? in
-            guard let url = URL(string: value) else {
-                return nil
+        guard data.isNotEmpty else {
+            
+            guard let data = try await service.fetchData(from: .emojis) as? [String: String] else {
+                return []
             }
-            let model = EmojiModel(name: key, imageUrl: url)
-            return model
+            
+            let list = data.compactMap { (key: String, value: String) -> EmojiModel? in
+                guard let url = URL(string: value) else {
+                    return nil
+                }
+                let model = EmojiModel(name: key, imageUrl: url)
+                return model
+            }
+            await dataSource.insert(list)
+            return list
         }
-        return list
+        return data
     }
     
-    func fetchRandomEmoji() async throws -> EmojiModel {
-        guard let emoji = try await fetchEmojisData().randomElement() else {
-            // TODO: Should return a proper error
-            throw NetworkError.badRequest
-        }
-        return emoji
+    func fetchRandomEmoji() async -> EmojiModel? {
+        await dataSource.getRandomEmoji()
     }
     
     func fetchImage(for emoji: EmojiModel) async throws -> Data {
         try await service.fetchImage(from: emoji.imageUrl)
+    }
+    
+    func deleteAllDataFromPersistence() async {
+        await dataSource.deleteAllData()
     }
 }
