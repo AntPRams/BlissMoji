@@ -19,9 +19,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "91E46DDE2AF5B93C00A835E4"
-               BuildableName = "BlissMojiTests.xctest"
-               BlueprintName = "BlissMojiTests"
-               ReferencedContainer = "container:BlissMoji.xcodeproj">
+               BuildableName = "iMojiTests.xctest"
+               BlueprintName = "iMojiTests"
+               ReferencedContainer = "container:iMoji.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

@@ -1,7 +1,7 @@
 import XCTest
-@testable import BlissMoji
+@testable import iMoji
 
-final class BlissMojiTests: XCTestCase {
+final class EmojiAdapterTests: XCTestCase {
     
     var service: GithubServiceMock<[String: String]>!
     var sut: EmojiAdapter!
