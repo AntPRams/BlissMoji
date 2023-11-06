@@ -19,6 +19,8 @@ final class BlissMojiTests: XCTestCase {
     }
     
     func test_fetchEmojisDataRemovingModelsWithoutAProperURL() async {
+        await self.sut.deleteAllDataFromPersistence()
+        
         do {
             let data = try await sut.fetchEmojisData()
             _ = data.contains { model in
@@ -45,15 +47,11 @@ final class BlissMojiTests: XCTestCase {
     }
     
     func test_fetchRandomEmoji() async {
-        do {
-            let emoji = try await sut.fetchRandomEmoji()
-            
-            XCTAssertNotNil(emoji.name)
-            XCTAssertNotNil(emoji.imageUrl)
-            XCTAssertNil(emoji.imageData)
-        } catch {
-            XCTFail("Should not trigger error")
-        }
+        let emoji = await sut.fetchRandomEmoji()
+        
+        XCTAssertNotNil(emoji?.name)
+        XCTAssertNotNil(emoji?.imageUrl)
+        XCTAssertNil(emoji?.imageData)
     }
     
     func test_fetchImageSuccessExpectation() async {

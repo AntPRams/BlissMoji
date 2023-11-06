@@ -2,10 +2,37 @@
   "sourceLanguage" : "en",
   "strings" : {
     "BlissMoji" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlissMoji"
+          }
+        }
+      }
+    },
+    "buttonOk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ok"
+          }
+        }
+      }
     },
     "Emojis list" : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emojis list"
+          }
+        }
+      }
     },
     "emojisButton" : {
       "extractionState" : "manual",
@@ -13,7 +40,18 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Emojis"
+            "value" : "Random Emoji"
+          }
+        }
+      }
+    },
+    "navTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BlissMoji"
           }
         }
       }

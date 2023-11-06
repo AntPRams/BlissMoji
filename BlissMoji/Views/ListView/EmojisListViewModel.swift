@@ -2,6 +2,7 @@ import Foundation
 
 protocol EmojisListViewModelInterface: ObservableObject {
     
+    var error: Error? { get set }
     var adapter: EmojiAdapter { get }
     var emojis: [EmojiModel] { get set }
     
@@ -12,6 +13,7 @@ class EmojisListViewModel: EmojisListViewModelInterface {
     
     let adapter: EmojiAdapter
     
+    @Published var error: Error?
     @Published var emojis = [EmojiModel]()
     
     init(adapter: EmojiAdapter = EmojiAdapter(), shouldLoadEmojisOnInitialization: Bool = true) {
@@ -31,7 +33,7 @@ class EmojisListViewModel: EmojisListViewModelInterface {
                 }
             } catch {
                 await MainActor.run {
-                    print(error.localizedDescription)
+                    self.error = error
                 }
             }
         }

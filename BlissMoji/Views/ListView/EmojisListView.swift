@@ -1,10 +1,3 @@
-//
-//  EmojisListView.swift
-//  BlissMoji
-//
-//  Created by António Ramos on 04/11/2023.
-//
-
 import SwiftUI
 import SwiftData
 import Combine
@@ -34,6 +27,7 @@ struct EmojisListView<ViewModel: EmojisListViewModelInterface>: View {
         .refreshable {
             viewModel.fetchEmojis()
         }
+        .errorAlert(error: $viewModel.error)
     }
     
     func removeModel(at offsets: IndexSet) {
