@@ -1,10 +1,11 @@
-import UIKit
+import Foundation
+import SwiftData
 
-struct EmojiModel: Hashable {
-    let id = UUID()
-    var name: String
+@Model
+class EmojiModel {
+    @Attribute(.unique) var name: String
     var imageUrl: URL
-    var imageData: Data?
+    @Attribute(.externalStorage) var imageData: Data?
     
     var hasCachedImage: Bool {
         imageData != nil
@@ -15,7 +16,7 @@ struct EmojiModel: Hashable {
         self.imageUrl = imageUrl
     }
     
-    static func == (lhs: EmojiModel, rhs: EmojiModel) -> Bool {
-        lhs.id == rhs.id
+    func setImageData(_ data: Data?) {
+        self.imageData = data
     }
 }
