@@ -23,6 +23,7 @@
 		9139839C2AF8BD8F00BC996E /* AvatarAdapterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */; };
 		9139839E2AF8BDE200BC996E /* AvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839D2AF8BDE200BC996E /* AvatarModel.swift */; };
 		913983A02AF8BE2B00BC996E /* PersistentModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */; };
+		913983A22AF8BEF700BC996E /* AvatarAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983A12AF8BEF700BC996E /* AvatarAdapter.swift */; };
 		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
 		91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */; };
 		91670D7F2AF7F7D300FFC655 /* EmojisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */; };
@@ -84,6 +85,7 @@
 		9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarAdapterInterface.swift; sourceTree = "<group>"; };
 		9139839D2AF8BDE200BC996E /* AvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarModel.swift; sourceTree = "<group>"; };
 		9139839F2AF8BE2B00BC996E /* PersistentModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentModelInterface.swift; sourceTree = "<group>"; };
+		913983A12AF8BEF700BC996E /* AvatarAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarAdapter.swift; sourceTree = "<group>"; };
 		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		91670D7C2AF7F7CA00FFC655 /* EmojisListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisListViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* EmojisViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisViewModel.swift; sourceTree = "<group>"; };
@@ -215,9 +217,10 @@
 		910553262AF5EA3B0083ADFF /* Adapters */ = {
 			isa = PBXGroup;
 			children = (
+				913983A12AF8BEF700BC996E /* AvatarAdapter.swift */,
+				9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */,
 				910553272AF5EA4C0083ADFF /* EmojiAdapter.swift */,
 				91670D872AF844B200FFC655 /* EmojiAdapterInterface.swift */,
-				9139839B2AF8BD8F00BC996E /* AvatarAdapterInterface.swift */,
 			);
 			path = Adapters;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				9139839E2AF8BDE200BC996E /* AvatarModel.swift in Sources */,
 				91670D7D2AF7F7CA00FFC655 /* EmojisListViewModel.swift in Sources */,
 				9105532C2AF60E020083ADFF /* EmojisListView.swift in Sources */,
+				913983A22AF8BEF700BC996E /* AvatarAdapter.swift in Sources */,
 				9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */,
 				910553252AF5E6670083ADFF /* EmojiModel.swift in Sources */,
 				9139839C2AF8BD8F00BC996E /* AvatarAdapterInterface.swift in Sources */,

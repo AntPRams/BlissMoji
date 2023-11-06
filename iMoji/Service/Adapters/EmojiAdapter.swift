@@ -14,7 +14,7 @@ final class EmojiAdapter: EmojiAdapterInterface {
         self.dataSource = dataSource
     }
     
-    // MARK: - Public work
+    // MARK: - Public interface
     
     func fetchEmojisData() async throws -> [EmojiModel] {
         let data = await dataSource.getEmojisList()
