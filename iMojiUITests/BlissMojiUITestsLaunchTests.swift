@@ -1,13 +1,6 @@
-//
-//  BlissMojiUITestsLaunchTests.swift
-//  BlissMojiUITests
-//
-//  Created by António Ramos on 03/11/2023.
-//
-
 import XCTest
 
-final class BlissMojiUITestsLaunchTests: XCTestCase {
+final class iMojiUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
