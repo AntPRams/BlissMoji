@@ -29,22 +29,8 @@ final class PersistentDataRepository {
         let items = await dataSource.fetchItems(with: predicate)
         
         guard type == .avatar || items.isNotEmpty else {
-            // TODO: - This method should be improved
             if let data = try await emojisService.fetchData(from: .emojis) as? [String: String] {
-                let list = data.compactMap { (key: String, value: String) -> MediaItem? in
-                    guard let url = URL(string: value) else {
-                        return nil
-                    }
-                    
-                    let model = MediaItem(
-                        name: key,
-                        imageUrl: url,
-                        type: ItemType.emoji.rawValue
-                    )
-                    
-                    return model
-                }
-                
+                let list = mapEmojis(from: data)
                 await dataSource.insert(list)
                 return list
             }
@@ -55,26 +41,19 @@ final class PersistentDataRepository {
     
     func fetchAvatar(user name: String) async throws -> MediaItem {
         let avatarType = ItemType.avatar.rawValue
+        let orderedSame = ComparisonResult.orderedSame
         let predicate = #Predicate<MediaItem> {
-            $0.name.localizedStandardContains(name) && 
+            $0.name.caseInsensitiveCompare(name) == orderedSame &&
             avatarType == $0.type
         }
         
         guard let avatar = await dataSource.fetchItems(with: predicate).first else {
-            if let data = try await avatarsService.fetchData(from: .avatar(user: name)) as? AvatarNetworkModel {
-                if
-                    let name = data.name,
-                    let imageUrl = data.avatarUrl,
-                    let url = URL(string: imageUrl) 
-                {
-                    let item = MediaItem(
-                        name: name,
-                        imageUrl: url,
-                        type: ItemType.avatar.rawValue
-                    )
-                    await dataSource.insert([item])
-                    return item
-                }
+            if 
+                let data = try await avatarsService.fetchData(from: .avatar(user: name)) as? AvatarNetworkModel,
+                let avatar = mapAvatar(from: data)
+            {
+                await dataSource.insert([avatar])
+                return avatar
             }
             throw NetworkError.badRequest
         }
@@ -91,5 +70,41 @@ final class PersistentDataRepository {
     
     func removeUser(with item: MediaItem) async {
         await dataSource.delete(item)
+    }
+}
+
+private extension PersistentDataRepository {
+    
+    func mapEmojis(from data: [String: String]) -> [MediaItem] {
+        let list = data.compactMap { (key: String, value: String) -> MediaItem? in
+            guard let url = URL(string: value) else {
+                return nil
+            }
+            
+            let model = MediaItem(
+                name: key,
+                imageUrl: url,
+                type: ItemType.emoji.rawValue
+            )
+            
+            return model
+        }
+        return list
+    }
+    
+    func mapAvatar(from model: AvatarNetworkModel) -> MediaItem? {
+        if
+            let name = model.name,
+            let imageUrl = model.avatarUrl,
+            let url = URL(string: imageUrl)
+        {
+            let item = MediaItem(
+                name: name,
+                imageUrl: url,
+                type: ItemType.avatar.rawValue
+            )
+            return item
+        }
+        return nil
     }
 }

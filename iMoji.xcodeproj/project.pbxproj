@@ -143,12 +143,12 @@
 		910553062AF5BAF90083ADFF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				91670DA22AF8915400FFC655 /* PersistentDataSource.swift */,
 				910553262AF5EA3B0083ADFF /* Repositories */,
 				910553072AF5BB280083ADFF /* Models */,
 				91670D892AF845D200FFC655 /* APIClient */,
 				91670D8C2AF8497A00FFC655 /* Services */,
 				9105531C2AF5D2520083ADFF /* EndPoint.swift */,
-				91670DA22AF8915400FFC655 /* PersistentDataSource.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";

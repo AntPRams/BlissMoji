@@ -11,6 +11,14 @@ struct MainView: View {
                 EmojisSectionView(viewModel: viewModel)
                 AvatarsSectionView(viewModel: viewModel)
                 Spacer()
+                Button {
+                    
+                } label: {
+                    Text(Localizable.buttonOk)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.red)
             }
             .padding(16)
             .navigationTitle(Localizable.navTitle)
