@@ -1,15 +1,8 @@
-//
-//  SearchFieldView.swift
-//  iMoji
-//
-//  Created by António Ramos on 06/11/2023.
-//
-
 import SwiftUI
 
 struct SearchFieldView: View {
     
-    @ObservedObject var viewModel: MainViewModel
+    @Bindable var viewModel: MainViewModel
     @FocusState private var isFocused: Bool
     
     var body: some View {

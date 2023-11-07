@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AvatarsSectionView: View {
     
-    @ObservedObject var viewModel: MainViewModel
+    let viewModel: MainViewModel
     
     var body: some View {
         VStack {

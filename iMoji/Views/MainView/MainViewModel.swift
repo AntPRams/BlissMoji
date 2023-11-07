@@ -1,14 +1,13 @@
 import Foundation
-import SwiftUI
 import Combine
 
-class MainViewModel: ObservableObject {
+@Observable class MainViewModel {
     
     let repository: PersistentDataRepository
-    @Published var error: Error?
-    @Published var displayedItem: MediaItem?
-    @Published var nameQuery: String = String()
-    @Published var state: ViewState = .initial
+    var error: Error?
+    var displayedItem: MediaItem?
+    var nameQuery: String = String()
+    var state: ViewState = .initial
     
     private var disposableBag = Set<AnyCancellable>()
     
@@ -24,9 +23,7 @@ class MainViewModel: ObservableObject {
             do {
                 try await repository.fetchItems(.emoji)
                 await MainActor.run {
-                    withAnimation {
-                        self.state = .idle
-                    }
+                    self.state = .idle
                 }
             } catch {
                 await MainActor.run {
@@ -43,10 +40,8 @@ class MainViewModel: ObservableObject {
             do {
                 let emoji = try await repository.fetchRandomEmoji()
                 await MainActor.run {
-                    withAnimation {
-                        self.displayedItem = emoji
-                        self.state = .idle
-                    }
+                    self.displayedItem = emoji
+                    self.state = .idle
                 }
             } catch {
                 await MainActor.run {
@@ -64,11 +59,9 @@ class MainViewModel: ObservableObject {
             do {
                 let user = try await repository.fetchAvatar(user: nameQuery)
                 await MainActor.run {
-                    withAnimation {
-                        self.nameQuery = String()
-                        self.state = .idle
-                        self.displayedItem = user
-                    }
+                    self.nameQuery = String()
+                    self.state = .idle
+                    self.displayedItem = user
                 }
             } catch {
                 await MainActor.run {

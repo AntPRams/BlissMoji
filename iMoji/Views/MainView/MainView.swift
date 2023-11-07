@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MainView: View {
     
-    @StateObject var viewModel: MainViewModel
+    @Bindable var viewModel: MainViewModel
     
     var body: some View {
         NavigationStack {
