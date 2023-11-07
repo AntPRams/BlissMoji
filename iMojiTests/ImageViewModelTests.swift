@@ -3,21 +3,22 @@ import XCTest
 import Foundation
 import Combine
 
-final class EmojiViewModelTests: XCTestCase {
+final class ImageViewModelTests: XCTestCase {
     
     var adapter: EmojiAdapter!
-    var sut: EmojiViewModel!
+    var sut: ImageViewModel!
     var disposableBag: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        sut = EmojiViewModel(
-            emojiModel: EmojiModel(
-                name: "some",
-                imageUrl: URL(string: "https://www.apple.com")!),
-            adapter: adapter,
-            shouldFetchImageOnInitialization: false
+        let model = EmojiModel(
+            name: "some",
+            imageUrl: URL(string: "https://www.apple.com")!)
+        
+        sut = ImageViewModel(
+            model: model,
+            emojiAdapter: adapter
         )
         disposableBag = Set<AnyCancellable>()
     }
@@ -30,7 +31,7 @@ final class EmojiViewModelTests: XCTestCase {
     }
     
     func test_fetchImage() {
-        sut.fetchEmojiImage()
+        sut.fetchImage()
         let stateExpectation = XCTestExpectation(description: "Did set state")
         let imageExpectation = XCTestExpectation(description: "Did receive image")
         
@@ -53,6 +54,6 @@ final class EmojiViewModelTests: XCTestCase {
             }
             .store(in: &disposableBag)
         
-        wait(for: [stateExpectation, imageExpectation], timeout: 0.3)
+        wait(for: [stateExpectation, imageExpectation], timeout: 0.1)
     }
 }

@@ -12,7 +12,7 @@ final class MainViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        sut = MainViewModel(adapter: adapter)
+        sut = MainViewModel(emojiAdapter: EmojiAdapter(), avatarAdapter: AvatarAdapter())
         disposableBag = Set<AnyCancellable>()
     }
     
@@ -36,7 +36,7 @@ final class MainViewModelTests: XCTestCase {
             }
             .store(in: &disposableBag)
         
-        sut.$randomEmoji
+        sut.$modelToPresent
             .dropFirst() //Dropping the initial value
             .sink { emoji in
                 guard let emoji else {

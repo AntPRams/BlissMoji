@@ -45,7 +45,6 @@ class ImageViewModel: ImageViewModelInterface {
                         model.imageData = imageData
                         self.state = .idle
                         self.image = model.image
-                        self.error = NetworkError.badRequest
                     }
                 } catch {
                     await MainActor.run {
