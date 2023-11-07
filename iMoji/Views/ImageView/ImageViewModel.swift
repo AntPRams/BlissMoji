@@ -1,13 +1,13 @@
 import UIKit
 import Combine
 
-class ImageViewModel: ObservableObject {
+@Observable class ImageViewModel {
     
     let repository: PersistentDataRepository
-    @Published var item: MediaItem
-    @Published var error: Error?
-    @Published var state: ViewState = .initial
-    @Published var image: UIImage = UIImage()
+    var item: MediaItem
+    var error: Error?
+    var state: ViewState = .initial
+    var image: UIImage = UIImage()
     
     private var disposableBag = Set<AnyCancellable>()
     

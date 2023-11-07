@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ImageView: View {
     
-    @StateObject var viewModel: ImageViewModel
+    let viewModel: ImageViewModel
     
     var body: some View {
         ZStack {
