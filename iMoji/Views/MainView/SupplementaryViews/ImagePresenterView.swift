@@ -13,7 +13,10 @@ struct ImagePresenterView<ViewModel: MainViewModelInterface>: View {
                 ProgressView()
             } else if viewModel.state == .idle {
                 if let randomEmoji = viewModel.modelToPresent {
-                    ImageView(viewModel: ImageViewModel(model: randomEmoji)) {}
+                    ImageView(
+                        viewModel: ImageViewModel(model: randomEmoji),
+                        deleteAction: {}
+                    )
                 }
             }
         }

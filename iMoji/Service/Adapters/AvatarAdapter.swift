@@ -43,4 +43,8 @@ final class AvatarAdapter: AvatarAdapterInterface {
     func fetchImage(for avatar: AvatarModel) async throws -> Data {
         try await service.fetchImage(from: avatar.imageUrl)
     }
+    
+    func removeUser(with model: AvatarModel) async {
+        await dataSource.delete(avatar: model)
+    }
 }

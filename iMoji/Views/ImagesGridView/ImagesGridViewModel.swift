@@ -9,6 +9,7 @@ protocol ImagesGridViewModelInterface: ObservableObject {
     var gridDataType: GridDataType { get set }
     
     func fetchData()
+    func removeElement(at index: Int)
 }
 
 enum GridDataType {
@@ -51,6 +52,21 @@ class ImagesGridViewModel: ImagesGridViewModelInterface {
                     self.error = error
                 }
             }
+        }
+    }
+    
+    func removeElement(at index: Int) {
+        switch gridDataType {
+        case .avatars:
+            guard let avatarModel = data[index] as? AvatarModel else {
+                fallthrough
+            }
+            Task {
+                await avatarsAdapter.removeUser(with: avatarModel)
+            }
+            fallthrough
+        case .emojis:
+            data.remove(at: index)
         }
     }
 }

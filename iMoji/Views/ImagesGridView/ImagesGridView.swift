@@ -13,33 +13,28 @@ struct ImagesGridView<ViewModel: ImagesGridViewModelInterface>: View {
     ]
     
     var body: some View {
-        VStack {
+        ScrollView {
             if viewModel.gridDataType == .avatars {
                 Text(Localizable.navTitle)
             }
-            ScrollView {
-                if viewModel.data.isNotEmpty {
-                    LazyVGrid(columns: columns, content: {
-                        ForEach(Array(viewModel.data.enumerated()), id: \.1) { (i, element) in
-                            if let model = element as? PersistentModelRepresentable {
-                                ImageView(viewModel: ImageViewModel(model: model)) {
-                                    viewModel.data.remove(at: i)
-                                }
+            if viewModel.data.isNotEmpty {
+                LazyVGrid(columns: columns, content: {
+                    ForEach(Array(viewModel.data.enumerated()), id: \.1) { (i, element) in
+                        if let model = element as? PersistentModelRepresentable {
+                            ImageView(viewModel: ImageViewModel(model: model)) {
+                                viewModel.removeElement(at: i)
                             }
                         }
-                    })
-                }
+                    }
+                })
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: viewModel.fetchData)
         .refreshable {
             viewModel.fetchData()
         }
         .errorAlert(error: $viewModel.error)
-    }
-    
-    func removeModel(at offsets: IndexSet) {
-        viewModel.data.remove(atOffsets: offsets)
     }
 }
 

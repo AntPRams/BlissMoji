@@ -19,21 +19,17 @@ final class PersistentDataSource {
     }
     
     func fetchEmojisListFromPersistence() -> [EmojiModel] {
-        do {
-            guard let emojis = try fetchEmojisDataFromContext() else { return [] }
-            return emojis
-        } catch {
-            return []
-        }
+        guard let emojis = try? fetchModelFromContext(sortDescriptor: [SortDescriptor(\EmojiModel.name)]) else { return [] }
+        return emojis
     }
     
     func fetchAvatarsListFromPresistence(with predicate: Predicate<AvatarModel>? = nil) -> [AvatarModel] {
-        do {
-            guard let emojis = try fetchAvatarsFromContext() else { return [] }
-            return emojis
-        } catch {
-            return []
-        }
+        guard let avatars = try? fetchModelFromContext(
+            with: predicate,
+            sortDescriptor: [SortDescriptor(\.name)]
+        ) else { return [] }
+        
+        return avatars
     }
     
     func fetchAvatarFromPersistence(with name: String) -> AvatarModel? {
@@ -74,20 +70,17 @@ final class PersistentDataSource {
 
 private extension PersistentDataSource {
     
-    func fetchAvatarsFromContext(with predicate: Predicate<AvatarModel>? = nil) throws -> [AvatarModel]? {
-        let descriptor = FetchDescriptor<AvatarModel>(
+    func fetchModelFromContext<T: PersistentModel>(
+        with predicate: Predicate<T>? = nil,
+        sortDescriptor: [SortDescriptor<T>]
+    ) throws -> [T]?
+    {
+        let descriptor = FetchDescriptor<T>(
             predicate: predicate,
-            sortBy: [SortDescriptor(\.name)]
+            sortBy: sortDescriptor
         )
-        let avatars = try modelContext.fetch(descriptor)
+        let models = try modelContext.fetch(descriptor)
         
-        return avatars
-    }
-    
-    func fetchEmojisDataFromContext() throws -> [EmojiModel]? {
-        let descriptor = FetchDescriptor<EmojiModel>(predicate: nil, sortBy: [SortDescriptor(\.name)])
-        let emojis = try modelContext.fetch(descriptor)
-        
-        return emojis
+        return models
     }
 }

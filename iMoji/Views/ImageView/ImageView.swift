@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct ImageView<ViewModel: ImageViewModel>: View {
+struct ImageView<ViewModel: ImageViewModelInterface>: View {
     
     @StateObject var viewModel: ViewModel
-    var deleteAction: () -> Void
+    var deleteAction: () -> Void?
     
     var body: some View {
         VStack {
@@ -23,6 +23,10 @@ struct ImageView<ViewModel: ImageViewModel>: View {
             }
             Text(viewModel.model.name)
         }
-        .onTapGesture(perform: deleteAction)
+        .onTapGesture(perform: performDeleteActionIfAvailable)
+    }
+    
+    private func performDeleteActionIfAvailable() {
+        deleteAction()
     }
 }

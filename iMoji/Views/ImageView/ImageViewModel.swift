@@ -39,11 +39,9 @@ class ImageViewModel: ImageViewModelInterface {
             Task {
                 do {
                     let imageData = try await self.fetchImage(for: model)
-                    guard let data = imageData else { return }
-
-                    model.imageData = imageData
                     
                     await MainActor.run {
+                        model.imageData = imageData
                         self.state = .idle
                         self.image = model.image
                         self.error = NetworkError.badRequest
