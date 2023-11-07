@@ -4,7 +4,7 @@ import Combine
 
 struct ImagesGridView: View {
     
-    @StateObject var viewModel: ImagesGridViewModel
+    @Bindable var viewModel: ImagesGridViewModel
     
     let columns = [GridItem(.adaptive(minimum: 80))]
     

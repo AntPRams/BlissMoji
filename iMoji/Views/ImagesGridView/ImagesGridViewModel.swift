@@ -1,12 +1,12 @@
 import Foundation
 
-class ImagesGridViewModel: ObservableObject {
+@Observable class ImagesGridViewModel {
     
     let repository: PersistentDataRepository
     var gridDataType: ItemType
     
-    @Published var error: Error?
-    @Published var data = [MediaItem]()
+    var error: Error?
+    var data = [MediaItem]()
     
     init(
         repository: PersistentDataRepository = PersistentDataRepository(),
