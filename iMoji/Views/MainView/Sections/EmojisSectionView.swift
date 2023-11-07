@@ -23,9 +23,6 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             Divider()
                 .padding(.vertical, 16)
         }
-        .onAppear {
-            viewModel.fetchEmojis()
-        }
     }
 }
 

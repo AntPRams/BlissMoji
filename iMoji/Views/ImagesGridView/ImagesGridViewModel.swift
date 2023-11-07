@@ -3,8 +3,8 @@ import Foundation
 protocol ImagesGridViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
-    var avatarsAdapter: AvatarAdapter { get }
-    var emojisAdapter: EmojiAdapter { get }
+    var avatarsAdapter: AvatarAdapterInterface { get }
+    var emojisAdapter: EmojiAdapterInterface { get }
     var data: [AnyHashable] { get set }
     var gridDataType: GridDataType { get set }
     
@@ -18,16 +18,16 @@ enum GridDataType {
 
 class ImagesGridViewModel: ImagesGridViewModelInterface {
     
-    let emojisAdapter: EmojiAdapter
-    let avatarsAdapter: AvatarAdapter
+    let emojisAdapter: EmojiAdapterInterface
+    let avatarsAdapter: AvatarAdapterInterface
     var gridDataType: GridDataType
     
     @Published var error: Error?
     @Published var data = [AnyHashable]()
     
     init(
-        emojisAdapter: EmojiAdapter = EmojiAdapter(),
-        avatarsAdapter: AvatarAdapter = AvatarAdapter(),
+        emojisAdapter: EmojiAdapterInterface = EmojiAdapter(),
+        avatarsAdapter: AvatarAdapterInterface = AvatarAdapter(),
         gridDataType: GridDataType
     ) {
         self.emojisAdapter = emojisAdapter

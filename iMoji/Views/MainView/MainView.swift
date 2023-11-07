@@ -20,5 +20,5 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
 }
 
 #Preview {
-    return MainView(viewModel: MainViewModel())
+    MainView(viewModel: MainViewModel())
 }

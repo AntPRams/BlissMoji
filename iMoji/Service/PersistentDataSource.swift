@@ -34,7 +34,7 @@ final class PersistentDataSource {
     
     func fetchAvatarFromPersistence(with name: String) -> AvatarModel? {
         let predicate = #Predicate<AvatarModel> {
-            $0.name == name
+            $0.name.localizedStandardContains(name)
         }
         return fetchAvatarsListFromPresistence(with: predicate).first
     }

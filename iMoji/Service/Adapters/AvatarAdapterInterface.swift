@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AvatarAdapterInterface {
+protocol AvatarAdapterInterface: AnyObject {
     init(service: any Service)
     
     func fetchUsersPreviouslySearched() async throws -> [AvatarModel]

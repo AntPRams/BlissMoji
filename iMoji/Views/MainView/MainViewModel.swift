@@ -5,8 +5,8 @@ import Combine
 protocol MainViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
-    var emojiAdapter: EmojiAdapter { get }
-    var avatarAdapter: AvatarAdapter { get }
+    var emojiAdapter: EmojiAdapterInterface { get }
+    var avatarAdapter: AvatarAdapterInterface { get }
     var nameQuery: String { get set }
     var state: ViewState { get set }
     var modelToPresent: PersistentModelRepresentable? { get set }
@@ -18,8 +18,8 @@ protocol MainViewModelInterface: ObservableObject {
 
 class MainViewModel: MainViewModelInterface {
     
-    let emojiAdapter: EmojiAdapter
-    let avatarAdapter: AvatarAdapter
+    let emojiAdapter: EmojiAdapterInterface
+    let avatarAdapter: AvatarAdapterInterface
     @Published var error: Error?
     @Published var modelToPresent: PersistentModelRepresentable?
     @Published var nameQuery: String = String()
@@ -28,12 +28,13 @@ class MainViewModel: MainViewModelInterface {
     private var disposableBag = Set<AnyCancellable>()
     
     init(
-        emojiAdapter: EmojiAdapter = EmojiAdapter(),
-        avatarAdapter: AvatarAdapter = AvatarAdapter()
+        emojiAdapter: EmojiAdapterInterface = EmojiAdapter(),
+        avatarAdapter: AvatarAdapterInterface = AvatarAdapter()
     ) {
         self.emojiAdapter = emojiAdapter
         self.avatarAdapter = avatarAdapter
         subscribeToAvatarRemovalNotification()
+        fetchEmojis()
     }
     
     func fetchEmojis() {

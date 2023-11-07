@@ -1,6 +1,6 @@
 import Foundation
 
-protocol EmojiAdapterInterface {
+protocol EmojiAdapterInterface: AnyObject {
     init(service: any Service)
     
     func fetchEmojisData() async throws -> [EmojiModel]

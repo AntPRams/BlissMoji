@@ -2,9 +2,11 @@ import Foundation
 
 final class AvatarAdapterMock: AvatarAdapterInterface {
     
-    let service = GithubService<[String: String]>()
+    let service: any Service
     
-    init(service: any Service) {}
+    init(service: any Service = GithubService<[String: String]>()) {
+        self.service = service
+    }
     
     func fetchUsersPreviouslySearched() async throws -> [AvatarModel] { [] }
     

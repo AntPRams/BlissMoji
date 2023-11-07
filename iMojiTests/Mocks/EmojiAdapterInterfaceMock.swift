@@ -1,9 +1,11 @@
 import Foundation
 
 final class EmojiAdapterMock: EmojiAdapterInterface {
-    let service = GithubService<[String: String]>()
+    let service: any Service
     
-    init(service: any Service) {}
+    init(service: any Service = GithubService<[String: String]>()) {
+        self.service = service
+    }
     
     func fetchEmojisData() async throws -> [EmojiModel] { [] }
     

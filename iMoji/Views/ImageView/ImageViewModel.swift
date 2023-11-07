@@ -4,7 +4,8 @@ protocol ImageViewModelInterface: ObservableObject {
     
     var error: Error? { get set }
     var model: PersistentModelRepresentable { get set }
-    var avatarAdapter: AvatarAdapter { get }
+    var avatarAdapter: AvatarAdapterInterface { get }
+    var emojiAdapter: EmojiAdapterInterface { get }
     var state: ViewState { get set }
     var image: UIImage? { get set }
     
@@ -13,8 +14,8 @@ protocol ImageViewModelInterface: ObservableObject {
 
 class ImageViewModel: ImageViewModelInterface {
     
-    let emojiAdapter: EmojiAdapter
-    let avatarAdapter: AvatarAdapter
+    let emojiAdapter: EmojiAdapterInterface
+    let avatarAdapter: AvatarAdapterInterface
     @Published var model: PersistentModelRepresentable
     @Published var error: Error?
     @Published var state: ViewState = .initial
@@ -22,14 +23,14 @@ class ImageViewModel: ImageViewModelInterface {
     
     init(
         model: PersistentModelRepresentable,
-        emojiAdapter: EmojiAdapter = EmojiAdapter(),
-        avatarAdapter: AvatarAdapter = AvatarAdapter(),
+        emojiAdapter: EmojiAdapterInterface = EmojiAdapter(),
+        avatarAdapter: AvatarAdapterInterface = AvatarAdapter(),
         shouldFetchImageOnInitialization: Bool = true
     ) {
         self.model = model
         self.emojiAdapter = emojiAdapter
         self.avatarAdapter = avatarAdapter
-        guard shouldFetchImageOnInitialization else { return }
+        guard shouldFetchImageOnInitialization, image == nil else { return }
         fetchImage()
     }
     
