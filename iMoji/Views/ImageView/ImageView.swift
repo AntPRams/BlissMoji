@@ -1,9 +1,9 @@
 import SwiftUI
 
-struct EmojiView<ViewModel: EmojiViewModelInterface>: View {
+struct ImageView<ViewModel: ImageViewModelInterface>: View {
     
     @StateObject var viewModel: ViewModel
-    var deleteAction: () -> Void
+    var deleteAction: () -> Void?
     
     var body: some View {
         VStack {
@@ -21,8 +21,19 @@ struct EmojiView<ViewModel: EmojiViewModelInterface>: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 80, height: 80)
             }
-            Text(viewModel.emojiModel.name)
+            Text(viewModel.model.name)
         }
-        .onTapGesture(perform: deleteAction)
+        .onTapGesture(perform: performDeleteActionIfAvailable)
     }
+    
+    private func performDeleteActionIfAvailable() {
+        deleteAction()
+    }
+}
+
+#Preview(traits: .sizeThatFitsLayout) {
+    ImageView(
+        viewModel: ImageViewModelMock(model: PersistentModelMock()),
+        deleteAction: {}
+    )
 }
