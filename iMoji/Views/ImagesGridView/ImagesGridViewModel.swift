@@ -61,6 +61,8 @@ class ImagesGridViewModel: ImagesGridViewModelInterface {
             guard let avatarModel = data[index] as? AvatarModel else {
                 fallthrough
             }
+            postAvatarRemovalNotification(avatarModel.name)
+
             Task {
                 await avatarsAdapter.removeUser(with: avatarModel)
             }
@@ -68,5 +70,14 @@ class ImagesGridViewModel: ImagesGridViewModelInterface {
         case .emojis:
             data.remove(at: index)
         }
+    }
+}
+
+private extension ImagesGridViewModel {
+    func postAvatarRemovalNotification(_ avatarName: String) {
+        NotificationCenter.default.post(
+            name: .didRemoveAvatarFromPersistence,
+            object: avatarName
+        )
     }
 }

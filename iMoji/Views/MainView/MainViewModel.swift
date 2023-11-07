@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Combine
 
 protocol MainViewModelInterface: ObservableObject {
     
@@ -24,12 +25,15 @@ class MainViewModel: MainViewModelInterface {
     @Published var nameQuery: String = String()
     @Published var state: ViewState = .initial
     
+    private var disposableBag = Set<AnyCancellable>()
+    
     init(
         emojiAdapter: EmojiAdapter = EmojiAdapter(),
         avatarAdapter: AvatarAdapter = AvatarAdapter()
     ) {
         self.emojiAdapter = emojiAdapter
         self.avatarAdapter = avatarAdapter
+        subscribeToAvatarRemovalNotification()
     }
     
     func fetchEmojis() {
@@ -84,5 +88,20 @@ class MainViewModel: MainViewModelInterface {
                 }
             }
         }
+    }
+}
+
+private extension MainViewModel {
+    
+    func subscribeToAvatarRemovalNotification() {
+        NotificationCenter.default.publisher(for: .didRemoveAvatarFromPersistence)
+            .compactMap { $0.object as? String }
+            .sink { [weak self] avatarName in
+                guard let self else { return }
+                if modelToPresent?.name == avatarName {
+                    modelToPresent = nil
+                }
+            }
+            .store(in: &disposableBag)
     }
 }
