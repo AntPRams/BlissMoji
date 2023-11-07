@@ -5,7 +5,6 @@ import Combine
 class MainViewModel: ObservableObject {
     
     let repository: PersistentDataRepository
-    @Published var emojis = [MediaItem]()
     @Published var error: Error?
     @Published var displayedItem: MediaItem?
     @Published var nameQuery: String = String()
@@ -23,10 +22,9 @@ class MainViewModel: ObservableObject {
         state = .loading
         Task {
             do {
-                let emojis = try await repository.fetchItems(.emoji)
+                try await repository.fetchItems(.emoji)
                 await MainActor.run {
                     withAnimation {
-                        self.emojis = emojis
                         self.state = .idle
                     }
                 }
@@ -41,13 +39,22 @@ class MainViewModel: ObservableObject {
     
     func fetchRandomEmoji() {
         state = .loading
-        guard let randomEmoji = emojis.randomElement() else {
-            // TODO: - Should throw some error
-            return
+        Task {
+            do {
+                let emoji = try await repository.fetchRandomEmoji()
+                await MainActor.run {
+                    withAnimation {
+                        self.displayedItem = emoji
+                        self.state = .idle
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = error
+                    self.state = .idle
+                }
+            }
         }
-        displayedItem = randomEmoji
-        postDisplayedItemUpdateNotification(randomEmoji)
-        state = .idle
     }
     
     func searchUser() {
@@ -60,7 +67,6 @@ class MainViewModel: ObservableObject {
                     withAnimation {
                         self.nameQuery = String()
                         self.state = .idle
-                        postDisplayedItemUpdateNotification(user)
                         self.displayedItem = user
                     }
                 }
@@ -75,14 +81,6 @@ class MainViewModel: ObservableObject {
 }
 
 private extension MainViewModel {
-    
-    func postDisplayedItemUpdateNotification(_ item: MediaItem) {
-        NotificationCenter.default.post(
-            name: .didUpdateDisplayedItem,
-            object: item
-        )
-    }
-    
     func subscribeToAvatarRemovalNotification() {
         NotificationCenter.default.publisher(for: .didRemoveAvatarFromPersistence)
             .compactMap { $0.object as? String }

@@ -11,8 +11,7 @@ struct ImagePresenterView: View {
                 .fill(.clear)
             if viewModel.state == .loading {
                 ProgressView()
-            }
-            if let item = viewModel.displayedItem {
+            } else if let item = viewModel.displayedItem {
                 ImageView(viewModel: ImageViewModel(item: item))
             }
         }

@@ -81,6 +81,10 @@ final class PersistentDataRepository {
         return avatar
     }
     
+    func fetchRandomEmoji() async throws -> MediaItem? {
+        try await fetchItems(.emoji).randomElement()
+    }
+    
     func fetchImage(with url: URL) async throws -> Data {
         try await emojisService.fetchImage(from: url)
     }
