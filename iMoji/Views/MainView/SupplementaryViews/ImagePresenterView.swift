@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct ImagePresenterView<ViewModel: MainViewModelInterface>: View {
+struct ImagePresenterView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
         ZStack {
@@ -11,13 +11,9 @@ struct ImagePresenterView<ViewModel: MainViewModelInterface>: View {
                 .fill(.clear)
             if viewModel.state == .loading {
                 ProgressView()
-            } else if viewModel.state == .idle {
-                if let randomEmoji = viewModel.modelToPresent {
-                    ImageView(
-                        viewModel: ImageViewModel(model: randomEmoji),
-                        deleteAction: {}
-                    )
-                }
+            }
+            if let item = viewModel.displayedItem {
+                ImageView(viewModel: ImageViewModel(item: item))
             }
         }
         .clipShape(Capsule())

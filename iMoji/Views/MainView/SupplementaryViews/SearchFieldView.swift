@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct SearchFieldView<ViewModel: MainViewModelInterface>: View {
+struct SearchFieldView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: MainViewModel
     @FocusState private var isFocused: Bool
     
     var body: some View {

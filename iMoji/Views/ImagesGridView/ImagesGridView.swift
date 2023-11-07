@@ -2,19 +2,15 @@ import SwiftUI
 import SwiftData
 import Combine
 
-struct ImagesGridView<ViewModel: ImagesGridViewModelInterface>: View {
+struct ImagesGridView: View {
     
-    var data = [EmojiModel]()
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: ImagesGridViewModel
     
-    let columns = [
-        GridItem(.adaptive(minimum: 80))
-            
-    ]
+    let columns = [GridItem(.adaptive(minimum: 80))]
     
     var body: some View {
         VStack {
-            if viewModel.gridDataType == .avatars {
+            if viewModel.gridDataType == .avatar {
                 Text(Localizable.avatarsGridTitle)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding([.bottom, .horizontal], 16)
@@ -22,12 +18,11 @@ struct ImagesGridView<ViewModel: ImagesGridViewModelInterface>: View {
             ScrollView {
                 if viewModel.data.isNotEmpty {
                     LazyVGrid(columns: columns) {
-                        ForEach(Array(viewModel.data.enumerated()), id: \.1) { (i, element) in
-                            if let model = element as? PersistentModelRepresentable {
-                                ImageView(viewModel: ImageViewModel(model: model)) {
+                        ForEach(Array(viewModel.data.enumerated()), id: \.1) { (i, item) in
+                            ImageView(viewModel: ImageViewModel(item: item))
+                                .onTapGesture {
                                     viewModel.removeElement(at: i)
                                 }
-                            }
                         }
                     }
                 }
@@ -43,9 +38,9 @@ struct ImagesGridView<ViewModel: ImagesGridViewModelInterface>: View {
 }
 
 #Preview {
-    ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .avatars))
+    ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .avatar))
 }
 
 #Preview {
-    ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emojis))
+    ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emoji))
 }

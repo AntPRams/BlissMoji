@@ -1,39 +1,23 @@
 import SwiftUI
 
-struct ImageView<ViewModel: ImageViewModelInterface>: View {
+struct ImageView: View {
     
-    @StateObject var viewModel: ViewModel
-    var deleteAction: () -> Void?
+    @StateObject var viewModel: ImageViewModel
     
     var body: some View {
-        VStack {
+        ZStack {
             if viewModel.state == .loading {
-                ZStack {
-                    ProgressView()
-                    Image(systemName: "photo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                }
-            } else if let image = viewModel.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 80, height: 80)
+                ProgressView()
             }
-            Text(viewModel.model.name)
+            Image(uiImage: viewModel.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 80)
         }
-        .onTapGesture(perform: performDeleteActionIfAvailable)
-    }
-    
-    private func performDeleteActionIfAvailable() {
-        deleteAction()
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
     ImageView(
-        viewModel: ImageViewModelMock(model: PersistentModelMock()),
-        deleteAction: {}
-    )
+        viewModel: ImageViewModel(item: MediaItem(name: "", imageUrl: URL(string: "")!, type: ItemType.emoji.rawValue)))
 }

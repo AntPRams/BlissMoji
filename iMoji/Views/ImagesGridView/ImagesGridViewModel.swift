@@ -1,51 +1,27 @@
 import Foundation
 
-protocol ImagesGridViewModelInterface: ObservableObject {
+class ImagesGridViewModel: ObservableObject {
     
-    var error: Error? { get set }
-    var avatarsAdapter: AvatarAdapterInterface { get }
-    var emojisAdapter: EmojiAdapterInterface { get }
-    var data: [AnyHashable] { get set }
-    var gridDataType: GridDataType { get set }
-    
-    func fetchData()
-    func removeElement(at index: Int)
-}
-
-enum GridDataType {
-    case emojis, avatars
-}
-
-class ImagesGridViewModel: ImagesGridViewModelInterface {
-    
-    let emojisAdapter: EmojiAdapterInterface
-    let avatarsAdapter: AvatarAdapterInterface
-    var gridDataType: GridDataType
+    let repository: PersistentDataRepository
+    var gridDataType: ItemType
     
     @Published var error: Error?
-    @Published var data = [AnyHashable]()
+    @Published var data = [MediaItem]()
     
     init(
-        emojisAdapter: EmojiAdapterInterface = EmojiAdapter(),
-        avatarsAdapter: AvatarAdapterInterface = AvatarAdapter(),
-        gridDataType: GridDataType
+        repository: PersistentDataRepository = PersistentDataRepository(),
+        gridDataType: ItemType
     ) {
-        self.emojisAdapter = emojisAdapter
+        self.repository = repository
         self.gridDataType = gridDataType
-        self.avatarsAdapter = avatarsAdapter
     }
     
     func fetchData() {
         Task {
             do {
-                let data: [AnyHashable] = switch gridDataType {
-                case .emojis:
-                    try await emojisAdapter.fetchEmojisData()
-                case .avatars:
-                    try await avatarsAdapter.fetchUsersPreviouslySearched()
-                }
+                let items = try await repository.fetchItems(gridDataType)
                 await MainActor.run {
-                    self.data = data
+                    self.data = items
                 }
             } catch {
                 await MainActor.run {
@@ -57,17 +33,17 @@ class ImagesGridViewModel: ImagesGridViewModelInterface {
     
     func removeElement(at index: Int) {
         switch gridDataType {
-        case .avatars:
-            guard let avatarModel = data[index] as? AvatarModel else {
+        case .avatar:
+            guard let model = data[safe: index] else {
                 fallthrough
             }
-            postAvatarRemovalNotification(avatarModel.name)
+            postAvatarRemovalNotification(model.name)
 
             Task {
-                await avatarsAdapter.removeUser(with: avatarModel)
+                await repository.removeUser(with: model)
             }
             fallthrough
-        case .emojis:
+        case .emoji:
             data.remove(at: index)
         }
     }

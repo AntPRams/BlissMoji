@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct AvatarsSectionView<ViewModel: MainViewModelInterface>: View {
+struct AvatarsSectionView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModel: MainViewModel
     
     var body: some View {
         VStack {
             SearchFieldView(viewModel: viewModel)
             NavigationLink(destination: {
-                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .avatars))
+                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .avatar))
             }, label: {
                 Text(Localizable.avatarsList)
                     .frame(maxWidth: .infinity)

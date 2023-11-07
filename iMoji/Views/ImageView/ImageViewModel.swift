@@ -1,50 +1,41 @@
 import UIKit
+import Combine
 
-protocol ImageViewModelInterface: ObservableObject {
+class ImageViewModel: ObservableObject {
     
-    var error: Error? { get set }
-    var model: PersistentModelRepresentable { get set }
-    var avatarAdapter: AvatarAdapterInterface { get }
-    var emojiAdapter: EmojiAdapterInterface { get }
-    var state: ViewState { get set }
-    var image: UIImage? { get set }
-    
-    func fetchImage()
-}
-
-class ImageViewModel: ImageViewModelInterface {
-    
-    let emojiAdapter: EmojiAdapterInterface
-    let avatarAdapter: AvatarAdapterInterface
-    @Published var model: PersistentModelRepresentable
+    let repository: PersistentDataRepository
+    @Published var item: MediaItem
     @Published var error: Error?
     @Published var state: ViewState = .initial
-    @Published var image: UIImage?
+    @Published var image: UIImage = UIImage()
+    
+    private var disposableBag = Set<AnyCancellable>()
     
     init(
-        model: PersistentModelRepresentable,
-        emojiAdapter: EmojiAdapterInterface = EmojiAdapter(),
-        avatarAdapter: AvatarAdapterInterface = AvatarAdapter(),
+        item: MediaItem,
+        repository: PersistentDataRepository = PersistentDataRepository(),
         shouldFetchImageOnInitialization: Bool = true
     ) {
-        self.model = model
-        self.emojiAdapter = emojiAdapter
-        self.avatarAdapter = avatarAdapter
-        guard shouldFetchImageOnInitialization, image == nil else { return }
-        fetchImage()
+        self.item = item
+        self.repository = repository
+        subscribeToDisplayedItemUpdateNotification()
+        guard shouldFetchImageOnInitialization else { return }
+        fetchImage(url: item.imageUrl)
     }
     
-    func fetchImage() {
-        guard let image = model.image else {
+    func fetchImage(url: URL) {
+        guard let image = item.image else {
             state = .loading
             Task {
                 do {
-                    let imageData = try await self.fetchImage(for: model)
+                    let imageData = try await repository.fetchImage(with: url)
                     
                     await MainActor.run {
-                        model.imageData = imageData
+                        // We removed the image data set here
+                        self.item.imageData = imageData
                         self.state = .idle
-                        self.image = model.image
+                        guard let itemImage = item.image else { return }
+                        self.image = itemImage
                     }
                 } catch {
                     await MainActor.run {
@@ -56,13 +47,19 @@ class ImageViewModel: ImageViewModelInterface {
         }
         self.image = image
     }
-    
-    func fetchImage(for persistentModel: PersistentModelRepresentable) async throws -> Data? {
-        if let emojiModel = persistentModel as? EmojiModel {
-            return try await self.emojiAdapter.fetchImage(for: emojiModel)
-        } else if let avatarModel = persistentModel as? AvatarModel {
-            return try await self.avatarAdapter.fetchImage(for: avatarModel)
-        }
-        return nil
+}
+
+private extension ImageViewModel {
+    func subscribeToDisplayedItemUpdateNotification() {
+        NotificationCenter.default.publisher(for: .didUpdateDisplayedItem)
+            .receive(on: DispatchQueue.main)
+            .compactMap { $0.object as? MediaItem }
+            .sink { [weak self] item in
+                guard let self else { return }
+                self.item = item
+                fetchImage(url: item.imageUrl)
+            }
+        
+            .store(in: &disposableBag)
     }
 }

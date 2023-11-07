@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MainView<ViewModel: MainViewModelInterface>: View {
+struct MainView: View {
     
-    @StateObject var viewModel: ViewModel
+    @StateObject var viewModel: MainViewModel
     
     var body: some View {
         NavigationStack {
