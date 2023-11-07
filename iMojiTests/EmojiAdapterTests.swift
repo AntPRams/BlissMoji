@@ -40,7 +40,7 @@ final class EmojiAdapterTests: XCTestCase {
         service = GithubServiceMock<[String: String]>(mockUrl: .invalidEmojiList)
         sut = EmojiAdapter(service: service)
         do {
-            let _ = try await sut.fetchEmojisData()
+            try await sut.fetchEmojisData()
         } catch {
             XCTAssertEqual(error.localizedDescription, "The data couldn’t be read because it isn’t in the correct format.")
         }

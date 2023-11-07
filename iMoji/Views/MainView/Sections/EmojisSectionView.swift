@@ -6,21 +6,6 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
     
     var body: some View {
         VStack {
-            ZStack {
-                ContainerRelativeShape()
-                    .inset(by: 4)
-                    .fill(.clear)
-                if viewModel.state == .loading {
-                    ProgressView()
-                } else if viewModel.state == .idle {
-                    if let randomEmoji = viewModel.randomEmoji {
-                        EmojiView(viewModel: EmojiViewModel(emojiModel: randomEmoji)) {}
-                    }
-                }
-            }
-            .clipShape(Capsule())
-            .frame(maxWidth: .infinity)
-            .frame(height: 120)
             Button {
                 viewModel.fetchRandomEmoji()
             } label: {
@@ -29,16 +14,14 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             }
             .buttonStyle(.borderedProminent)
             NavigationLink(destination: {
-                EmojisListView(viewModel: EmojisListViewModel())
+                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emojis))
             }, label: {
                 Text(Localizable.emojisList)
                     .frame(maxWidth: .infinity)
             })
             .buttonStyle(.borderedProminent)
             Divider()
-        }
-        .onAppear {
-            viewModel.fetchEmojis()
+                .padding(.vertical, 16)
         }
     }
 }

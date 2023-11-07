@@ -3,18 +3,19 @@ import XCTest
 import Foundation
 import Combine
 
-final class EmojisListViewModelTests: XCTestCase {
+final class ImagesGridViewModelTests: XCTestCase {
     
     var adapter: EmojiAdapter!
-    var sut: EmojisListViewModel!
+    var sut: ImagesGridViewModel!
     var disposableBag: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        sut = EmojisListViewModel(
-            adapter: adapter,
-            shouldLoadEmojisOnInitialization: false
+        sut = ImagesGridViewModel(
+            emojisAdapter: adapter,
+            avatarsAdapter: AvatarAdapter(),
+            gridDataType: .emojis
         )
         disposableBag = Set<AnyCancellable>()
     }
@@ -28,9 +29,9 @@ final class EmojisListViewModelTests: XCTestCase {
     
     func test_fetchValidEmojis() {
         let expectation = XCTestExpectation(description: "Did receive emojis")
-        sut.fetchEmojis()
+        sut.fetchData()
         
-        sut.$emojis
+        sut.$data
             .dropFirst()
             .sink { emojis in
                 XCTAssertEqual(emojis.count, 4)
@@ -45,12 +46,13 @@ final class EmojisListViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Should not fullfil expectation")
         expectation.isInverted = true
         adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .invalidEmojiList))
-        sut = EmojisListViewModel(
-            adapter: adapter,
-            shouldLoadEmojisOnInitialization: false
+        sut = ImagesGridViewModel(
+            emojisAdapter: EmojiAdapter(),
+            avatarsAdapter: AvatarAdapter(),
+            gridDataType: .emojis
         )
         
-        sut.$emojis
+        sut.$data
             .dropFirst()
             .sink { emojis in
                 XCTAssertEqual(emojis.count, 0)

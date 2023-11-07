@@ -2,7 +2,7 @@ import UIKit
 import SwiftData
 
 @Model
-class EmojiModel: PersistentModelRepresentable {
+class AvatarModel: PersistentModelRepresentable {
     @Attribute(.unique) var name: String
     var imageUrl: URL
     @Attribute(.externalStorage) var imageData: Data?

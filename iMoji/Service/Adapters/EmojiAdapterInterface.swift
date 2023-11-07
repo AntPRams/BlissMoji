@@ -1,7 +1,7 @@
 import Foundation
 
-protocol EmojiAdapterInterface {
-    init(service: any Service, dataSource: EmojisDataSource)
+protocol EmojiAdapterInterface: AnyObject {
+    init(service: any Service)
     
     func fetchEmojisData() async throws -> [EmojiModel]
     func fetchRandomEmoji() async -> EmojiModel?

@@ -1,6 +1,28 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "avatarsGridTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous avatars found:"
+          }
+        }
+      }
+    },
+    "avatarsList" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Avatars List"
+          }
+        }
+      }
+    },
     "buttonOk" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -118,6 +140,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oops!\nSomething went wrong."
+          }
+        }
+      }
+    },
+    "searchFieldViewPlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by username"
           }
         }
       }

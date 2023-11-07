@@ -5,19 +5,19 @@ final class EmojiAdapter: EmojiAdapterInterface {
     // MARK: - Properties
     
     private let service: any Service
-    private let dataSource: EmojisDataSource
+    private let dataSource = PersistentDataSource.shared
     
     // MARK: - Init
     
-    init(service: any Service = GithubService<[String: String]>(), dataSource: EmojisDataSource = EmojisDataSource.shared) {
+    init(service: any Service = GithubService<[String: String]>()) {
         self.service = service
-        self.dataSource = dataSource
     }
     
-    // MARK: - Public work
+    // MARK: - Public interface
     
+    @discardableResult
     func fetchEmojisData() async throws -> [EmojiModel] {
-        let data = await dataSource.getEmojisList()
+        let data = await dataSource.fetchEmojisListFromPersistence()
         
         guard data.isNotEmpty else {
             
