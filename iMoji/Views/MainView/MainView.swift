@@ -12,7 +12,7 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
                 AvatarsSectionView(viewModel: viewModel)
                 Spacer()
             }
-            .padding(.horizontal, 16)
+            .padding(16)
             .navigationTitle(Localizable.navTitle)
             .errorAlert(error: $viewModel.error)
         }

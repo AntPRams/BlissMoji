@@ -30,3 +30,10 @@ struct ImageView<ViewModel: ImageViewModelInterface>: View {
         deleteAction()
     }
 }
+
+#Preview(traits: .sizeThatFitsLayout) {
+    ImageView(
+        viewModel: ImageViewModelMock(model: PersistentModelMock()),
+        deleteAction: {}
+    )
+}

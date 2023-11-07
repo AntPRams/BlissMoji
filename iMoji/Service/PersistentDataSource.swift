@@ -53,11 +53,6 @@ final class PersistentDataSource {
         modelContext.insert(avatar)
     }
     
-    func save(imageData: Data, into model: EmojiModel) {
-        model.setImageData(imageData)
-        try? modelContext.save()
-    }
-    
     func delete(avatar: AvatarModel) {
         modelContext.delete(avatar)
     }

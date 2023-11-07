@@ -5,13 +5,12 @@ final class AvatarAdapter: AvatarAdapterInterface {
     // MARK: - Properties
     
     private let service: any Service
-    private let dataSource: PersistentDataSource
+    private let dataSource = PersistentDataSource.shared
     
     // MARK: - Init
     
-    init(service: any Service = GithubService<AvatarNetworkModel>(), dataSource: PersistentDataSource = PersistentDataSource.shared) {
+    init(service: any Service = GithubService<AvatarNetworkModel>()) {
         self.service = service
-        self.dataSource = dataSource
     }
     
     // MARK: - Public interface

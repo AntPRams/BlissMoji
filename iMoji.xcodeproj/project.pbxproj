@@ -28,6 +28,10 @@
 		913983A62AF98F8600BC996E /* SearchFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983A52AF98F8600BC996E /* SearchFieldView.swift */; };
 		913983A92AF9ABB700BC996E /* AvatarsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983A82AF9ABB700BC996E /* AvatarsSectionView.swift */; };
 		913983AC2AF9C60A00BC996E /* Notification.Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983AB2AF9C60A00BC996E /* Notification.Name.swift */; };
+		913983AE2AF9CF9100BC996E /* ImageViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983AD2AF9CF9100BC996E /* ImageViewModelMock.swift */; };
+		913983AF2AF9CFBC00BC996E /* ImageViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983AD2AF9CF9100BC996E /* ImageViewModelMock.swift */; };
+		913983B12AF9D15E00BC996E /* PresistentModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983B02AF9D15E00BC996E /* PresistentModelMock.swift */; };
+		913983B22AF9D16200BC996E /* PresistentModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913983B02AF9D15E00BC996E /* PresistentModelMock.swift */; };
 		91670D792AF7F78400FFC655 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D782AF7F78400FFC655 /* MainViewModel.swift */; };
 		91670D7D2AF7F7CA00FFC655 /* ImagesGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7C2AF7F7CA00FFC655 /* ImagesGridViewModel.swift */; };
 		91670D7F2AF7F7D300FFC655 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670D7E2AF7F7D300FFC655 /* ImageViewModel.swift */; };
@@ -46,6 +50,10 @@
 		91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */; };
 		91670DA92AF8A52700FFC655 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */; };
 		91670DAB2AF8A57A00FFC655 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91670DAA2AF8A57A00FFC655 /* View.swift */; };
+		916D331A2AF9D37A008BA2FD /* AvatarAdapterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D33192AF9D37A008BA2FD /* AvatarAdapterMock.swift */; };
+		916D331B2AF9D37D008BA2FD /* AvatarAdapterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D33192AF9D37A008BA2FD /* AvatarAdapterMock.swift */; };
+		916D331E2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D331D2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift */; };
+		916D331F2AF9D473008BA2FD /* EmojiAdapterInterfaceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 916D331D2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift */; };
 		91E46DD32AF5B93800A835E4 /* iMoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD22AF5B93800A835E4 /* iMoji.swift */; };
 		91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E46DD42AF5B93800A835E4 /* MainView.swift */; };
 		91E46DD72AF5B93C00A835E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E46DD62AF5B93C00A835E4 /* Assets.xcassets */; };
@@ -94,6 +102,8 @@
 		913983A52AF98F8600BC996E /* SearchFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldView.swift; sourceTree = "<group>"; };
 		913983A82AF9ABB700BC996E /* AvatarsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarsSectionView.swift; sourceTree = "<group>"; };
 		913983AB2AF9C60A00BC996E /* Notification.Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.Name.swift; sourceTree = "<group>"; };
+		913983AD2AF9CF9100BC996E /* ImageViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModelMock.swift; sourceTree = "<group>"; };
+		913983B02AF9D15E00BC996E /* PresistentModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresistentModelMock.swift; sourceTree = "<group>"; };
 		91670D782AF7F78400FFC655 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		91670D7C2AF7F7CA00FFC655 /* ImagesGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesGridViewModel.swift; sourceTree = "<group>"; };
 		91670D7E2AF7F7D300FFC655 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +123,8 @@
 		91670DA42AF8A0F800FFC655 /* EmojisSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojisSectionView.swift; sourceTree = "<group>"; };
 		91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
 		91670DAA2AF8A57A00FFC655 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		916D33192AF9D37A008BA2FD /* AvatarAdapterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarAdapterMock.swift; sourceTree = "<group>"; };
+		916D331D2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiAdapterInterfaceMock.swift; sourceTree = "<group>"; };
 		91E46DCF2AF5B93800A835E4 /* iMoji.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMoji.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E46DD22AF5B93800A835E4 /* iMoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMoji.swift; sourceTree = "<group>"; };
 		91E46DD42AF5B93800A835E4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -286,6 +298,7 @@
 			children = (
 				91670D812AF8357D00FFC655 /* emojiList.json */,
 				91670D912AF8502A00FFC655 /* invalidEmojiList.json */,
+				913983B02AF9D15E00BC996E /* PresistentModelMock.swift */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -296,6 +309,9 @@
 				91670D802AF8354A00FFC655 /* Json */,
 				91670D8D2AF84AD200FFC655 /* GithubServiceMock.swift */,
 				91670D932AF852AF00FFC655 /* URLMocks.swift */,
+				913983AD2AF9CF9100BC996E /* ImageViewModelMock.swift */,
+				916D33192AF9D37A008BA2FD /* AvatarAdapterMock.swift */,
+				916D331D2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -517,7 +533,10 @@
 			files = (
 				91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */,
 				9139839A2AF8BC7900BC996E /* AvatarNetworkModel.swift in Sources */,
+				916D331F2AF9D473008BA2FD /* EmojiAdapterInterfaceMock.swift in Sources */,
+				913983AF2AF9CFBC00BC996E /* ImageViewModelMock.swift in Sources */,
 				910553222AF5DCA20083ADFF /* Array.swift in Sources */,
+				916D331B2AF9D37D008BA2FD /* AvatarAdapterMock.swift in Sources */,
 				913983A62AF98F8600BC996E /* SearchFieldView.swift in Sources */,
 				91670D982AF85A0800FFC655 /* ViewState.swift in Sources */,
 				91E46DD52AF5B93800A835E4 /* MainView.swift in Sources */,
@@ -546,6 +565,7 @@
 				913983A42AF8C32A00BC996E /* ImagePresenterView.swift in Sources */,
 				9105531D2AF5D2520083ADFF /* EndPoint.swift in Sources */,
 				910553252AF5E6670083ADFF /* EmojiModel.swift in Sources */,
+				913983B22AF9D16200BC996E /* PresistentModelMock.swift in Sources */,
 				9139839C2AF8BD8F00BC996E /* AvatarAdapterInterface.swift in Sources */,
 				9105531B2AF5D1840083ADFF /* APIClient.swift in Sources */,
 			);
@@ -555,9 +575,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916D331E2AF9D470008BA2FD /* EmojiAdapterInterfaceMock.swift in Sources */,
+				913983B12AF9D15E00BC996E /* PresistentModelMock.swift in Sources */,
 				91E46DE42AF5B93C00A835E4 /* EmojiAdapterTests.swift in Sources */,
 				91670D9C2AF85E2200FFC655 /* EmojiViewModelTests.swift in Sources */,
 				91670D942AF852AF00FFC655 /* URLMocks.swift in Sources */,
+				916D331A2AF9D37A008BA2FD /* AvatarAdapterMock.swift in Sources */,
+				913983AE2AF9CF9100BC996E /* ImageViewModelMock.swift in Sources */,
 				91670D8E2AF84AD200FFC655 /* GithubServiceMock.swift in Sources */,
 				91670D962AF8560D00FFC655 /* MainViewModelTests.swift in Sources */,
 				91670D9A2AF85B0E00FFC655 /* EmojisListViewModelTests.swift in Sources */,
