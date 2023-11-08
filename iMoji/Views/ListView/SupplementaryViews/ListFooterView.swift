@@ -15,11 +15,11 @@ struct ListFooterView: View {
         }
         .frame(height: 50)
         .onAppear {
-            viewModel.fetchRepos()
+            viewModel.fetchRepositories()
         }
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     ListFooterView(viewModel: ListViewModel())
 }

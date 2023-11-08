@@ -1,59 +1,67 @@
 @testable import iMoji
 import XCTest
 import Foundation
-import Combine
 
 final class ImageViewModelTests: XCTestCase {
     
-    var adapter: EmojiAdapter!
+    var repository: PersistentDataRepositoryMock!
     var sut: ImageViewModel!
-    var disposableBag: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
-        adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        let model = EmojiModel(
-            name: "some",
-            imageUrl: URL(string: "https://www.apple.com")!)
-        
-        sut = ImageViewModel(
-            model: model,
-            emojiAdapter: adapter
-        )
-        disposableBag = Set<AnyCancellable>()
+        setSut()
     }
     
     override func tearDown() {
         sut = nil
-        adapter = nil
-        disposableBag = nil
+        repository = nil
         super.tearDown()
     }
     
-    func test_fetchImage() {
-        sut.fetchImage()
-        let stateExpectation = XCTestExpectation(description: "Did set state")
-        let imageExpectation = XCTestExpectation(description: "Did receive image")
+    func test_viewState() async throws {
+        XCTAssertEqual(sut.viewState, .initial)
         
-        sut.$state
-            .dropFirst() //Dropping the initial value
-            .sink { state in
-                XCTAssertEqual(state, .idle)
-                stateExpectation.fulfill()
-            }
-            .store(in: &disposableBag)
+        sut.fetchImage(url: URL(string: "www.stub.com")!)
+        XCTAssertEqual(sut.viewState, .loading)
         
-        sut.$image
-            .dropFirst() //Dropping the initial value
-            .sink { image in
-                guard let _ = image else {
-                    XCTFail("Should have received an image")
-                    return
-                }
-                imageExpectation.fulfill()
-            }
-            .store(in: &disposableBag)
+        try await Task.sleep(nanoseconds: 300_000_000)
         
-        wait(for: [stateExpectation, imageExpectation], timeout: 0.1)
+        XCTAssertEqual(sut.viewState, .idle)
+    }
+    
+    func test_fetchImageWithError() async throws {
+        setSut(error: NetworkError.badRequest)
+        
+        XCTAssertNil(sut.error)
+        
+        sut.fetchImage(url: URL(string: "www.stub.com")!)
+        
+        try await Task.sleep(nanoseconds: 300_000_000)
+        
+        XCTAssertNotNil(sut.error)
+        XCTAssertEqual(sut.error as? NetworkError, .badRequest)
+    }
+}
+
+private extension ImageViewModelTests {
+    
+    func setSut(error: Error? = nil) {
+        repository = PersistentDataRepositoryMock()
+        
+        if error != nil {
+            repository.error = NetworkError.badRequest
+        }
+        
+        let model = MediaItem(
+            name: "some",
+            imageUrl: URL(string: "https://www.stub.com")!,
+            type: ItemType.emoji.rawValue
+        )
+        
+        sut = ImageViewModel(
+            item: model,
+            repository: repository,
+            shouldFetchImageOnInitialization: false
+        )
     }
 }

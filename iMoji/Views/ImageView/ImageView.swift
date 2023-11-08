@@ -6,7 +6,7 @@ struct ImageView: View {
     
     var body: some View {
         ZStack {
-            showProgressView(basedOn: viewModel.state)
+            showProgressView(basedOn: viewModel.viewState)
             Image(uiImage: viewModel.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)

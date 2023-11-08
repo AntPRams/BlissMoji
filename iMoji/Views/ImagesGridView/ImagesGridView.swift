@@ -30,6 +30,15 @@ struct ImagesGridView: View {
             viewModel.fetchData()
         }
         .errorAlert(error: $viewModel.error)
+        .overlay {
+            if viewModel.data.isEmpty {
+                ContentUnavailableView(
+                    Localizable.noResults,
+                    systemImage: "magnifyingglass",
+                    description: Text(viewModel.gridDataType.contentUnavailableDescription)
+                )
+            }
+        }
     }
     
     @ViewBuilder
