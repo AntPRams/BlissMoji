@@ -10,6 +10,13 @@ struct MainView: View {
                 ImagePresenterView(viewModel: viewModel)
                 EmojisSectionView(viewModel: viewModel)
                 AvatarsSectionView(viewModel: viewModel)
+                NavigationLink(destination: {
+                    ListView(viewModel: ListViewModel())
+                }, label: {
+                    Text(Localizable.avatarsList)
+                        .frame(maxWidth: .infinity)
+                })
+                
                 Spacer()
                 Button {
                     
