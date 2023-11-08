@@ -6,7 +6,7 @@ import Foundation
     var viewState: ViewState = .initial
     var repository: ReposDataRepository
     var reposData = [RepoModel]()
-    var moreDataAvailable: Bool = true
+    var isMoreDataAvailable: Bool = true
     private var currentPage = 1
     
     init(repository: ReposDataRepository = ReposDataRepository()) {
@@ -14,14 +14,14 @@ import Foundation
     }
     
     func fetchRepos() {
-        guard moreDataAvailable else { return }
+        guard isMoreDataAvailable else { return }
         viewState = .loading
         Task {
             do {
                 let repos = try await repository.fetchRepos(page: currentPage)
                 await MainActor.run {
                     if repos.isEmpty {
-                        moreDataAvailable = false
+                        isMoreDataAvailable = false
                     } else {
                         currentPage += 1
                         reposData.append(contentsOf: repos)

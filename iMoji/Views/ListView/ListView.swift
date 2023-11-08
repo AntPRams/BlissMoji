@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ListView: View {
     
-    let viewModel: ListViewModel
+    @Bindable var viewModel: ListViewModel
     
     var body: some View {
         List {
@@ -11,9 +11,17 @@ struct ListView: View {
                     ListItemView(repoName: name)
                 }
             }
-            if viewModel.moreDataAvailable {
-                ListFooterView(viewModel: viewModel)
-            }
+            presentFooter(if: viewModel.isMoreDataAvailable)
+        }
+        .errorAlert(error: $viewModel.error)
+    }
+    
+    @ViewBuilder
+    private func presentFooter(if moreDataIsAvailable: Bool) -> some View {
+        if moreDataIsAvailable {
+            ListFooterView(viewModel: viewModel)
+        } else {
+            EmptyView()
         }
     }
 }

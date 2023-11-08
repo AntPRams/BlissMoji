@@ -10,11 +10,7 @@ struct ImagesGridView: View {
     
     var body: some View {
         VStack {
-            if viewModel.gridDataType == .avatar {
-                Text(Localizable.avatarsGridTitle)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding([.bottom, .horizontal], 16)
-            }
+            presentHeader(basedOn: viewModel.gridDataType)
             ScrollView {
                 if viewModel.data.isNotEmpty {
                     LazyVGrid(columns: columns) {
@@ -34,6 +30,15 @@ struct ImagesGridView: View {
             viewModel.fetchData()
         }
         .errorAlert(error: $viewModel.error)
+    }
+    
+    @ViewBuilder
+    private func presentHeader(basedOn type: ItemType) -> some View {
+        if type == .avatar {
+            Text(Localizable.avatarsGridTitle)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.bottom, .horizontal], 16)
+        }
     }
 }
 

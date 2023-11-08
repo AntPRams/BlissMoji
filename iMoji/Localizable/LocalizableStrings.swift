@@ -14,6 +14,7 @@ enum Localizable {
     @Localized static var buttonOk = "buttonOk"
     @Localized static var emojisList = "emojisList"
     @Localized static var avatarsList = "avatarsList"
+    @Localized static var appleReposButton = "appleReposButton"
     
     // MARK: - Navigation
     @Localized static var navTitle = "navTitle"

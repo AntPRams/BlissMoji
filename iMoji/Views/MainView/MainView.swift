@@ -10,27 +10,14 @@ struct MainView: View {
                 ImagePresenterView(viewModel: viewModel)
                 EmojisSectionView(viewModel: viewModel)
                 AvatarsSectionView(viewModel: viewModel)
-                NavigationLink(destination: {
-                    ListView(viewModel: ListViewModel())
-                }, label: {
-                    Text(Localizable.avatarsList)
-                        .frame(maxWidth: .infinity)
-                })
-                
+                ReposSectionView()
                 Spacer()
-                Button {
-                    
-                } label: {
-                    Text(Localizable.buttonOk)
-                        .frame(maxWidth: .infinity)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(Color.red)
             }
             .padding(16)
             .navigationTitle(Localizable.navTitle)
             .errorAlert(error: $viewModel.error)
         }
+        .disabled(viewModel.state == .loading)
     }
 }
 

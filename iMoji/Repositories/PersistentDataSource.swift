@@ -38,8 +38,4 @@ final class PersistentDataSource {
     func delete(_ item: MediaItem) {
         modelContext.delete(item)
     }
-    
-    func deleteAllData() {
-        try? modelContext.delete(model: MediaItem.self)
-    }
 }
