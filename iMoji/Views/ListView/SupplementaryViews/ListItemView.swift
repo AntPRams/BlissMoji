@@ -9,6 +9,6 @@ struct ListItemView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     ListItemView(repoName: "test")
 }

@@ -20,6 +20,6 @@ struct ListFooterView: View {
     }
 }
 
-#Preview {
+#Preview(traits: .sizeThatFitsLayout) {
     ListFooterView(viewModel: ListViewModel())
 }

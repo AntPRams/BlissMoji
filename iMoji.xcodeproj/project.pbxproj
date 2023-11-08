@@ -210,8 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				910553132AF5BE570083ADFF /* Localizable.xcstrings */,
-				910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */,
 				910553162AF5C97C0083ADFF /* Localized.swift */,
+				910553182AF5CF0C0083ADFF /* LocalizableStrings.swift */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -305,8 +305,8 @@
 		91670D892AF845D200FFC655 /* APIClient */ = {
 			isa = PBXGroup;
 			children = (
-				9105531A2AF5D1840083ADFF /* APIClient.swift */,
 				91670D8A2AF845DE00FFC655 /* APIClientInterface.swift */,
+				9105531A2AF5D1840083ADFF /* APIClient.swift */,
 			);
 			path = APIClient;
 			sourceTree = "<group>";
