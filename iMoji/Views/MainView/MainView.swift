@@ -17,7 +17,7 @@ struct MainView: View {
             .navigationTitle(Localizable.navTitle)
             .errorAlert(error: $viewModel.error)
         }
-        .disabled(viewModel.state == .loading)
+        .allowsHitTesting(viewModel.state != .loading)
     }
 }
 

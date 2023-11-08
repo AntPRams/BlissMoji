@@ -18,8 +18,8 @@ struct SearchFieldView: View {
                 Image(systemName: "magnifyingglass")
             }
             .buttonStyle(.borderedProminent)
-            .disabled(viewModel.state == .loading)
         }
+        .allowsHitTesting(viewModel.state != .loading)
     }
 }
 
