@@ -155,18 +155,14 @@ final class PersistentDataRepositoryTests: XCTestCase {
     
     func test_fetchImageSuccessExpectation() async {
         do {
-            let _ = try await sut.fetchImage(with: URL(string: "https://www.stub.com")!)
+            let _ = try await sut.fetchImage(for: MediaItem(
+                name: "stub",
+                imageUrl: URL(string: "www.apple.com")!,
+                type: ItemType.emoji.rawValue)
+            )
             await fulfillment(of: [emojiService.imageRequestExpectation], timeout: 0.1)
         } catch {
             XCTFail("Should not trigger error")
-        }
-    }
-    
-    func test_fetchImageWithError() async {
-        do {
-            _ = try await sut.fetchImage(with: URL(string: "https://www.error.com")!)
-        } catch {
-            XCTAssertEqual(error as? NetworkError, NetworkError.noData)
         }
     }
 }

@@ -21,7 +21,7 @@ final class ImageViewModelTests: XCTestCase {
     func test_viewState() async throws {
         XCTAssertEqual(sut.viewState, .initial)
         
-        sut.fetchImage(url: URL(string: "www.stub.com")!)
+        sut.fetchImage()
         XCTAssertEqual(sut.viewState, .loading)
         
         try await Task.sleep(nanoseconds: 300_000_000)
@@ -34,7 +34,7 @@ final class ImageViewModelTests: XCTestCase {
         
         XCTAssertNil(sut.error)
         
-        sut.fetchImage(url: URL(string: "www.stub.com")!)
+        sut.fetchImage()
         
         try await Task.sleep(nanoseconds: 300_000_000)
         

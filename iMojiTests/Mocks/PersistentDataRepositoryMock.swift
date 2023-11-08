@@ -40,7 +40,7 @@ final class PersistentDataRepositoryMock: PersistentDataRepositoryInterface {
         )
     }
     
-    func fetchImage(with url: URL) async throws -> Data {
+    func fetchImage(for item: iMoji.MediaItem) async throws -> Data {
         guard let error else { return Data() }
         throw error
     }

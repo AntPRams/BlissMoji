@@ -123,8 +123,7 @@ private extension ImagesGridViewModelTests {
     func subscribeToUserRemovalNotification(expectaction: XCTestExpectation, name: String) {
         NotificationCenter.default.publisher(for: .didRemoveAvatarFromPersistence)
             .compactMap { $0.object as? String }
-            .sink { [weak self] avatarName in
-                guard let self else { return }
+            .sink { avatarName in
                 XCTAssertEqual(avatarName, name)
                 expectaction.fulfill()
             }
