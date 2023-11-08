@@ -21,22 +21,21 @@ class ImageViewModel {
         self.item = item
         self.repository = repository
         guard shouldFetchImageOnInitialization else { return }
-        fetchImage(url: item.imageUrl)
+        fetchImage()
     }
     
     // MARK: - Public Interface
     
-    func fetchImage(url: URL) {
+    func fetchImage() {
         guard let image = item.image else {
             viewState = .loading
             Task { [weak self] in
                 guard let self else { return }
                 do {
-                    let imageData = try await repository.fetchImage(with: url)
+                    let imageData = try await repository.fetchImage(for: item)
                     await MainActor.run {
-                        self.item.imageData = imageData
                         self.viewState = .idle
-                        guard let itemImage = self.item.image else { return }
+                        guard let itemImage = UIImage(data: imageData) else { return }
                         self.image = itemImage
                     }
                 } catch {

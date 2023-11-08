@@ -4,10 +4,11 @@ import SwiftData
 /// A model class representing a media item for persistence using SwiftData framework.
 @Model
 class MediaItem {
+    @Attribute(.unique) var modelId: String = UUID().uuidString
     /// The name of the item.
-    @Attribute(.unique) var name: String
+    var name: String
     /// The URL of the item's image.
-    @Attribute(.unique) var imageUrl: URL
+    var imageUrl: URL
     /// The item's image data.
     @Attribute(.externalStorage) var imageData: Data?
     
@@ -31,5 +32,9 @@ class MediaItem {
         self.name = name
         self.imageUrl = imageUrl
         self.type = type
+    }
+    
+    func update<T>(keyPath: ReferenceWritableKeyPath<MediaItem, T>, to value: T) {
+        self[keyPath: keyPath] = value
     }
 }

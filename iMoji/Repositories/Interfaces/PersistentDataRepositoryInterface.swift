@@ -36,10 +36,10 @@ protocol PersistentDataRepositoryInterface: AnyObject {
     /// Asynchronously fetches image data from a specified URL.
     ///
     /// - Parameters:
-    ///   - url: The URL from which to fetch image data.
+    ///   - item: The `MediaItem` to which the image should be fetched
     /// - Returns: Data representing the image from the specified URL.
     /// - Throws: An error if the fetch operation fails.
-    func fetchImage(with url: URL) async throws -> Data
+    func fetchImage(for item: MediaItem) async throws -> Data
     
     /// Removes a user and their associated media item from the persistent storage context.
     ///
