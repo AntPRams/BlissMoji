@@ -11,7 +11,7 @@ final class PersistentDataRepository {
     // MARK: - Init
     
     init(
-        avatarsService: any Service = GithubService<AvatarNetworkModel>(),
+        avatarsService: any Service = GithubService<AvatarModel>(),
         emojisService: any Service = GithubService<[String: String]>()
     ) {
         self.avatarsService = avatarsService
@@ -49,7 +49,7 @@ final class PersistentDataRepository {
         
         guard let avatar = await dataSource.fetchItems(with: predicate).first else {
             if 
-                let data = try await avatarsService.fetchData(from: .avatar(user: name)) as? AvatarNetworkModel,
+                let data = try await avatarsService.fetchData(from: .avatar(user: name)) as? AvatarModel,
                 let avatar = mapAvatar(from: data)
             {
                 await dataSource.insert([avatar])
@@ -92,7 +92,7 @@ private extension PersistentDataRepository {
         return list
     }
     
-    func mapAvatar(from model: AvatarNetworkModel) -> MediaItem? {
+    func mapAvatar(from model: AvatarModel) -> MediaItem? {
         if
             let name = model.name,
             let imageUrl = model.avatarUrl,

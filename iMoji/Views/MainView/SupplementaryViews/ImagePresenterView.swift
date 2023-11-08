@@ -9,15 +9,20 @@ struct ImagePresenterView: View {
             ContainerRelativeShape()
                 .inset(by: 4)
                 .fill(.clear)
-            if viewModel.state == .loading {
-                ProgressView()
-            } else if let item = viewModel.displayedItem {
-                ImageView(viewModel: ImageViewModel(item: item))
-            }
+            presentProgressView(basedOn: viewModel.state)
         }
         .clipShape(Capsule())
         .frame(maxWidth: .infinity)
         .frame(height: 120)
+    }
+    
+    @ViewBuilder
+    private func presentProgressView(basedOn viewState: ViewState) -> some View {
+        if viewState == .loading {
+            ProgressView()
+        } else if let item = viewModel.displayedItem {
+            ImageView(viewModel: ImageViewModel(item: item))
+        }
     }
 }
 

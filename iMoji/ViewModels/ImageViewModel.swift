@@ -1,5 +1,4 @@
 import UIKit
-import Combine
 
 @Observable class ImageViewModel {
     
@@ -8,8 +7,6 @@ import Combine
     var error: Error?
     var state: ViewState = .initial
     var image: UIImage = UIImage()
-    
-    private var disposableBag = Set<AnyCancellable>()
     
     init(
         item: MediaItem,
@@ -29,7 +26,6 @@ import Combine
                 do {
                     let imageData = try await repository.fetchImage(with: url)
                     await MainActor.run {
-                        // We removed the image data set here
                         self.item.imageData = imageData
                         self.state = .idle
                         guard let itemImage = item.image else { return }

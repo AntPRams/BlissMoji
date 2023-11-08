@@ -1,6 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "appleReposButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Repos"
+          }
+        }
+      }
+    },
     "avatarsGridTitle" : {
       "extractionState" : "manual",
       "localizations" : {
