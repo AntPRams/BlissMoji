@@ -1,6 +1,6 @@
 import Foundation
 
-final class ReposDataRepository {
+final class ReposDataRepository: ReposDataRepositoryInterface {
     
     // MARK: - Properties
     

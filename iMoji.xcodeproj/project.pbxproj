@@ -56,6 +56,9 @@
 		91E484EC2AFB24B6001E3B70 /* ListFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484EB2AFB24B6001E3B70 /* ListFooterView.swift */; };
 		91E484EF2AFB27D9001E3B70 /* ReposSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484EE2AFB27D9001E3B70 /* ReposSectionView.swift */; };
 		91E484F32AFB2BCE001E3B70 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484F22AFB2BCE001E3B70 /* Collection.swift */; };
+		91E484F52AFB3FB0001E3B70 /* ItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484F42AFB3FB0001E3B70 /* ItemType.swift */; };
+		91E484F72AFB455D001E3B70 /* PersistentDataRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484F62AFB455D001E3B70 /* PersistentDataRepositoryInterface.swift */; };
+		91E484FA2AFB46EB001E3B70 /* ReposDataRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E484F92AFB46EB001E3B70 /* ReposDataRepositoryInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,9 @@
 		91E484EB2AFB24B6001E3B70 /* ListFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListFooterView.swift; sourceTree = "<group>"; };
 		91E484EE2AFB27D9001E3B70 /* ReposSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposSectionView.swift; sourceTree = "<group>"; };
 		91E484F22AFB2BCE001E3B70 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		91E484F42AFB3FB0001E3B70 /* ItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemType.swift; sourceTree = "<group>"; };
+		91E484F62AFB455D001E3B70 /* PersistentDataRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentDataRepositoryInterface.swift; sourceTree = "<group>"; };
+		91E484F92AFB46EB001E3B70 /* ReposDataRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposDataRepositoryInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 				910553202AF5DC9A0083ADFF /* Extensions */,
 				9105530B2AF5BC850083ADFF /* Error */,
 				91670D972AF85A0800FFC655 /* ViewState.swift */,
+				91E484F42AFB3FB0001E3B70 /* ItemType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -408,11 +415,21 @@
 		91E484F12AFB2B7C001E3B70 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				91E484F82AFB46BF001E3B70 /* Interfaces */,
 				91670DA22AF8915400FFC655 /* PersistentDataSource.swift */,
 				913983A12AF8BEF700BC996E /* PersistentDataRepository.swift */,
 				91E484DE2AFB1AA4001E3B70 /* ReposDataRepository.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		91E484F82AFB46BF001E3B70 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				91E484F62AFB455D001E3B70 /* PersistentDataRepositoryInterface.swift */,
+				91E484F92AFB46EB001E3B70 /* ReposDataRepositoryInterface.swift */,
+			);
+			path = Interfaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -550,6 +567,7 @@
 			files = (
 				91670D8B2AF845DE00FFC655 /* APIClientInterface.swift in Sources */,
 				9139839A2AF8BC7900BC996E /* AvatarModel.swift in Sources */,
+				91E484F72AFB455D001E3B70 /* PersistentDataRepositoryInterface.swift in Sources */,
 				910553222AF5DCA20083ADFF /* Array.swift in Sources */,
 				913983A62AF98F8600BC996E /* SearchFieldView.swift in Sources */,
 				91670D982AF85A0800FFC655 /* ViewState.swift in Sources */,
@@ -559,7 +577,9 @@
 				91670D7F2AF7F7D300FFC655 /* ImageViewModel.swift in Sources */,
 				910553172AF5C97C0083ADFF /* Localized.swift in Sources */,
 				91670DAB2AF8A57A00FFC655 /* View.swift in Sources */,
+				91E484FA2AFB46EB001E3B70 /* ReposDataRepositoryInterface.swift in Sources */,
 				91E484E12AFB1B0D001E3B70 /* RepoModel.swift in Sources */,
+				91E484F52AFB3FB0001E3B70 /* ItemType.swift in Sources */,
 				91670DA52AF8A0F800FFC655 /* EmojisSectionView.swift in Sources */,
 				9105531F2AF5DB040083ADFF /* GithubService.swift in Sources */,
 				9105532A2AF5F2E00083ADFF /* ImageView.swift in Sources */,

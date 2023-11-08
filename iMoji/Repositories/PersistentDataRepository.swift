@@ -1,6 +1,6 @@
 import Foundation
 
-final class PersistentDataRepository {
+final class PersistentDataRepository: PersistentDataRepositoryInterface {
     
     // MARK: - Properties
     
@@ -48,7 +48,7 @@ final class PersistentDataRepository {
         }
         
         guard let avatar = await dataSource.fetchItems(with: predicate).first else {
-            if 
+            if
                 let data = try await avatarsService.fetchData(from: .avatar(user: name)) as? AvatarModel,
                 let avatar = mapAvatar(from: data)
             {
@@ -77,9 +77,7 @@ private extension PersistentDataRepository {
     
     func mapEmojis(from data: [String: String]) -> [MediaItem] {
         let list = data.compactMap { (key: String, value: String) -> MediaItem? in
-            guard let url = URL(string: value) else {
-                return nil
-            }
+            guard let url = URL(string: value) else { return nil }
             
             let model = MediaItem(
                 name: key,
