@@ -64,8 +64,10 @@ final class PersistentDataRepository: PersistentDataRepositoryInterface {
         try await fetchItems(.emoji).randomElement()
     }
     
-    func fetchImage(with url: URL) async throws -> Data {
-        try await emojisService.fetchImage(from: url)
+    func fetchImage(for item: MediaItem) async throws -> Data {
+        let data = try await emojisService.fetchImage(from: item.imageUrl)
+        await dataSource.updateImage(item, data: data)
+        return data
     }
     
     func removeUser(with item: MediaItem) async {
