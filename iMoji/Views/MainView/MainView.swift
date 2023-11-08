@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MainView<ViewModel: MainViewModelInterface>: View {
+struct MainView: View {
     
-    @StateObject var viewModel: ViewModel
+    @Bindable var viewModel: MainViewModel
     
     var body: some View {
         NavigationStack {
@@ -10,12 +10,14 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
                 ImagePresenterView(viewModel: viewModel)
                 EmojisSectionView(viewModel: viewModel)
                 AvatarsSectionView(viewModel: viewModel)
+                ReposSectionView()
                 Spacer()
             }
             .padding(16)
             .navigationTitle(Localizable.navTitle)
             .errorAlert(error: $viewModel.error)
         }
+        .allowsHitTesting(viewModel.state != .loading)
     }
 }
 

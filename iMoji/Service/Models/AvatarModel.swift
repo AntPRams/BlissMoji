@@ -1,23 +1,14 @@
-import UIKit
-import SwiftData
+import Foundation
 
-@Model
-class AvatarModel: PersistentModelRepresentable {
-    @Attribute(.unique) var name: String
-    var imageUrl: URL
-    @Attribute(.externalStorage) var imageData: Data?
+struct AvatarModel: Decodable {
     
-    var image: UIImage? {
-        guard let imageData else { return nil }
-        return UIImage(data: imageData)
-    }
+    let id: Int?
+    let name: String?
+    let avatarUrl: String?
     
-    init(name: String, imageUrl: URL) {
-        self.name = name
-        self.imageUrl = imageUrl
-    }
-    
-    func setImageData(_ data: Data?) {
-        self.imageData = data
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name = "login"
+        case avatarUrl = "avatar_url"
     }
 }

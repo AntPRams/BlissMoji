@@ -1,15 +1,8 @@
-//
-//  SearchFieldView.swift
-//  iMoji
-//
-//  Created by António Ramos on 06/11/2023.
-//
-
 import SwiftUI
 
-struct SearchFieldView<ViewModel: MainViewModelInterface>: View {
+struct SearchFieldView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    @Bindable var viewModel: MainViewModel
     @FocusState private var isFocused: Bool
     
     var body: some View {
@@ -25,8 +18,8 @@ struct SearchFieldView<ViewModel: MainViewModelInterface>: View {
                 Image(systemName: "magnifyingglass")
             }
             .buttonStyle(.borderedProminent)
-            .disabled(viewModel.state == .loading)
         }
+        .allowsHitTesting(viewModel.state != .loading)
     }
 }
 

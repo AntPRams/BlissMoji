@@ -1,39 +1,35 @@
 import SwiftUI
 
-struct ImageView<ViewModel: ImageViewModelInterface>: View {
+struct ImageView: View {
     
-    @StateObject var viewModel: ViewModel
-    var deleteAction: () -> Void?
+    let viewModel: ImageViewModel
     
     var body: some View {
-        VStack {
-            if viewModel.state == .loading {
-                ZStack {
-                    ProgressView()
-                    Image(systemName: "photo")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                }
-            } else if let image = viewModel.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 80, height: 80)
-            }
-            Text(viewModel.model.name)
+        ZStack {
+            showProgressView(basedOn: viewModel.state)
+            Image(uiImage: viewModel.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 80, height: 80)
+                .cornerRadius(14)
         }
-        .onTapGesture(perform: performDeleteActionIfAvailable)
+        .padding(6)
+        .cornerRadius(10) /// make the background rounded
+        .overlay( /// apply a rounded border
+            RoundedRectangle(cornerRadius: 20)
+                .stroke(Color(uiColor: .systemGray6), lineWidth: 3)
+        )
     }
     
-    private func performDeleteActionIfAvailable() {
-        deleteAction()
+    @ViewBuilder
+    private func showProgressView(basedOn viewState: ViewState) -> some View {
+        if viewState == .loading {
+            ProgressView()
+        }
     }
 }
 
 #Preview(traits: .sizeThatFitsLayout) {
     ImageView(
-        viewModel: ImageViewModelMock(model: PersistentModelMock()),
-        deleteAction: {}
-    )
+        viewModel: ImageViewModel(item: MediaItem(name: "", imageUrl: URL(string: "")!, type: ItemType.emoji.rawValue)))
 }

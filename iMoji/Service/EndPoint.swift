@@ -16,7 +16,7 @@ enum EndPoint {
         case .repos(let user, let page, let size):
             let page = URLQueryItem(name: "page", value: "\(page)")
             let size = URLQueryItem(name: "per_page", value: "\(size)")
-            return EndPoint.url("/users/\(user)", queryItems: [page, size])
+            return EndPoint.url("/users/\(user)/repos", queryItems: [page, size])
         }
     }
 }

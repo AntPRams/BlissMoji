@@ -1,28 +1,28 @@
 import SwiftUI
 
-struct ImagePresenterView<ViewModel: MainViewModelInterface>: View {
+struct ImagePresenterView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    let viewModel: MainViewModel
     
     var body: some View {
         ZStack {
             ContainerRelativeShape()
                 .inset(by: 4)
                 .fill(.clear)
-            if viewModel.state == .loading {
-                ProgressView()
-            } else if viewModel.state == .idle {
-                if let randomEmoji = viewModel.modelToPresent {
-                    ImageView(
-                        viewModel: ImageViewModel(model: randomEmoji),
-                        deleteAction: {}
-                    )
-                }
-            }
+            presentProgressView(basedOn: viewModel.state)
         }
         .clipShape(Capsule())
         .frame(maxWidth: .infinity)
         .frame(height: 120)
+    }
+    
+    @ViewBuilder
+    private func presentProgressView(basedOn viewState: ViewState) -> some View {
+        if viewState == .loading {
+            ProgressView()
+        } else if let item = viewModel.displayedItem {
+            ImageView(viewModel: ImageViewModel(item: item))
+        }
     }
 }
 

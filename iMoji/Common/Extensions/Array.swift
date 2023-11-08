@@ -3,4 +3,3 @@ extension Array {
         !isEmpty
     }
 }
-
