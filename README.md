@@ -52,9 +52,9 @@ Here's a simple diagram depicting the app's layers and how data flows:
 
 ![iMoji diagram](https://github.com/AntPRams/iMoji/assets/36003116/6617142e-f9d2-4d61-a650-64bf8a3b8dcb)
 
-To store data, I decided to explore `SwiftData`. Currently, `SwiftData` works well wthin processes executed on the main thread, especially if implemented in the View layer. However, I aimed to separate concerns, so I'm using a `PersistentDataSource` exposed to the @MainActor. This allows me to execute instructions safely outside the view layer. Unfortunately, `SwiftData` is not yet ready for production, particularly when working with more complex data structures.
+To store data, I decided to explore `SwiftData`. Currently, `SwiftData` works well wthin processes executed on the main thread, especially if implemented in the View layer. However, I aimed to separate concerns, so I'm using a `PersistentDataSource` exposed to the `@MainActor`. This allows me to execute instructions safely outside the view layer. Unfortunately, `SwiftData` is not yet ready for production, particularly when working with more complex data structures.
 
-On the other hand, SwiftData is simpler and easier to use than CoreData.
+On the other hand, `SwiftData` is simpler and easier to use than `CoreData`.
 
 To create a repository, you only need to do this:
 
