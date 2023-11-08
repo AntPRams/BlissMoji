@@ -8,7 +8,10 @@ final class GithubServiceMock<Model: Decodable>: Service {
     private var apiClient: APIClientInterface
     var mockUrl: MockDataFile
     
-    let expectation = XCTestExpectation(description: "Did request image")
+    var shouldTryFulfillExpectation: Bool = false
+    
+    let imageRequestExpectation = XCTestExpectation(description: "Did request image")
+    let networkRequestExpectation = XCTestExpectation(description: "Network request expectation")
     
     init(apiClient: APIClientInterface = APIClient(), mockUrl: MockDataFile) {
         self.apiClient = apiClient
@@ -16,6 +19,9 @@ final class GithubServiceMock<Model: Decodable>: Service {
     }
     
     func fetchData(from endPoint: iMoji.EndPoint) async throws -> Model {
+        if shouldTryFulfillExpectation {
+            networkRequestExpectation.fulfill()
+        }
         guard let url = URLMocks.getMockDataUrl(for: mockUrl) else {
             throw NetworkError.unknown
         }
@@ -33,7 +39,7 @@ final class GithubServiceMock<Model: Decodable>: Service {
         if url.absoluteString == "https://www.error.com" {
             throw NetworkError.noData
         } else {
-            expectation.fulfill()
+            imageRequestExpectation.fulfill()
             let mockImageData = UIImage(systemName: "photo")
             //The force unwrapping was set on purpose since we are on a test context
             let data = mockImageData!.pngData()!

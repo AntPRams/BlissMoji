@@ -1,5 +1,6 @@
 import Foundation
 
+/// An enum representing network-related errors with localized descriptions.
 enum NetworkError: Error {
     case redirected
     case badRequest
@@ -12,6 +13,7 @@ enum NetworkError: Error {
 }
 
 extension NetworkError: LocalizedError {
+    /// A localized description for the network error.
     public var errorDescription: String? {
         switch self {
         case .redirected:

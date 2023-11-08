@@ -7,7 +7,7 @@ struct SearchFieldView: View {
     
     var body: some View {
         HStack {
-            TextField(Localizable.searchFieldViewPlaceholder, text: $viewModel.nameQuery)
+            TextField(Localizable.searchFieldViewPlaceholder, text: $viewModel.query)
                 .textFieldStyle(.roundedBorder)
                 .focused($isFocused)
                 .autocorrectionDisabled()
@@ -19,7 +19,6 @@ struct SearchFieldView: View {
             }
             .buttonStyle(.borderedProminent)
         }
-        .allowsHitTesting(viewModel.state != .loading)
     }
 }
 

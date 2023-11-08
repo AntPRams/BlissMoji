@@ -1,37 +1,50 @@
 import Foundation
 
-@Observable class ListViewModel {
+@Observable 
+class ListViewModel {
     
+    // MARK: - Properties
+    
+    let repository: RepositoriesDataRepositoryInterface
     var error: Error?
     var viewState: ViewState = .initial
-    var repository: ReposDataRepository
-    var reposData = [RepoModel]()
+    var repositoriesData = [RepositoryModel]()
     var isMoreDataAvailable: Bool = true
     private var currentPage = 1
     
-    init(repository: ReposDataRepository = ReposDataRepository()) {
+    // MARK: - Init
+    
+    init(repository: RepositoriesDataRepositoryInterface = RepositoriesDataRepository()) {
         self.repository = repository
     }
     
-    func fetchRepos() {
+    // MARK: - Public Interface
+    
+    func fetchRepositories() {
         guard isMoreDataAvailable else { return }
         viewState = .loading
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
-                let repos = try await repository.fetchRepos(page: currentPage)
+                let repos = try await repository.fetchRepositories(
+                    user: "apple",
+                    page: currentPage,
+                    resultsPerPage: 10
+                )
                 await MainActor.run {
                     if repos.isEmpty {
-                        isMoreDataAvailable = false
+                        self.isMoreDataAvailable = false
                     } else {
-                        currentPage += 1
-                        reposData.append(contentsOf: repos)
+                        self.currentPage += 1
+                        self.repositoriesData.append(contentsOf: repos)
                     }
-                    viewState = .idle
+                    self.viewState = .idle
                 }
             } catch {
                 await MainActor.run {
                     self.error = error
-                    viewState = .idle
+                    self.viewState = .idle
+                    self.isMoreDataAvailable = false
                 }
             }
         }

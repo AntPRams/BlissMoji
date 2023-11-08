@@ -1,79 +1,94 @@
 import Foundation
 import Combine
 
-@Observable class MainViewModel {
+@Observable 
+class MainViewModel {
     
-    let repository: PersistentDataRepository
-    var error: Error?
+    // MARK: - Properties
+    
+    let repository: PersistentDataRepositoryInterface
     var displayedItem: MediaItem?
-    var nameQuery: String = String()
-    var state: ViewState = .initial
+    var query: String = String()
+    var viewState: ViewState = .initial
+    var error: Error?
     
     private var disposableBag = Set<AnyCancellable>()
     
-    init(repository: PersistentDataRepository = PersistentDataRepository()) {
+    // MARK: - Init
+    
+    init(repository: PersistentDataRepositoryInterface = PersistentDataRepository()) {
         self.repository = repository
         subscribeToAvatarRemovalNotification()
         fetchEmojis()
     }
     
+    // MARK: - Public Interface
+    
     func fetchEmojis() {
-        state = .loading
-        Task {
+        viewState = .loading
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 try await repository.fetchItems(.emoji)
                 await MainActor.run {
-                    self.state = .idle
+                    self.viewState = .idle
                 }
             } catch {
-                await MainActor.run {
-                    self.error = error
-                    self.state = .idle
-                }
+                await react(to: error)
             }
         }
     }
     
     func fetchRandomEmoji() {
-        state = .loading
-        Task {
+        viewState = .loading
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let emoji = try await repository.fetchRandomEmoji()
                 await MainActor.run {
                     self.displayedItem = emoji
-                    self.state = .idle
+                    self.viewState = .idle
                 }
             } catch {
-                await MainActor.run {
-                    self.error = error
-                    self.state = .idle
-                }
+                await react(to: error)
             }
         }
     }
     
     func searchUser() {
-        // TODO: - ensure that the field has data
-        state = .loading
-        Task {
+        if query.isEmpty {
+            error = AppError.userNameMissing
+            return
+        }
+        viewState = .loading
+        Task { [weak self] in
+            guard let self else { return }
             do {
-                let user = try await repository.fetchAvatar(user: nameQuery)
+                let user = try await repository.fetchAvatar(user: query)
                 await MainActor.run {
-                    self.nameQuery = String()
-                    self.state = .idle
+                    self.query = String()
+                    self.viewState = .idle
                     self.displayedItem = user
                 }
             } catch {
-                await MainActor.run {
-                    self.error = error
-                    self.state = .idle
-                }
+                await react(to: error)
             }
         }
     }
 }
 
+// MARK: - Private work
+
 private extension MainViewModel {
+    
+    private func react(to error: Error) async {
+        await MainActor.run { [weak self] in
+            guard let self else { return }
+            self.error = error
+            self.viewState = .idle
+        }
+    }
+    
     func subscribeToAvatarRemovalNotification() {
         NotificationCenter.default.publisher(for: .didRemoveAvatarFromPersistence)
             .compactMap { $0.object as? String }

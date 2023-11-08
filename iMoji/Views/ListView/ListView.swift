@@ -6,7 +6,7 @@ struct ListView: View {
     
     var body: some View {
         List {
-            ForEach(viewModel.reposData, id: \.id) { repo in
+            ForEach(viewModel.repositoriesData, id: \.id) { repo in
                 if let name = repo.name {
                     ListItemView(repoName: name)
                 }

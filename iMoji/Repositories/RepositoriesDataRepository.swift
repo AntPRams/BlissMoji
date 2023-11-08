@@ -1,6 +1,6 @@
 import Foundation
 
-final class ReposDataRepository {
+final class RepositoriesDataRepository: RepositoriesDataRepositoryInterface {
     
     // MARK: - Properties
     
@@ -8,25 +8,25 @@ final class ReposDataRepository {
     
     // MARK: - Init
     
-    init(service: any Service = GithubService<[RepoModel]>()) {
+    init(service: any Service = GithubService<[RepositoryModel]>()) {
         self.service = service
     }
     
     // MARK: - Public interface
     
-    func fetchRepos(
-        user: String = "apple",
+    func fetchRepositories(
+        user: String,
         page: Int,
-        resultPerPage: Int = 10
-    ) async throws -> [RepoModel] {
+        resultsPerPage: Int
+    ) async throws -> [RepositoryModel] {
         
         if let data = try await service.fetchData(
-            from: .repos(
+            from: .repositories(
                 user: user,
                 page: page,
-                size: resultPerPage
+                size: resultsPerPage
             )
-        ) as? [RepoModel] {
+        ) as? [RepositoryModel] {
             return data
         }
         return []

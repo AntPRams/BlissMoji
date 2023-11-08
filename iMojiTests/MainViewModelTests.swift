@@ -1,52 +1,117 @@
 @testable import iMoji
 import XCTest
 import Foundation
-import Combine
 
 final class MainViewModelTests: XCTestCase {
     
-    var adapter: EmojiAdapter!
+    var repository: PersistentDataRepositoryMock!
     var sut: MainViewModel!
-    var disposableBag: Set<AnyCancellable>!
     
     override func setUp() {
         super.setUp()
-        adapter = EmojiAdapter(service: GithubServiceMock<[String: String]>(mockUrl: .emojiList))
-        sut = MainViewModel(emojiAdapter: EmojiAdapter(), avatarAdapter: AvatarAdapter())
-        disposableBag = Set<AnyCancellable>()
+        setSut()
     }
     
     override func tearDown() {
         sut = nil
-        adapter = nil
-        disposableBag = nil
+        repository = nil
         super.tearDown()
     }
     
-    func test_fetchRandomEmoji() {
+    func test_fetchRandomEmoji() async throws {
+        XCTAssertNil(sut.displayedItem)
         sut.fetchRandomEmoji()
-        let stateExpectation = XCTestExpectation(description: "Did set state")
-        let randomEmojiExpectation = XCTestExpectation(description: "Did receive emoji")
         
-        sut.$state
-            .dropFirst() //Dropping the initial value
-            .sink { state in
-                XCTAssertEqual(state, .idle)
-                stateExpectation.fulfill()
-            }
-            .store(in: &disposableBag)
+        /// At the moment there are no easy options to test models with the `@Observable` macro
+        ///
+        /// - Note: This issue is addressed on project Readme
+        try await Task.sleep(nanoseconds: 300_000_000)
         
-        sut.$modelToPresent
-            .dropFirst() //Dropping the initial value
-            .sink { emoji in
-                guard let emoji else {
-                    XCTFail("Should have received an emoji")
-                    return
-                }
-                randomEmojiExpectation.fulfill()
-            }
-            .store(in: &disposableBag)
+        XCTAssertNotNil(sut.displayedItem)
+        XCTAssertEqual(sut.displayedItem?.type, ItemType.emoji.rawValue)
+        XCTAssertEqual(sut.displayedItem?.imageUrl.absoluteString, "stub")
+    }
+    
+    func test_searchUserWithoutQuery() async throws {
+        XCTAssertNil(sut.error)
+        sut.searchUser()
         
-        wait(for: [stateExpectation, randomEmojiExpectation], timeout: 0.1)
+        try await Task.sleep(nanoseconds: 300_000_000)
+        
+        XCTAssertNil(sut.displayedItem)
+        XCTAssertEqual(sut.error as? AppError, .userNameMissing)
+    }
+    
+    func test_searchUserWithQuery() async throws {
+        XCTAssertNil(sut.displayedItem)
+        sut.query = "stub"
+        sut.searchUser()
+        
+        try await Task.sleep(nanoseconds: 300_000_000)
+        
+        XCTAssertNotNil(sut.displayedItem)
+        XCTAssertEqual(sut.displayedItem?.type, ItemType.avatar.rawValue)
+        XCTAssertEqual(sut.displayedItem?.imageUrl.absoluteString, "stub")
+    }
+    
+    func test_removeDisplayedUserIfNameIsEqual() async throws {
+        sut.query = "stub"
+        sut.searchUser()
+        
+        try await Task.sleep(nanoseconds: 500_000_000)
+        
+        XCTAssertNotNil(sut.displayedItem)
+        XCTAssertEqual(sut.displayedItem?.type, ItemType.avatar.rawValue)
+        
+        postAvatarRemovalNotification(with: "avatar-stub")
+        
+        XCTAssertNil(sut.displayedItem)
+    }
+    
+    func test_dontRemoveDisplayedUserIfNameIsNotEqual() async throws {
+        sut.query = "stub"
+        sut.searchUser()
+        
+        try await Task.sleep(nanoseconds: 500_000_000)
+        
+        XCTAssertNotNil(sut.displayedItem)
+        XCTAssertEqual(sut.displayedItem?.type, ItemType.avatar.rawValue)
+        
+        postAvatarRemovalNotification(with: "avatar")
+        
+        XCTAssertNotNil(sut.displayedItem)
+    }
+    
+    func test_errorIsBeingPopulatedWhenFetchFails() async throws {
+        repository.error = NetworkError.badRequest
+        XCTAssertNil(sut.error)
+        sut.fetchEmojis()
+        
+        try await Task.sleep(nanoseconds: 300_000_000)
+        
+        XCTAssertEqual(sut.error as? NetworkError, .badRequest)
+    }
+}
+
+private extension MainViewModelTests {
+    
+    func postAvatarRemovalNotification(with name: String) {
+        NotificationCenter.default.post(
+            name: .didRemoveAvatarFromPersistence,
+            object: name
+        )
+    }
+    
+    func setSut(
+        emojiMockPayload: MockDataFile = .emojiList,
+        avatarMockPayload: MockDataFile = .validUserData
+    ) {
+        let emojiService = GithubServiceMock<[String: String]>(mockUrl: emojiMockPayload)
+        let avatarService = GithubServiceMock<AvatarModel>(mockUrl: avatarMockPayload)
+        repository = PersistentDataRepositoryMock(
+            avatarsService: avatarService,
+            emojisService: emojiService
+        )
+        sut = MainViewModel(repository: repository)
     }
 }

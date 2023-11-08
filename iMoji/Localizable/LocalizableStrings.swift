@@ -1,28 +1,34 @@
 enum Localizable {
     
     // MARK: - Network Error
-    @Localized static var networkErrorBadRequest = "networkErrorBadRequest"
-    @Localized static var networkErrorUnauthorized = "networkErrorUnauthorized"
-    @Localized static var networkErrorNotFound = "networkErrorNotFound"
-    @Localized static var networkError500GenericMessage = "networkError500GenericMessage"
-    @Localized static var networkError300GenericMessage = "networkError300GenericMessage"
-    @Localized static var networkErrorUnknown = "networkErrorUnknown"
-    @Localized static var networkErrorNoData = "networkErrorNoData"
+    @Localized("networkErrorBadRequest") static var networkErrorBadRequest
+    @Localized("networkErrorUnauthorized") static var networkErrorUnauthorized
+    @Localized("networkErrorNotFound") static var networkErrorNotFound
+    @Localized("networkError500GenericMessage") static var networkError500GenericMessage
+    @Localized("networkError300GenericMessage") static var networkError300GenericMessage
+    @Localized("networkErrorUnknown") static var networkErrorUnknown
+    @Localized("networkErrorNoData") static var networkErrorNoData
+    
+    // MARK: - App Error
+    @Localized("userNameMissing") static var userNameMissing
     
     // MARK: - Buttons
-    @Localized static var emojisButton = "emojisButton"
-    @Localized static var buttonOk = "buttonOk"
-    @Localized static var emojisList = "emojisList"
-    @Localized static var avatarsList = "avatarsList"
-    @Localized static var appleReposButton = "appleReposButton"
+    @Localized("emojisButton") static var emojisButton
+    @Localized("buttonOk") static var buttonOk
+    @Localized("emojisList") static var emojisList
+    @Localized("avatarsList") static var avatarsList
+    @Localized("appleReposButton") static var appleReposButton
     
     // MARK: - Navigation
-    @Localized static var navTitle = "navTitle"
+    @Localized("navTitle") static var navTitle
     
     // MARK: - Placeholders
-    @Localized static var searchFieldViewPlaceholder = "searchFieldViewPlaceholder"
+    @Localized("searchFieldViewPlaceholder") static var searchFieldViewPlaceholder
     
     // MARK: - Labels
-    @Localized static var avatarsGridTitle = "avatarsGridTitle"
+    @Localized("avatarsGridTitle") static var avatarsGridTitle
+    @Localized("noResults") static var noResults
+    @Localized("emojisContentUnavailableDescription") static var emojisContentUnavailableDescription
+    @Localized("avatarContentUnavailableDescription") static var avatarContentUnavailableDescription
     
 }

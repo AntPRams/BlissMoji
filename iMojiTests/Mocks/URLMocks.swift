@@ -1,10 +1,7 @@
 import Foundation
 
 final class URLMocks {
-        
-    private init() {}
-    
-    static func getMockDataUrl(for type: MockDataFile) -> URL? {
+    class func getMockDataUrl(for type: MockDataFile) -> URL? {
         Bundle(for: URLMocks.self)
             .url(
                 forResource: type.rawValue,
@@ -16,5 +13,8 @@ final class URLMocks {
 enum MockDataFile: String {
     case emojiList
     case invalidEmojiList
+    case validUserData
+    case invalidUserData
+    case validReposList
+    case validEmptyReposList
 }
-
