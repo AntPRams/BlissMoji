@@ -26,7 +26,8 @@ class MainViewModel {
     
     func fetchEmojis() {
         viewState = .loading
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 try await repository.fetchItems(.emoji)
                 await MainActor.run {
@@ -40,7 +41,8 @@ class MainViewModel {
     
     func fetchRandomEmoji() {
         viewState = .loading
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let emoji = try await repository.fetchRandomEmoji()
                 await MainActor.run {
@@ -56,7 +58,8 @@ class MainViewModel {
     func searchUser() {
         // TODO: - ensure that the field has data
         viewState = .loading
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let user = try await repository.fetchAvatar(user: nameQuery)
                 await MainActor.run {
@@ -76,7 +79,8 @@ class MainViewModel {
 private extension MainViewModel {
     
     private func react(to error: Error) async {
-        await MainActor.run {
+        await MainActor.run { [weak self] in
+            guard let self else { return }
             self.error = error
             self.viewState = .idle
         }

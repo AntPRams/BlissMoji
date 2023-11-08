@@ -29,13 +29,14 @@ class ImageViewModel {
     func fetchImage(url: URL) {
         guard let image = item.image else {
             viewState = .loading
-            Task {
+            Task { [weak self] in
+                guard let self else { return }
                 do {
                     let imageData = try await repository.fetchImage(with: url)
                     await MainActor.run {
                         self.item.imageData = imageData
                         self.viewState = .idle
-                        guard let itemImage = item.image else { return }
+                        guard let itemImage = self.item.image else { return }
                         self.image = itemImage
                     }
                 } catch {

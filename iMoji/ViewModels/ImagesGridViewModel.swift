@@ -24,7 +24,8 @@ class ImagesGridViewModel {
     // MARK: - Public Interface
     
     func fetchData() {
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let items = try await repository.fetchItems(gridDataType)
                 await MainActor.run {
@@ -46,8 +47,9 @@ class ImagesGridViewModel {
             }
             postAvatarRemovalNotification(model.name)
 
-            Task {
-                await repository.removeUser(with: model)
+            Task { [weak self] in
+                guard let self else { return }
+                await self.repository.removeUser(with: model)
             }
             fallthrough
         case .emoji:

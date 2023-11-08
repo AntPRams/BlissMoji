@@ -23,7 +23,8 @@ class ListViewModel {
     func fetchRepos() {
         guard isMoreDataAvailable else { return }
         viewState = .loading
-        Task {
+        Task { [weak self] in
+            guard let self else { return }
             do {
                 let repos = try await repository.fetchRepos(
                     user: "apple",
@@ -32,17 +33,17 @@ class ListViewModel {
                 )
                 await MainActor.run {
                     if repos.isEmpty {
-                        isMoreDataAvailable = false
+                        self.isMoreDataAvailable = false
                     } else {
-                        currentPage += 1
-                        reposData.append(contentsOf: repos)
+                        self.currentPage += 1
+                        self.reposData.append(contentsOf: repos)
                     }
-                    viewState = .idle
+                    self.viewState = .idle
                 }
             } catch {
                 await MainActor.run {
                     self.error = error
-                    viewState = .idle
+                    self.viewState = .idle
                 }
             }
         }
