@@ -8,7 +8,7 @@ class MainViewModel {
     
     let repository: PersistentDataRepositoryInterface
     var displayedItem: MediaItem?
-    var nameQuery: String = String()
+    var query: String = String()
     var viewState: ViewState = .initial
     var error: Error?
     
@@ -61,9 +61,9 @@ class MainViewModel {
         Task { [weak self] in
             guard let self else { return }
             do {
-                let user = try await repository.fetchAvatar(user: nameQuery)
+                let user = try await repository.fetchAvatar(user: query)
                 await MainActor.run {
-                    self.nameQuery = String()
+                    self.query = String()
                     self.viewState = .idle
                     self.displayedItem = user
                 }
