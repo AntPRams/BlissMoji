@@ -14,11 +14,15 @@ final class ReposDataRepository {
     
     // MARK: - Public interface
     
-    @discardableResult
-    func fetchRepos(page: Int, resultPerPage: Int = 10) async throws -> [RepoModel] {
+    func fetchRepos(
+        user: String = "apple",
+        page: Int,
+        resultPerPage: Int = 10
+    ) async throws -> [RepoModel] {
+        
         if let data = try await service.fetchData(
             from: .repos(
-                user: "apple",
+                user: user,
                 page: page,
                 size: resultPerPage
             )
