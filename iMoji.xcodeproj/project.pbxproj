@@ -199,9 +199,9 @@
 		9105530B2AF5BC850083ADFF /* Error */ = {
 			isa = PBXGroup;
 			children = (
+				91E485042AFB5977001E3B70 /* AppError.swift */,
 				9105530C2AF5BC960083ADFF /* NetworkError.swift */,
 				91670DA82AF8A52700FFC655 /* LocalizedAlertError.swift */,
-				91E485042AFB5977001E3B70 /* AppError.swift */,
 			);
 			path = Error;
 			sourceTree = "<group>";
