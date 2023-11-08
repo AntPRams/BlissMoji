@@ -19,7 +19,6 @@ struct SearchFieldView: View {
             }
             .buttonStyle(.borderedProminent)
         }
-        .allowsHitTesting(viewModel.viewState != .loading)
     }
 }
 
