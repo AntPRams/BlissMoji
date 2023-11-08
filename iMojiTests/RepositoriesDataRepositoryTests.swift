@@ -1,33 +1,30 @@
 @testable import iMoji
 import XCTest
 
-final class ReposDataRepositoryTests: XCTestCase {
+final class RepositoriesDataRepositoryTests: XCTestCase {
     
-    var service: GithubServiceMock<RepositoryModel>!
+    var service: GithubServiceMock<[RepositoryModel]>!
     var sut: RepositoriesDataRepository!
     
-    /// If your setup or teardown code needs to run on the Main actor, specify `@MainActor` for any asynchronous Swift setup or teardown methods you define.
-    ///
-    /// More info here: https://developer.apple.com/documentation/xctest/xctestcase/set_up_and_tear_down_state_in_your_tests
-    @MainActor
-    override func setUp() async throws {
-        try await super.setUp()
-        service = GithubServiceMock<RepositoryModel>(mockUrl: .validReposList)
-        sut = PersistentDataRepository(
-            avatarsService: avatarService,
-            emojisService: emojiService
-        )
+    override func setUp() {
+        super.setUp()
         
-        await self.sut.deleteAllData()
+        service = GithubServiceMock<[RepositoryModel]>(mockUrl: .validReposList)
+        sut = RepositoriesDataRepository(service: service)
     }
     
-    @MainActor
-    override func tearDown() async throws {
-        await self.sut.deleteAllData()
+    override func tearDown() {
         sut = nil
-        avatarService = nil
-        emojiService = nil
+        service = nil
         
-        try await super.tearDown()
+        super.tearDown()
+    }
+    
+    func test_fetchRepos() async throws {
+        let repositories = try await sut.fetchRepositories(user: "stub", page: 1, resultsPerPage: 1)
+        
+        XCTAssertEqual(repositories.count, 3)
+        XCTAssertEqual(repositories[0].name, "1")
+        XCTAssertEqual(repositories[2].name, "3")
     }
 }
