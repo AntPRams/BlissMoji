@@ -18,7 +18,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Please initiate a user search to display results."
+            "value" : "Please perform a user search with results"
           }
         }
       }
@@ -195,6 +195,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Search by username"
+          }
+        }
+      }
+    },
+    "userNameMissing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please provide a user name to search."
           }
         }
       }

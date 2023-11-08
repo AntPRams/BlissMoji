@@ -9,6 +9,9 @@ enum Localizable {
     @Localized static var networkErrorUnknown = "networkErrorUnknown"
     @Localized static var networkErrorNoData = "networkErrorNoData"
     
+    // MARK: - App Error
+    @Localized static var userNameMissing = "userNameMissing"
+    
     // MARK: - Buttons
     @Localized static var emojisButton = "emojisButton"
     @Localized static var buttonOk = "buttonOk"

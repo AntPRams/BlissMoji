@@ -56,7 +56,10 @@ class MainViewModel {
     }
     
     func searchUser() {
-        // TODO: - ensure that the field has data
+        if query.isEmpty {
+            error = AppError.userNameMissing
+            return
+        }
         viewState = .loading
         Task { [weak self] in
             guard let self else { return }
