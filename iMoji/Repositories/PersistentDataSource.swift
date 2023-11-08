@@ -66,4 +66,13 @@ final class PersistentDataSource {
     func deleteAll() {
         try? modelContext.delete(model: MediaItem.self)
     }
+    
+    /// Updates the image data of a given `MediaItem` with new data.
+    ///
+    /// - Parameters:
+    ///   - item: The `MediaItem` to be updated.
+    ///   - data: The binary data representing the new image.
+    func updateImage(_ item: MediaItem, data: Data) {
+        item.update(keyPath: \.imageData, to: data)
+    }
 }
