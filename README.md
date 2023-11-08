@@ -3,7 +3,7 @@
 Exploring Skills: BlissApps evaluation project
 
 ## Table of Contents
-- [Demo](#getting-started)
+- [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Tests](#tests)
