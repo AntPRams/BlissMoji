@@ -1,5 +1,6 @@
 import Foundation
 
+/// A structure that adapts errors conforming to the `LocalizedError` for use with `errorAlert(error:buttonTitle:)`.
 struct LocalizedAlertError: LocalizedError {
     
     // MARK: - Properties
