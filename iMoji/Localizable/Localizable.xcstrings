@@ -12,6 +12,17 @@
         }
       }
     },
+    "avatarContentUnavailableDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please initiate a user search to display results."
+          }
+        }
+      }
+    },
     "avatarsGridTitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -52,6 +63,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Random Emoji"
+          }
+        }
+      }
+    },
+    "emojisContentUnavailableDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unfortunately, there are no emojis to display at the moment. :("
           }
         }
       }
@@ -151,6 +173,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Oops!\nSomething went wrong."
+          }
+        }
+      }
+    },
+    "noResults" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
           }
         }
       }

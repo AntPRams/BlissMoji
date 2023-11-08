@@ -73,6 +73,8 @@ final class PersistentDataRepository: PersistentDataRepositoryInterface {
     }
 }
 
+// MARK: - Private work
+
 private extension PersistentDataRepository {
     
     func mapEmojis(from data: [String: String]) -> [MediaItem] {

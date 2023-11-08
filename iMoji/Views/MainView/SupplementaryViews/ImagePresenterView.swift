@@ -9,7 +9,7 @@ struct ImagePresenterView: View {
             ContainerRelativeShape()
                 .inset(by: 4)
                 .fill(.clear)
-            presentProgressView(basedOn: viewModel.state)
+            presentProgressView(basedOn: viewModel.viewState)
         }
         .clipShape(Capsule())
         .frame(maxWidth: .infinity)

@@ -16,6 +16,7 @@ protocol PersistentDataRepositoryInterface: AnyObject {
     ///   - type: The type of media items to fetch (eg: avatars or emojis).
     /// - Returns: An array of `MediaItem` models matching the specified type.
     /// - Throws: An error if the fetch operation fails.
+    @discardableResult
     func fetchItems(_ type: ItemType) async throws -> [MediaItem]
     
     /// Asynchronously fetches an avatar item for a specific user by name.

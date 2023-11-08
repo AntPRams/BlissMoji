@@ -18,6 +18,6 @@ protocol ReposDataRepositoryInterface: AnyObject {
     func fetchRepos(
         user: String,
         page: Int,
-        resultPerPage: Int
+        resultsPerPage: Int
     ) async throws -> [RepoModel]
 }

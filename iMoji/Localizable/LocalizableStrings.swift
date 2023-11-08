@@ -24,5 +24,8 @@ enum Localizable {
     
     // MARK: - Labels
     @Localized static var avatarsGridTitle = "avatarsGridTitle"
+    @Localized static var noResults = "noResults"
+    @Localized static var emojisContentUnavailableDescription = "emojisContentUnavailableDescription"
+    @Localized static var avatarContentUnavailableDescription = "avatarContentUnavailableDescription"
     
 }

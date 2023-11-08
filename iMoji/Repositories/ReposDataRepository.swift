@@ -15,16 +15,16 @@ final class ReposDataRepository: ReposDataRepositoryInterface {
     // MARK: - Public interface
     
     func fetchRepos(
-        user: String = "apple",
+        user: String,
         page: Int,
-        resultPerPage: Int = 10
+        resultsPerPage: Int
     ) async throws -> [RepoModel] {
         
         if let data = try await service.fetchData(
             from: .repos(
                 user: user,
                 page: page,
-                size: resultPerPage
+                size: resultsPerPage
             )
         ) as? [RepoModel] {
             return data

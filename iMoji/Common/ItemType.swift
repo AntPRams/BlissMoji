@@ -3,3 +3,13 @@ enum ItemType: Int, Codable {
     case emoji = 0
     case avatar = 1
 }
+
+extension ItemType {
+    
+    var contentUnavailableDescription: String {
+        switch self {
+        case .emoji: return Localizable.emojisContentUnavailableDescription
+        case .avatar: return Localizable.avatarContentUnavailableDescription
+        }
+    }
+}

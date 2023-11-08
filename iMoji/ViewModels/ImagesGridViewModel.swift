@@ -1,20 +1,27 @@
 import Foundation
 
-@Observable class ImagesGridViewModel {
+@Observable 
+class ImagesGridViewModel {
     
-    let repository: PersistentDataRepository
+    // MARK: - Properties
+    
+    let repository: PersistentDataRepositoryInterface
     var gridDataType: ItemType
-    
-    var error: Error?
     var data = [MediaItem]()
+    var viewState: ViewState = .initial
+    var error: Error?
+    
+    // MARK: - Init
     
     init(
-        repository: PersistentDataRepository = PersistentDataRepository(),
+        repository: PersistentDataRepositoryInterface = PersistentDataRepository(),
         gridDataType: ItemType
     ) {
         self.repository = repository
         self.gridDataType = gridDataType
     }
+    
+    // MARK: - Public Interface
     
     func fetchData() {
         Task {
@@ -48,6 +55,8 @@ import Foundation
         }
     }
 }
+
+// MARK: - Private work
 
 private extension ImagesGridViewModel {
     func postAvatarRemovalNotification(_ avatarName: String) {

@@ -23,7 +23,7 @@ struct EmojisSectionView: View {
             Divider()
                 .padding(.vertical, 16)
         }
-        .allowsHitTesting(viewModel.state != .loading)
+        .allowsHitTesting(viewModel.viewState != .loading)
     }
 }
 

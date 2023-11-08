@@ -1,16 +1,21 @@
 import UIKit
 
-@Observable class ImageViewModel {
+@Observable 
+class ImageViewModel {
     
-    let repository: PersistentDataRepository
+    // MARK: - Properties
+    
+    let repository: PersistentDataRepositoryInterface
     var item: MediaItem
-    var error: Error?
-    var state: ViewState = .initial
     var image: UIImage = UIImage()
+    var viewState: ViewState = .initial
+    var error: Error?
+    
+    // MARK: - Init
     
     init(
         item: MediaItem,
-        repository: PersistentDataRepository = PersistentDataRepository(),
+        repository: PersistentDataRepositoryInterface = PersistentDataRepository(),
         shouldFetchImageOnInitialization: Bool = true
     ) {
         self.item = item
@@ -19,21 +24,23 @@ import UIKit
         fetchImage(url: item.imageUrl)
     }
     
+    // MARK: - Public Interface
+    
     func fetchImage(url: URL) {
         guard let image = item.image else {
-            state = .loading
+            viewState = .loading
             Task {
                 do {
                     let imageData = try await repository.fetchImage(with: url)
                     await MainActor.run {
                         self.item.imageData = imageData
-                        self.state = .idle
+                        self.viewState = .idle
                         guard let itemImage = item.image else { return }
                         self.image = itemImage
                     }
                 } catch {
                     await MainActor.run {
-                        self.state = .idle
+                        self.viewState = .idle
                     }
                 }
             }
