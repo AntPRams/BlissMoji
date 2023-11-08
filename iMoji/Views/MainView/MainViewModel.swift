@@ -1,38 +1,18 @@
 import Foundation
-import SwiftUI
 import Combine
 
-protocol MainViewModelInterface: ObservableObject {
+@Observable class MainViewModel {
     
-    var error: Error? { get set }
-    var emojiAdapter: EmojiAdapterInterface { get }
-    var avatarAdapter: AvatarAdapterInterface { get }
-    var nameQuery: String { get set }
-    var state: ViewState { get set }
-    var modelToPresent: PersistentModelRepresentable? { get set }
-    
-    func fetchEmojis()
-    func fetchRandomEmoji()
-    func searchUser()
-}
-
-class MainViewModel: MainViewModelInterface {
-    
-    let emojiAdapter: EmojiAdapterInterface
-    let avatarAdapter: AvatarAdapterInterface
-    @Published var error: Error?
-    @Published var modelToPresent: PersistentModelRepresentable?
-    @Published var nameQuery: String = String()
-    @Published var state: ViewState = .initial
+    let repository: PersistentDataRepository
+    var error: Error?
+    var displayedItem: MediaItem?
+    var nameQuery: String = String()
+    var state: ViewState = .initial
     
     private var disposableBag = Set<AnyCancellable>()
     
-    init(
-        emojiAdapter: EmojiAdapterInterface = EmojiAdapter(),
-        avatarAdapter: AvatarAdapterInterface = AvatarAdapter()
-    ) {
-        self.emojiAdapter = emojiAdapter
-        self.avatarAdapter = avatarAdapter
+    init(repository: PersistentDataRepository = PersistentDataRepository()) {
+        self.repository = repository
         subscribeToAvatarRemovalNotification()
         fetchEmojis()
     }
@@ -41,11 +21,9 @@ class MainViewModel: MainViewModelInterface {
         state = .loading
         Task {
             do {
-                _ = try await emojiAdapter.fetchEmojisData()
+                try await repository.fetchItems(.emoji)
                 await MainActor.run {
-                    withAnimation {
-                        self.state = .idle
-                    }
+                    self.state = .idle
                 }
             } catch {
                 await MainActor.run {
@@ -59,11 +37,16 @@ class MainViewModel: MainViewModelInterface {
     func fetchRandomEmoji() {
         state = .loading
         Task {
-            let randomEmoji = await emojiAdapter.fetchRandomEmoji()
-            await MainActor.run {
-                withAnimation {
+            do {
+                let emoji = try await repository.fetchRandomEmoji()
+                await MainActor.run {
+                    self.displayedItem = emoji
                     self.state = .idle
-                    self.modelToPresent = randomEmoji
+                }
+            } catch {
+                await MainActor.run {
+                    self.error = error
+                    self.state = .idle
                 }
             }
         }
@@ -74,13 +57,11 @@ class MainViewModel: MainViewModelInterface {
         state = .loading
         Task {
             do {
-                let user = try await avatarAdapter.fetch(user: nameQuery)
+                let user = try await repository.fetchAvatar(user: nameQuery)
                 await MainActor.run {
-                    withAnimation {
-                        self.nameQuery = String()
-                        self.state = .idle
-                        self.modelToPresent = user
-                    }
+                    self.nameQuery = String()
+                    self.state = .idle
+                    self.displayedItem = user
                 }
             } catch {
                 await MainActor.run {
@@ -93,14 +74,13 @@ class MainViewModel: MainViewModelInterface {
 }
 
 private extension MainViewModel {
-    
     func subscribeToAvatarRemovalNotification() {
         NotificationCenter.default.publisher(for: .didRemoveAvatarFromPersistence)
             .compactMap { $0.object as? String }
             .sink { [weak self] avatarName in
                 guard let self else { return }
-                if modelToPresent?.name == avatarName {
-                    modelToPresent = nil
+                if displayedItem?.name == avatarName {
+                    displayedItem = nil
                 }
             }
             .store(in: &disposableBag)

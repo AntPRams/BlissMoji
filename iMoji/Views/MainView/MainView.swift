@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct MainView<ViewModel: MainViewModelInterface>: View {
+struct MainView: View {
     
-    @StateObject var viewModel: ViewModel
+    @Bindable var viewModel: MainViewModel
     
     var body: some View {
         NavigationStack {
@@ -11,6 +11,14 @@ struct MainView<ViewModel: MainViewModelInterface>: View {
                 EmojisSectionView(viewModel: viewModel)
                 AvatarsSectionView(viewModel: viewModel)
                 Spacer()
+                Button {
+                    
+                } label: {
+                    Text(Localizable.buttonOk)
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.red)
             }
             .padding(16)
             .navigationTitle(Localizable.navTitle)

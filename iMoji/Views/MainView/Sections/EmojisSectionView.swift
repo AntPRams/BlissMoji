@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
+struct EmojisSectionView: View {
     
-    @ObservedObject var viewModel: ViewModel
+    let viewModel: MainViewModel
     
     var body: some View {
         VStack {
@@ -14,7 +14,7 @@ struct EmojisSectionView<ViewModel: MainViewModelInterface>: View {
             }
             .buttonStyle(.borderedProminent)
             NavigationLink(destination: {
-                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emojis))
+                ImagesGridView(viewModel: ImagesGridViewModel(gridDataType: .emoji))
             }, label: {
                 Text(Localizable.emojisList)
                     .frame(maxWidth: .infinity)
