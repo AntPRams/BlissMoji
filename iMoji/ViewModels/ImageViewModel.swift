@@ -41,6 +41,7 @@ class ImageViewModel {
                     }
                 } catch {
                     await MainActor.run {
+                        self.error = error
                         self.viewState = .idle
                     }
                 }

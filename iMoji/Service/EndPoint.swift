@@ -4,7 +4,7 @@ import Foundation
 enum EndPoint {
     case emojis
     case avatar(user: String)
-    case repos(user: String, page: Int, size: Int = 10)
+    case repositories(user: String, page: Int, size: Int = 10)
     
     /// Returns the `URL` corresponding to the specific endpoint.
     var url: URL? {
@@ -13,7 +13,7 @@ enum EndPoint {
             return EndPoint.url("/emojis")
         case .avatar(let user):
             return EndPoint.url("/users/\(user)")
-        case .repos(let user, let page, let size):
+        case .repositories(let user, let page, let size):
             let page = URLQueryItem(name: "page", value: "\(page)")
             let size = URLQueryItem(name: "per_page", value: "\(size)")
             return EndPoint.url("/users/\(user)/repos", queryItems: [page, size])

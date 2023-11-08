@@ -61,4 +61,9 @@ final class PersistentDataSource {
     func delete(_ item: MediaItem) {
         modelContext.delete(item)
     }
+    
+    /// Deletes all `MediaItem` models from the persistent storage context.
+    func deleteAll() {
+        try? modelContext.delete(model: MediaItem.self)
+    }
 }

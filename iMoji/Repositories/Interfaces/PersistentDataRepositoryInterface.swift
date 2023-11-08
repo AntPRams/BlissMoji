@@ -41,9 +41,12 @@ protocol PersistentDataRepositoryInterface: AnyObject {
     /// - Throws: An error if the fetch operation fails.
     func fetchImage(with url: URL) async throws -> Data
     
-    /// Removes a user and their associated media item from the repository.
+    /// Removes a user and their associated media item from the persistent storage context.
     ///
     /// - Parameters:
     ///   - item: The `MediaItem` associated with the user to be removed.
     func removeUser(with item: MediaItem) async
+    
+    /// Clear all persisted data from the persistent storage context.
+    func deleteAllData() async
 }

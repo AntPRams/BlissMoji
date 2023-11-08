@@ -1,7 +1,7 @@
 import Foundation
 
 /// A protocol defining methods for interacting with repository data.
-protocol ReposDataRepositoryInterface: AnyObject {
+protocol RepositoriesDataRepositoryInterface: AnyObject {
     /// Initializes a data repository with the provided service.
         ///
         /// - Parameter service: A service for repository data.
@@ -15,9 +15,9 @@ protocol ReposDataRepositoryInterface: AnyObject {
     ///   - resultPerPage: The number of results per page.
     /// - Returns: An array of `RepoModel` representing repositories of the user.
     /// - Throws: An error if the fetch operation fails.
-    func fetchRepos(
+    func fetchRepositories(
         user: String,
         page: Int,
         resultsPerPage: Int
-    ) async throws -> [RepoModel]
+    ) async throws -> [RepositoryModel]
 }

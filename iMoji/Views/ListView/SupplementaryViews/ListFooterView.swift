@@ -15,7 +15,7 @@ struct ListFooterView: View {
         }
         .frame(height: 50)
         .onAppear {
-            viewModel.fetchRepos()
+            viewModel.fetchRepositories()
         }
     }
 }

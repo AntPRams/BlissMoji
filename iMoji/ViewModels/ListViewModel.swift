@@ -5,28 +5,28 @@ class ListViewModel {
     
     // MARK: - Properties
     
-    let repository: ReposDataRepositoryInterface
+    let repository: RepositoriesDataRepositoryInterface
     var error: Error?
     var viewState: ViewState = .initial
-    var reposData = [RepoModel]()
+    var repositoriesData = [RepositoryModel]()
     var isMoreDataAvailable: Bool = true
     private var currentPage = 1
     
     // MARK: - Init
     
-    init(repository: ReposDataRepositoryInterface = ReposDataRepository()) {
+    init(repository: RepositoriesDataRepositoryInterface = RepositoriesDataRepository()) {
         self.repository = repository
     }
     
     // MARK: - Public Interface
     
-    func fetchRepos() {
+    func fetchRepositories() {
         guard isMoreDataAvailable else { return }
         viewState = .loading
         Task { [weak self] in
             guard let self else { return }
             do {
-                let repos = try await repository.fetchRepos(
+                let repos = try await repository.fetchRepositories(
                     user: "apple",
                     page: currentPage,
                     resultsPerPage: 10
@@ -36,7 +36,7 @@ class ListViewModel {
                         self.isMoreDataAvailable = false
                     } else {
                         self.currentPage += 1
-                        self.reposData.append(contentsOf: repos)
+                        self.repositoriesData.append(contentsOf: repos)
                     }
                     self.viewState = .idle
                 }
@@ -44,6 +44,7 @@ class ListViewModel {
                 await MainActor.run {
                     self.error = error
                     self.viewState = .idle
+                    self.isMoreDataAvailable = false
                 }
             }
         }

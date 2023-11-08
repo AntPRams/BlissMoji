@@ -71,6 +71,10 @@ final class PersistentDataRepository: PersistentDataRepositoryInterface {
     func removeUser(with item: MediaItem) async {
         await dataSource.delete(item)
     }
+    
+    func deleteAllData() async {
+        await dataSource.deleteAll()
+    }
 }
 
 // MARK: - Private work
