@@ -1,6 +1,6 @@
 import Foundation
 
-struct AvatarNetworkModel: Decodable {
+struct AvatarModel: Decodable {
     
     let id: Int?
     let name: String?
