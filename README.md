@@ -94,7 +94,7 @@ You can read more [here](https://forums.swift.org/t/tracking-properties-in-obser
 ```swift
 func test_searchAvatar() throws {
         //given
-        let originTextField = app.textFields[“avatar”SearchFielld]
+        let originTextField = app.textFields[“avatarSearchField"]
         let searchButton = app.buttons["searchButton"]
         let alertView = app.alerts.firstMatch
         
