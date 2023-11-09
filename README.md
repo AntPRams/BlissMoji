@@ -89,7 +89,7 @@ You can read more [here](https://forums.swift.org/t/tracking-properties-in-obser
 
 * Accessibility:  Nowadays, there’s no excuse in a production environment. It’s a fundamental aspect of good design, and it’s crucial to ensure that the apps we work on are accessible to everyone. I didn’t have time to do it, but it’s one aspect that I truly value.
 * Logs: They are extremely helpful in a development environment, but this was one of those things that I left behind, and when I wanted to pick them up, well, it was too late.
-* UI Tests: As I mentioned before, the app has an 87% test coverage, and the remaining tests are mainly related to the UI. It's very easy to test SwiftUI views with just a couple of lines of code. For example, if I wanted to test the error when tapping the search avatar button without text in the search field, I could do something like this:  
+* UI Tests: As I mentioned before, the app has an 74,5% test coverage, and the remaining tests are mainly related to the UI. It's very easy to test SwiftUI views with just a couple of lines of code. For example, if I wanted to test the error when tapping the search avatar button without text in the search field, I could do something like this:  
 
 ```swift
 func test_searchAvatar() throws {
