@@ -24,11 +24,14 @@ struct ImagesGridView: View {
                 }
             }
         }
+        .if(viewModel.gridDataType == .emoji) { view in
+            view
+                .refreshable {
+                    viewModel.fetchData()
+                }
+        }
         .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: viewModel.fetchData)
-        .refreshable {
-            viewModel.fetchData()
-        }
         .errorAlert(error: $viewModel.error)
         .overlay {
             if viewModel.data.isEmpty {

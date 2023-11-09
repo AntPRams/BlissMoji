@@ -6,9 +6,9 @@ import SwiftData
 class MediaItem {
     @Attribute(.unique) var modelId: String = UUID().uuidString
     /// The name of the item.
-    var name: String
+    @Attribute(.unique) var name: String
     /// The URL of the item's image.
-    var imageUrl: URL
+    @Attribute(.unique) var imageUrl: URL
     /// The item's image data.
     @Attribute(.externalStorage) var imageData: Data?
     
