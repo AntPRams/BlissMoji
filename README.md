@@ -75,7 +75,7 @@ Below, there’s a screenshot with the test coverage, the remaining tests are ma
 
 <img width="1148" alt="Screenshot 2023-11-08 at 12 33 54" src="https://github.com/AntPRams/iMoji/assets/36003116/a6050b56-7b96-4a0d-a5c6-a13e84a562d4">
 
-In some tests class's `MainViewModelTests` you’ll see a lot of:; 
+In some tests class's, `MainViewModelTests` for instance, you’ll see a lot of:
 
 ```swift
 try await Task.sleep(nanoseconds: 300_000_000)
@@ -94,7 +94,7 @@ You can read more [here](https://forums.swift.org/t/tracking-properties-in-obser
 ```swift
 func test_searchAvatar() throws {
         //given
-        let originTextField = app.textFields[“avatarSearchField"]
+        let originTextField = app.textFields[“avatarSearchField“]
         let searchButton = app.buttons["searchButton"]
         let alertView = app.alerts.firstMatch
         
